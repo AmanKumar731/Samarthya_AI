@@ -15,7 +15,6 @@ Thumbs.db
 .idea/
 *.swp
 
-# Environment variables (do not commit secrets)
-.env
-.env.example
+# Environment variables
+# (.env explicitly tracked for project API config upon request)
 .env*.local
