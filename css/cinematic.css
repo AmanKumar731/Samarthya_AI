@@ -59,57 +59,22 @@ html, body {
   opacity: 0.85;
 }
 
-/* Subtle Film Grain Noise Overlay */
+/* Subtle Film Grain Noise Overlay Disabled */
 .cinema-grain {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  display: none !important;
 }
 
-/* ============ Custom Cursor (Awwwards Grade) ============ */
+/* ============ Custom Cursor Disabled ============ */
 .cur-dot,
-.cur-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 999999;
-  border-radius: 50%;
-  will-change: transform, width, height, opacity, background-color, border-color;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease, border-color 0.2s ease, background-color 0.2s ease, width 0.25s var(--ease-cinematic), height 0.25s var(--ease-cinematic);
-}
-
-.cur-dot {
-  width: 6px;
-  height: 6px;
-  background: #FFFFFF;
-  box-shadow: 0 0 8px #FFFFFF, 0 0 16px var(--signal-cyan);
-}
-
-.cur-ring {
-  width: 36px;
-  height: 36px;
-  border: 1.2px solid rgba(255, 255, 255, 0.45);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
-  backdrop-filter: blur(1px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  color: #FFFFFF;
-  text-transform: uppercase;
-}
-
-body.cursor-visible .cur-dot,
-body.cursor-visible .cur-ring {
-  opacity: 1;
+.cur-ring,
+.custom-cursor-dot,
+.custom-cursor-ring,
+.custom-cursor-canvas,
+.samarthya-cursor {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /* Cursor Context States */

@@ -16,6 +16,7 @@
     lastScrollTime: Date.now(),
     isTouch: false,
     reducedMotion: false,
+    setOpportunityFieldTheme(theme) {},
 
     init() {
       if (this.isReady) return;
@@ -30,9 +31,6 @@
 
       this.setupVelocityTracker();
       this.initOpportunityField();
-      if (!this.isTouch && !this.reducedMotion && !document.getElementById('custom-cursor-dot')) {
-        this.initCursor();
-      }
       this.initMagneticButtons();
 
       this.isReady = true;
@@ -43,17 +41,24 @@
        ========================================================================== */
     setupVelocityTracker() {
       let timeout;
+      let ticking = false;
       window.addEventListener('scroll', () => {
-        const now = Date.now();
-        const currentY = window.pageYOffset || document.documentElement.scrollTop;
-        const dt = Math.max(10, now - this.lastScrollTime);
-        const dy = currentY - this.lastScrollY;
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const now = Date.now();
+            const currentY = window.pageYOffset || document.documentElement.scrollTop;
+            const dt = Math.max(10, now - this.lastScrollTime);
+            const dy = currentY - this.lastScrollY;
 
-        // Instant velocity in px/ms
-        this.scrollVelocity = Math.min(Math.abs(dy / dt) * 15, 60);
+            // Instant velocity in px/ms
+            this.scrollVelocity = Math.min(Math.abs(dy / dt) * 15, 60);
 
-        this.lastScrollY = currentY;
-        this.lastScrollTime = now;
+            this.lastScrollY = currentY;
+            this.lastScrollTime = now;
+            ticking = false;
+          });
+          ticking = true;
+        }
 
         clearTimeout(timeout);
         timeout = setTimeout(() => {
@@ -104,6 +109,12 @@
       const canvas = document.getElementById('opportunity-field-canvas');
       if (!canvas) return;
 
+      const style = window.getComputedStyle(canvas);
+      if (style.display === 'none' || canvas.offsetParent === null) {
+        // Canvas is hidden via CSS - avoid wasting CPU/GPU running 3D projection loop
+        return;
+      }
+
       const ctx = canvas.getContext('2d', { alpha: true });
       let width, height;
       let mouseX = 0, mouseY = 0;
@@ -116,8 +127,8 @@
       // Color palette signals
       const COLORS = {
         welfare: { r: 0, g: 217, b: 166 },   // #00D9A6
-        cyan:    { r: 0, g: 229, b: 255 },   // #00E5FF
-        credit:  { r: 230, g: 168, b: 74 },  // #E6A84A
+        cyan: { r: 0, g: 229, b: 255 },   // #00E5FF
+        credit: { r: 230, g: 168, b: 74 },  // #E6A84A
         neutral: { r: 245, g: 247, b: 250 }  // #F5F7FA
       };
 
@@ -226,9 +237,11 @@
           });
         }
 
-        // 2. Draw 3D Connecting Lines
+        // 2. Draw 3D Connecting Lines in one batched path
         const maxDistSq = 22000;
         ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        let hasLines = false;
 
         for (let i = 0; i < projected.length; i++) {
           const p1 = projected[i];
@@ -239,14 +252,15 @@
             const distSq = dx * dx + dy * dy;
 
             if (distSq < maxDistSq) {
-              const alpha = (1 - distSq / maxDistSq) * 0.16;
-              ctx.strokeStyle = `rgba(${Math.round(currentColor.r)}, ${Math.round(currentColor.g)}, ${Math.round(currentColor.b)}, ${alpha.toFixed(3)})`;
-              ctx.beginPath();
               ctx.moveTo(p1.x, p1.y);
               ctx.lineTo(p2.x, p2.y);
-              ctx.stroke();
+              hasLines = true;
             }
           }
+        }
+        if (hasLines) {
+          ctx.strokeStyle = `rgba(${Math.round(currentColor.r)}, ${Math.round(currentColor.g)}, ${Math.round(currentColor.b)}, 0.14)`;
+          ctx.stroke();
         }
 
         // 3. Draw Nodes with soft aura
@@ -271,60 +285,7 @@
        4. AWWWARDS CUSTOM CURSOR
        ========================================================================== */
     initCursor() {
-      if (document.querySelector('.cur-dot')) return;
-
-      const dot = document.createElement('div');
-      dot.className = 'cur-dot';
-      const ring = document.createElement('div');
-      ring.className = 'cur-ring';
-
-      document.body.appendChild(dot);
-      document.body.appendChild(ring);
-
-      let mouse = { x: -100, y: -100 };
-      let ringPos = { x: -100, y: -100 };
-      let isVisible = false;
-
-      window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-
-        if (!isVisible) {
-          isVisible = true;
-          document.body.classList.add('cursor-visible');
-        }
-
-        dot.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0)`;
-
-        // Check hover contexts
-        const target = e.target;
-        if (!target) return;
-
-        const isView = target.closest('[data-cursor="view"]');
-        const isDrag = target.closest('[data-cursor="drag"], .dual-world-divider, .finance-slider');
-        const isExplore = target.closest('[data-cursor="explore"]');
-        const isInteractive = target.closest('a, button, input, select, .magnetic-cta, .matcher-orbit-node, .a11y-art-tile, [role="button"]');
-
-        document.body.classList.toggle('cur-view', !!isView);
-        document.body.classList.toggle('cur-drag', !!isDrag);
-        document.body.classList.toggle('cur-explore', !!isExplore);
-        document.body.classList.toggle('cur-hover', !isView && !isDrag && !isExplore && !!isInteractive);
-      }, { passive: true });
-
-      window.addEventListener('mouseleave', () => {
-        isVisible = false;
-        document.body.classList.remove('cursor-visible');
-      });
-
-      // Lerp ring follow
-      const animateCursor = () => {
-        ringPos.x += (mouse.x - ringPos.x) * 0.22;
-        ringPos.y += (mouse.y - ringPos.y) * 0.22;
-
-        ring.style.transform = `translate3d(${ringPos.x}px, ${ringPos.y}px, 0)`;
-        requestAnimationFrame(animateCursor);
-      };
-      animateCursor();
+      // Disabled completely per ultra-minimal UI design (uses native cursor)
     },
 
     /* ==========================================================================
@@ -343,7 +304,7 @@
           const dy = (e.clientY - cy) * 0.35;
 
           if (window.gsap) {
-            gsap.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power2.out' });
+            gsap.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
           } else {
             btn.style.transform = `translate(${dx}px, ${dy}px)`;
           }
@@ -351,7 +312,7 @@
 
         btn.addEventListener('mouseleave', () => {
           if (window.gsap) {
-            gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
+            gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)', overwrite: 'auto' });
           } else {
             btn.style.transform = '';
           }

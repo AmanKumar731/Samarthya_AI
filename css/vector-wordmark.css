@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Vector Wordmark — SAKSHAM Frameless Interactive Typography
+   Seamless, borderless full-width vector typography melting into the page
+   ========================================================================== */
+
+.saksham-wordmark-section {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  padding: 40px 0 20px 0;
+  margin: 0;
+  overflow: hidden;
+  z-index: 10;
+  border: none !important;
+  box-shadow: none !important;
+  /* Seamless top and bottom feathering */
+  mask-image: radial-gradient(ellipse 95% 80% at 50% 50%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 80% at 50% 50%, #000 40%, transparent 100%);
+}
+
+/* Ambient Radial Glow Behind the Wordmark */
+.saksham-wordmark-section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1200px;
+  height: 380px;
+  background: radial-gradient(
+    ellipse 65% 50% at 50% 50%,
+    rgba(56, 189, 248, 0.09) 0%,
+    rgba(99, 102, 241, 0.04) 45%,
+    transparent 75%
+  );
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(45px);
+}
+
+/* Frameless Full-Width Canvas Stage */
+.saksham-frameless-stage,
+.saksham-canvas-host {
+  position: relative;
+  width: 100%;
+  height: clamp(320px, 46vh, 500px);
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden;
+  cursor: crosshair;
+  z-index: 2;
+}
+
+.vector-wordmark-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  user-select: none;
+  -webkit-user-select: none;
+  background: transparent !important;
+}
+
+/* Floating CAD Coordinates Badges (Clean, Minimal, Monospace) */
+.vector-wordmark-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: 'IBM Plex Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  opacity: 0.65;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+/* Seamless blend into the footer without harsh line */
+.saksham-wordmark-section + .footer,
+.saksham-wordmark-section ~ .footer {
+  margin-top: 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Responsive Scaling */
+@media (max-width: 960px) {
+  .saksham-wordmark-section {
+    padding: 30px 0 10px 0;
+  }
+  .saksham-frameless-stage,
+  .saksham-canvas-host {
+    height: clamp(260px, 36vh, 360px);
+  }
+}
+
+@media (max-width: 640px) {
+  .saksham-wordmark-section {
+    padding: 20px 0 0 0;
+  }
+  .saksham-frameless-stage,
+  .saksham-canvas-host {
+    height: 240px;
+  }
+}

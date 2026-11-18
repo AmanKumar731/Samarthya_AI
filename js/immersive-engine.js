@@ -47,9 +47,6 @@
 
       if (root) {
         this.setupSoundToggle(root);
-        if (!this.isTouch && !this.reduced) {
-          this.setupInertialCursor(root);
-        }
         this.setupOrbParallax(root);
         if (ScrollTrigger) {
           this.setupScrollChoreography(root);
@@ -114,42 +111,7 @@
        2. INERTIAL DIFFERENCE CURSOR
        -------------------------------------------------------------------------- */
     setupInertialCursor(root) {
-      let cursorEl = document.querySelector('.samarthya-cursor');
-      if (!cursorEl) {
-        cursorEl = document.createElement('div');
-        cursorEl.className = 'samarthya-cursor';
-        document.body.appendChild(cursorEl);
-      }
-      this.cursor = cursorEl;
-
-      window.addEventListener('pointermove', (e) => {
-        this.targetX = e.clientX;
-        this.targetY = e.clientY;
-      }, { passive: true });
-
-      gsap.ticker.add(() => {
-        this.currentX += (this.targetX - this.currentX) * 0.18;
-        this.currentY += (this.targetY - this.currentY) * 0.18;
-        gsap.set(this.cursor, {
-          x: this.currentX,
-          y: this.currentY
-        });
-      });
-
-      // Hover magnification on interactive elements
-      const interactiveElements = root.querySelectorAll('button, a, .credit-checks span, .match-meter, [data-cursor-hover]');
-      interactiveElements.forEach((el) => {
-        el.addEventListener('mouseenter', () => {
-          gsap.to(this.cursor, { scale: 2.2, duration: 0.25, ease: 'power3.out' });
-          if (this.audio) this.audio.hover();
-        });
-        el.addEventListener('mouseleave', () => {
-          gsap.to(this.cursor, { scale: 1, duration: 0.3, ease: 'power3.out' });
-        });
-        el.addEventListener('click', () => {
-          if (this.audio) this.audio.click();
-        });
-      });
+      // Disabled completely per ultra-minimal UI design (uses native cursor)
     },
 
     /* --------------------------------------------------------------------------

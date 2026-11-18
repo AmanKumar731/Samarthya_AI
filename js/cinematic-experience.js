@@ -15,6 +15,9 @@
 
     init() {
       if (this.isInitialized) return;
+      if (!document.getElementById('scene-chaos-clarity') && !document.getElementById('scene-hero')) {
+        return;
+      }
 
       this.initHeroEntrance();
       this.initChaosToClaritySequence();
@@ -38,6 +41,8 @@
        ========================================================================== */
     initHeroEntrance() {
       if (!window.gsap) return;
+      const heroScene = document.getElementById('scene-hero');
+      if (!heroScene) return;
 
       const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
@@ -74,7 +79,6 @@
           { opacity: 1, y: 0, duration: 0.8 }, '-=0.5');
 
       // 3D Perspective Mouse Parallax Tilt on Hero Scene
-      const heroScene = document.getElementById('scene-hero');
       const heroHeadline = document.getElementById('heroMassiveHeadline');
       const heroRight = document.querySelector('.hero-editorial-right');
       if (heroScene && heroHeadline && !('ontouchstart' in window)) {

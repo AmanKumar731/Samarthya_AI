@@ -560,6 +560,7 @@
     bindDelegatedEvents() {
       // Delegated mouseover for hover chimes
       document.addEventListener('mouseover', (e) => {
+        if (!this.isEnabled) return;
         const target = e.target.closest('button, a, .nav-link, .chaos-node-fragment, .dual-world-pane, .matcher-orbit-node, .a11y-art-tile, [data-sound="hover"]');
         if (target) {
           this.playHover();
@@ -568,6 +569,7 @@
 
       // Delegated pointerdown for click taps
       document.addEventListener('pointerdown', (e) => {
+        if (!this.isEnabled) return;
         const target = e.target.closest('button, a, .nav-link, .chaos-node-fragment, .dual-world-pane, .cinema-pill-btn, .magnetic-cta, .matcher-orbit-node, .a11y-art-tile, [data-sound="click"]');
         if (target) {
           this.playClick();
@@ -577,6 +579,7 @@
       // Delegated input for sliders (Financial musical instrument feel)
       let lastSliderSound = 0;
       document.addEventListener('input', (e) => {
+        if (!this.isEnabled) return;
         if (e.target && e.target.type === 'range') {
           const now = performance.now();
           if (now - lastSliderSound > 50) {
@@ -588,11 +591,20 @@
 
       // Real-time scroll velocity audio feedback (Tactile Audio from Immersive Pack)
       let lastScrollY = window.scrollY;
+      let soundScrollTicking = false;
       window.addEventListener('scroll', () => {
-        const delta = window.scrollY - lastScrollY;
-        lastScrollY = window.scrollY;
-        if (Math.abs(delta) > 1) {
-          this.playScroll(delta);
+        if (!this.isEnabled) return;
+        if (!soundScrollTicking) {
+          window.requestAnimationFrame(() => {
+            const currentY = window.scrollY;
+            const delta = currentY - lastScrollY;
+            lastScrollY = currentY;
+            if (Math.abs(delta) > 1) {
+              this.playScroll(delta);
+            }
+            soundScrollTicking = false;
+          });
+          soundScrollTicking = true;
         }
       }, { passive: true });
     }

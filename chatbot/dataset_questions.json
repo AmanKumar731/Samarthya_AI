@@ -1,0 +1,311 @@
+{
+  "metadata": {
+    "bot_name": "Saksham AI",
+    "version": "2.4.0",
+    "last_updated": "2026-11-13",
+    "organization": "Samarthya AI",
+    "primary_languages": ["en", "hi", "hinglish"],
+    "supported_locales": ["en-IN", "hi-IN", "pa-IN", "mr-IN", "ta-IN", "gu-IN"],
+    "models_used": {
+      "cloud_llm": "Google Gemini 1.5 Flash (gemini-1.5-flash-latest) / Gemini 1.5 Pro",
+      "edge_nlu": "Samarthya Client-Side Rule & Fuzzy Match Engine (js/samarthya-ai.js)",
+      "voice_stt_tts": "Wispr Flow & Web Speech API"
+    },
+    "total_intents": 10,
+    "total_questions": 120
+  },
+  "intents": [
+    {
+      "intent_id": "samarthya_overview",
+      "category": "Platform & Identity",
+      "description": "General questions about Samarthya AI, Saksham, platform mission, and core capabilities.",
+      "keywords": [
+        "what is samarthya",
+        "who are you",
+        "saksham",
+        "sanjeevani grid",
+        "samarthya ai kya hai",
+        "about",
+        "features",
+        "platform"
+      ],
+      "questions": [
+        "What is Samarthya AI?",
+        "Who created Saksham?",
+        "What does this platform do?",
+        "Samarthya AI kya hai aur ye kaise kaam karta hai?",
+        "Aapka naam kya hai aur aap meri kya madad kar sakte hain?",
+        "What happened to Sanjeevani Grid?",
+        "Is Saksham free to use for rural citizens?",
+        "How does Saksham help daily wage earners and gig workers?",
+        "Can I use Saksham without creating an account?",
+        "What languages does Saksham support?"
+      ],
+      "response_template": "Saksham (powered by Samarthya AI) is an inclusive digital public infrastructure combining AI-driven financial enablement with statutory welfare delivery. It features instant scheme eligibility checks across 28+ government schemes, fair credit readiness scoring without predatory data scraping, and end-to-end voice-guided navigation across 6 Indian languages."
+    },
+    {
+      "intent_id": "government_schemes_welfare",
+      "category": "Government Schemes & Welfare",
+      "description": "Eligibility checks, documentation, and application steps for flagship Central and State welfare programs.",
+      "keywords": [
+        "pm kisan",
+        "ayushman bharat",
+        "pmay",
+        "mgnrega",
+        "ration card",
+        "subsidies",
+        "yojana",
+        "sarkari yojana",
+        "scheme eligibility",
+        "e-shram"
+      ],
+      "questions": [
+        "Am I eligible for PM-KISAN?",
+        "How can I apply for Ayushman Bharat PM-JAY 5 lakh health insurance?",
+        "PM Kisan ka paisa check kaise kare?",
+        "Ayushman card banwane ke liye kaunse documents chahiye?",
+        "What is the eligibility for PM Awas Yojana (Gramin)?",
+        "How do I link my Aadhaar with my ration card for One Nation One Ration Card?",
+        "Can a gig worker get benefits under e-Shram portal?",
+        "How many days of guaranteed work does MGNREGA provide?",
+        "Kisan Credit Card (KCC) interest subsidy kitna milta hai?",
+        "What documents are required to prove BPL status for housing subsidies?",
+        "How do I check my beneficiary status in SECC 2011 list?",
+        "Can widows apply for both state pension and central housing subsidies?"
+      ],
+      "response_template": "Saksham matches your socio-economic indicators (landholding, annual household income, occupation, and SECC category) against statutory scheme rules. For PM-KISAN: Small/marginal landowning farmers get ₹6,000/yr in 3 tranches; e-KYC and land seeding are mandatory. For Ayushman Bharat PM-JAY: Families listed in SECC 2011 or NFSA ration card receive ₹5 Lakh annual cashless hospital coverage."
+    },
+    {
+      "intent_id": "credit_readiness_scoring",
+      "category": "Credit Readiness & Inclusive Lending",
+      "description": "Explaining the Saksham Credit Readiness Score, how it differs from CIBIL, and how to improve it.",
+      "keywords": [
+        "credit score",
+        "cibil",
+        "loan eligibility",
+        "credit readiness",
+        "score kaise badhaye",
+        "new to credit",
+        "alternative data",
+        "loan chahiye",
+        "mudra loan"
+      ],
+      "questions": [
+        "How does Saksham calculate my Credit Readiness Score?",
+        "I don't have a CIBIL score. Can I still get a business loan?",
+        "Mera credit score kaise badhega?",
+        "What is the difference between CIBIL score and Saksham Credit Readiness Index?",
+        "Does checking my score on Saksham lower my credit rating?",
+        "How do utility bill payments (electricity/water) affect my credit score?",
+        "Can UPI transaction history help me get an emergency loan?",
+        "What is the maximum loan limit under PM MUDRA Shishu, Kishore, and Tarun schemes?",
+        "Kishore mudra loan lene ke liye kya collateral chahiye?",
+        "Why was my credit readiness score low after adding my income?",
+        "How many months of timely UPI repayments are needed to become bankable?",
+        "Can street vendors get ₹10,000 working capital loan under PM SVANidhi without security?"
+      ],
+      "response_template": "Saksham evaluates your credit readiness using a transparent, inclusive 300–900 index based on 5 pillars: Cashflow Consistency (30%), Repayment Discipline (25%), Debt-to-Surplus Ratio (20%), Utility/Rent Track Record (15%), and Business Longevity (10%). Checking your score here is a soft inquiry with zero penalty."
+    },
+    {
+      "intent_id": "voice_navigation_languages",
+      "category": "Voice Assistance & Multilingual Access",
+      "description": "Questions on how to speak to Saksham, switch dialects, and use hands-free audio assistance.",
+      "keywords": [
+        "voice",
+        "speak",
+        "bol kar batao",
+        "language",
+        "hindi",
+        "marathi",
+        "punjabi",
+        "tamil",
+        "gujarati",
+        "bhasha badlo",
+        "mic not working"
+      ],
+      "questions": [
+        "How do I activate voice search?",
+        "Can I speak in Hindi or Marathi?",
+        "Aap se Hindi me baat kar sakte hain?",
+        "Why is the microphone button not working on my phone?",
+        "How do I switch the language from English to Punjabi?",
+        "Kya Saksham meri baat sun kar form bhar sakta hai?",
+        "Can Saksham read out my scheme report aloud in Tamil?",
+        "Is voice data stored or recorded on your servers?",
+        "Which mobile browsers support voice dictation on Saksham?",
+        "Can I talk in mixed Hindi and English (Hinglish)?"
+      ],
+      "response_template": "Tap the purple microphone icon in the bottom-right chat window or press Alt+V to start voice mode. Saksham natively processes Indian English, Hindi (हिन्दी), Punjabi (ਪੰਜਾਬੀ), Marathi (मराठी), Tamil (தமிழ்), and Gujarati (ગુજરાતી) using Wispr Flow and local Web Speech APIs. Your raw voice audio stays on your device and is not saved to external storage."
+    },
+    {
+      "intent_id": "privacy_data_security",
+      "category": "Privacy, DPDP Act & Data Safety",
+      "description": "Assurances and guidelines regarding personal data protection, Aadhaar masking, and compliance.",
+      "keywords": [
+        "privacy",
+        "aadhaar safe",
+        "dpdp",
+        "is my data safe",
+        "suraksha",
+        "data leak",
+        "otp",
+        "bank account"
+      ],
+      "questions": [
+        "Is my Aadhaar number stored on your servers?",
+        "Is Saksham compliant with the Digital Personal Data Protection Act (DPDP Act 2023)?",
+        "Kya mera bank data safe hai?",
+        "Does Saksham share my personal details with private loan sharks?",
+        "Will Saksham ask for my OTP or bank ATM PIN?",
+        "How can I delete my entered details from Saksham?",
+        "Can I use Saksham anonymously without giving my phone number?",
+        "Who can see my credit readiness report?",
+        "Where are my documents stored when I upload a ration card?",
+        "Does Saksham run third-party tracking cookies?"
+      ],
+      "response_template": "Saksham strictly adheres to the Digital Personal Data Protection Act (DPDP Act 2023). We enforce client-side redacting: full Aadhaar numbers and bank account credentials are never logged. Saksham will NEVER ask for your OTP, ATM PIN, or passwords. Your assessment data is processed ephemeral-first."
+    },
+    {
+      "intent_id": "agriculture_farmer_support",
+      "category": "Agriculture & Farmer Welfare",
+      "description": "Farming subsidies, crop insurance (PMFBY), solar pumps (PM-KUSUM), and fertilizer grants.",
+      "keywords": [
+        "kisan",
+        "crop insurance",
+        "fasal bima",
+        "kusum",
+        "solar pump",
+        "fertilizer subsidy",
+        "soil health card",
+        "drip irrigation",
+        "mandi bhav"
+      ],
+      "questions": [
+        "How do I claim insurance under PM Fasal Bima Yojana (PMFBY) after hail damage?",
+        "PM Kusum yojana me solar pump par kitni subsidy milti hai?",
+        "How to apply for Soil Health Card testing in my block?",
+        "Fasal kharab hone par kitne ghante ke andar claim register karna hota hai?",
+        "What is the maximum subsidy for drip and sprinkler micro-irrigation?",
+        "How do I link KCC (Kisan Credit Card) with Jan Dhan Account?",
+        "Are tenant farmers and sharecroppers eligible for crop insurance?",
+        "What is the interest subvention rate on timely KCC repayment?",
+        "How can I register my farm produce on e-NAM digital mandi?",
+        "Where can I find certified seeds subsidy details in my district?"
+      ],
+      "response_template": "For crop damage under PMFBY, inform your local agriculture officer or the PMFBY toll-free helpline within 72 hours of localized calamity. PM-KUSUM offers up to 60% total capital subsidy (30% Central + 30% State) for standalone solar pumps, with the farmer paying only 10% upfront and bank financing covering the rest."
+    },
+    {
+      "intent_id": "women_child_welfare",
+      "category": "Women & Child Empowerment",
+      "description": "Maternity benefits, cooking gas grants, girl child education, and self-help group credit.",
+      "keywords": [
+        "pm ujjwala",
+        "sukanya samriddhi",
+        "pmmvvy",
+        "shg",
+        "mahila loan",
+        "lakhpati didi",
+        "beti bachao",
+        "anganwadi"
+      ],
+      "questions": [
+        "How do I apply for free LPG cylinder under Pradhan Mantri Ujjwala Yojana 2.0?",
+        "Sukanya Samriddhi Yojana (SSY) interest rate kitna hai aur account kaise khole?",
+        "What is the financial grant under Pradhan Mantri Matru Vandana Yojana (PMMVY)?",
+        "How can Women Self Help Groups (SHGs) get collateral-free bank credit up to 20 Lakhs?",
+        "Lakhpati Didi yojana me mahilaon ko kya training aur loan milta hai?",
+        "What are the age criteria for opening a Sukanya Samriddhi account for a daughter?",
+        "Are single mothers eligible for central housing subsidies under PMAY?",
+        "How can rural women get free sewing machine (Silai Machine) training and toolkits?",
+        "What documents are needed at Anganwadi center for Poshan Abhiyaan nutritional support?",
+        "Can a woman entrepreneur get interest-free loans under Stand-Up India?"
+      ],
+      "response_template": "Key women empowerment schemes: (1) Ujjwala 2.0 provides deposit-free LPG connection + first refill and stove free to adult women from low-income households. (2) Sukanya Samriddhi offers high government-backed interest (8.2% p.a.) with tax exemption for girls under 10 years. (3) DAY-NRLM enables SHGs to access up to ₹20 Lakh collateral-free credit with 7% interest subvention."
+    },
+    {
+      "intent_id": "youth_employment_skilling",
+      "category": "Youth Employment, Skilling & Startups",
+      "description": "Apprenticeships, PMKVY certifications, PM Vishwakarma toolkits, and student education loans.",
+      "keywords": [
+        "pmkvy",
+        "vishwakarma",
+        "skill training",
+        "rozgar",
+        "apprenticeship",
+        "mudra for youth",
+        "student loan",
+        "freelancer"
+      ],
+      "questions": [
+        "What is the PM Vishwakarma Yojana and who can apply?",
+        "How can I get free skill training and certificate under PMKVY 4.0?",
+        "Vishwakarma yojana me ₹15,000 ka toolkit incentive kaise milega?",
+        "What is the interest rate for PM Vishwakarma collateral-free enterprise loan?",
+        "Can college dropouts apply for National Apprenticeship Promotion Scheme (NAPS)?",
+        "How to apply for Central Sector Interest Subsidy (CSIS) on higher education loans?",
+        "What digital skills are taught under PMGDISHA for rural students?",
+        "Can gig workers and delivery partners get subsidized electric two-wheeler loans?",
+        "How do I register on the National Career Service (NCS) portal?",
+        "Are there government grants for rural agritech and green tech startups?"
+      ],
+      "response_template": "PM Vishwakarma provides traditional artisans and craftspeople (18 trades) with PM Vishwakarma Certificate & ID, ₹15,000 modern toolkit incentive, free skill training with ₹500/day stipend, and collateral-free enterprise credit (Tranche 1: ₹1 Lakh, Tranche 2: ₹2 Lakh) at a concessional 5% interest rate."
+    },
+    {
+      "intent_id": "healthcare_disability_seniors",
+      "category": "Healthcare, Disability & Senior Citizens",
+      "description": "Health coverage, disability pension, UDID cards, and senior citizen pensions.",
+      "keywords": [
+        "udid card",
+        "divyangjan",
+        "senior citizen pension",
+        "pmvvy",
+        "ayushman 70 plus",
+        "jan aushadhi",
+        "free medicines",
+        "disability allowance"
+      ],
+      "questions": [
+        "Are all senior citizens aged 70 and above eligible for Ayushman Bharat PM-JAY?",
+        "How do I apply for a Unique Disability ID (UDID) card online?",
+        "70 saal se upar ke buzurgon ka 5 lakh ka ayushman card kaise banega?",
+        "Where can I find affordable generic medicines under Pradhan Mantri Bhartiya Janaushadhi Pariyojana?",
+        "What is the monthly pension amount under Indira Gandhi National Old Age Pension Scheme (IGNOAPS)?",
+        "What aids and assistive devices are provided free under ADIP scheme for Divyangjan?",
+        "Can a disabled person get interest-free business loans under NHFDC?",
+        "How do I get free cancer and cardiac treatment in empanelled hospitals?",
+        "What is the eligibility for Rashtriya Vayoshri Yojana (free walking sticks, hearing aids)?",
+        "How do I file a hospital denial grievance under Ayushman Bharat toll-free number?"
+      ],
+      "response_template": "Under Ayushman Bharat (expanded 2024), all senior citizens aged 70+ years receive a dedicated top-up cover of ₹5 Lakh/year regardless of income. Divyangjan can apply for a single nationwide digital UDID card at swavlambancard.gov.in for disability benefits and travel concessions."
+    },
+    {
+      "intent_id": "technical_troubleshooting_navigation",
+      "category": "Portal Navigation & Troubleshooting",
+      "description": "Assistance with downloading reports, navigating the UI, fixing audio lag, and contact support.",
+      "keywords": [
+        "download pdf",
+        "report not opening",
+        "how to navigate",
+        "contact human",
+        "tracker",
+        "reset",
+        "page not loading",
+        "feedback"
+      ],
+      "questions": [
+        "How do I download my Scheme Eligibility and Credit Assessment Report as a PDF?",
+        "Where is the interactive tracker to check my application status?",
+        "Mera report download nahi ho raha hai, kya kare?",
+        "How do I clear the entered data and start a new assessment?",
+        "Can I speak directly to a human support agent or CSC VLE?",
+        "Why is the vector wordmark at the bottom not animating on my device?",
+        "Does Saksham work offline without internet?",
+        "How do I bookmark my recommended schemes on my smartphone?",
+        "Where can I report a bug or suggest a new scheme to be added?",
+        "How do I print the QR-verified eligibility certificate?"
+      ],
+      "response_template": "To download your personalized assessment: Click the purple 'Download Report' button on the summary screen or go to the Report tab. You can save it as an offline PDF complete with verified scheme checklists. To reset inputs, tap the 'Reset Assessment' icon at the top of the questionnaire."
+    }
+  ]
+}
+
