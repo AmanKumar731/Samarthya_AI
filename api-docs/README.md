@@ -431,6 +431,8 @@ Citizen Response
 
 
 
+- Universal Accessibility Tools (High Contrast, Dyslexia Font, Dynamic Text Scaling, Voice Narrator, ISL Video Guide)
+
 - OCR for document verification
 
 - Aadhaar-based authentication

@@ -59,7 +59,7 @@
 | **Credit Matching Engine (SIH26093)** | `js/credit-matcher.js` & `backend/main.py` | 5-checkpoint weighted client-side credit matching engine evaluating SC category, ≤ ₹5L income limit, project cost, sector viability, and channel partner availability. |
 | **Financial EMI & Moratorium Calculator** | `js/financial-calculator.js` | Interactive slider-driven loan simulator calculating EMI, moratorium interest (waived vs capitalized), commercial market rate savings comparison, and CSV export. |
 | **Channel Partner Geo-Locator** | `js/partner-locator.js` | Embedded Leaflet.js map with Haversine distance calculation and "Nearest Capable" filter hiding high-NPA branches by default. |
-| **Accessibility Suite** | `js/accessibility.js` | WCAG-compliant high-contrast modes, dyslexia-friendly fonts, font resizing, and Web Speech API / TTS integration. |
+| **Accessibility Suite (Scheduled: Future Update)** | `js/accessibility.js` | WCAG-compliant high-contrast modes, dyslexia-friendly fonts, font resizing, and Web Speech API / TTS integration (planned for upcoming Phase 2 release). |
 | **Multilingual Engine** | `js/i18n.js` | Zero-dependency client-side translation engine supporting English and Hindi across all welfare and credit tracks. |
 | **Application Tracker** | `js/tracker.js` | Dual-pipeline status tracker (welfare DBT & credit sanction stages) with `.ics` calendar deadline export. |
 | **WhatsApp Assistance** | `js/whatsapp-lead.js` | Guided chatbot simulation with deep-link WhatsApp Web sharing. |

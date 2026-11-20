@@ -2017,60 +2017,10 @@
     </div>
   </div>
 
-  <!-- 3. Accessibility Tools Panel -->
-  <button class="a11y-floating-btn" id="a11yFloatingBtn" onclick="AccessibilitySuite.togglePanel()"
-    aria-label="Open Accessibility Tools" title="Accessibility Tools">
-    ♿
-  </button>
-
-  <div class="a11y-panel" id="a11yPanel">
-    <div class="a11y-panel-header">
-      <div class="a11y-panel-title">
-        <span>♿</span>
-        <span data-i18n="a11yTitle">Accessibility Suite</span>
-      </div>
-      <button class="a11y-panel-close" onclick="AccessibilitySuite.closePanel()">✕</button>
-    </div>
-
-    <div class="a11y-controls-grid">
-      <div class="a11y-control-row">
-        <span class="a11y-control-label" data-i18n="a11yContrast">🌓 High Contrast</span>
-        <button class="a11y-toggle-btn" id="a11yBtnContrast"
-          onclick="AccessibilitySuite.toggleHighContrast()" data-i18n="a11yToggle">Toggle</button>
-      </div>
-
-      <div class="a11y-control-row">
-        <span class="a11y-control-label" data-i18n="a11yDyslexia">📖 Dyslexia Font</span>
-        <button class="a11y-toggle-btn" id="a11yBtnDyslexia"
-          onclick="AccessibilitySuite.toggleDyslexiaFont()" data-i18n="a11yToggle">Toggle</button>
-      </div>
-
-      <div class="a11y-control-row">
-        <span class="a11y-control-label" data-i18n="a11yTextScale">🔍 Text Scaling</span>
-        <div class="font-size-group">
-          <button class="font-size-btn active" onclick="AccessibilitySuite.setFontSize(0)">A</button>
-          <button class="font-size-btn" onclick="AccessibilitySuite.setFontSize(1)">A+</button>
-          <button class="font-size-btn" onclick="AccessibilitySuite.setFontSize(2)">A++</button>
-        </div>
-      </div>
-
-      <div class="a11y-control-row">
-        <span class="a11y-control-label" data-i18n="a11yVoice">🔊 Voice Narrator</span>
-        <button class="a11y-toggle-btn" onclick="AccessibilitySuite.readActiveSection()" data-i18n="a11yReadPage">Read Page</button>
-      </div>
-
-      <div class="a11y-control-row">
-        <span class="a11y-control-label" data-i18n="a11ySign">🤟 Sign Language (ISL)</span>
-        <button class="a11y-toggle-btn" onclick="AccessibilitySuite.openISLAssistant()" data-i18n="a11yOpenGuide">Open Guide</button>
-      </div>
-
-      <div class="a11y-control-row">
-        <span class="a11y-control-label" data-i18n="a11yMotion">🛑 Reduced Motion</span>
-        <button class="a11y-toggle-btn" id="a11yBtnMotion"
-          onclick="AccessibilitySuite.toggleReducedMotion()" data-i18n="a11yToggle">Toggle</button>
-      </div>
-    </div>
-  </div>
+  <!-- ==========================================================================
+       [FUTURE UPDATE] Accessibility Tools & Suite
+       (Deferred to upcoming Phase 2 release: High-contrast modes, Dyslexia font, Text scaling, Voice narrator & ISL)
+       ========================================================================== -->
 
   <!-- ==========================================================================
        VECTOR WORDMARK: "SAKSHAM" FRAMELESS INTERACTIVE TYPOGRAPHY
@@ -2099,8 +2049,8 @@
     </div>
   </footer>
 
-  <!-- Drawer Backdrop (Click-Outside Closer for AI Assistant & Accessibility Drawers) -->
-  <div class="drawer-backdrop" id="drawerBackdrop" onclick="AccessibilitySuite.closePanel(); SamarthyaAI.close();"></div>
+  <!-- Drawer Backdrop (Click-Outside Closer for AI Assistant Drawer) -->
+  <div class="drawer-backdrop" id="drawerBackdrop" onclick="SamarthyaAI.close();"></div>
 
   <!-- GSAP & ScrollTrigger CDN (Awwwards Grade Motion) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -2123,7 +2073,7 @@
   <script src="js/financial-calculator.js?v=6.0"></script>
   <script src="js/partner-locator.js?v=6.0"></script>
   <script src="js/i18n.js?v=6.0"></script>
-  <script src="js/accessibility.js?v=6.0"></script>
+  <!-- [FUTURE UPDATE] <script src="js/accessibility.js?v=6.0"></script> -->
   <script src="js/wispr-flow.js?v=6.0"></script>
   <script src="js/samarthya-ai.js?v=6.0"></script>
   <script src="js/whatsapp-lead.js?v=6.0"></script>

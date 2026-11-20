@@ -96,17 +96,24 @@ First-generation Scheduled Caste entrepreneurs face prohibitive commercial lendi
 - **DIC / SC-ST Hub Credit Camp**: Cohort evaluation for 12+ SC entrepreneurs simultaneously, aggregating total concessional credit potential and average interest savings.
 - Full CSV import, export, and sample template downloads.
 
-### 6. Universal Accessibility Suite (`accessibility.js`)
+### 6. Universal Accessibility Suite (Scheduled: Future Update)
 - High-Contrast Obsidian and Dark High-Contrast modes.
 - OpenDyslexic / Dyslexia-friendly font toggle.
 - 4-level text scaling (Normal, Large, Extra Large, Huge).
 - Built-in Screen Reader announcements and Web Speech API / TTS integration.
 - Voice-assisted matching via **Wispr Flow**.
+- *(Scheduled for upcoming Phase 2 release)*
 
 ### 7. Multilingual Engine (`i18n.js`)
 - Complete English and Hindi localization across all buttons, form inputs, tooltips, calculators, maps, and AI chatbot prompts.
 
 ---
+
+## 🔮 Future Updates & Roadmap
+- **Universal Accessibility Suite 2.0**: Dedicated floating toolbar with WCAG 2.2 AAA High-Contrast themes (Obsidian, Solarized), OpenDyslexic font engine, 4-tier live typography scaling, Web Speech API voice narrator, and interactive Indian Sign Language (ISL) video assistant.
+- **AI Voice Agent & Multilingual Voice Navigation**: Real-time STT and TTS voice assistance across 12+ Indian regional dialects.
+- **Aadhaar-based Offline e-KYC & OCR**: Instant document verification and eligibility certificate generation.
+- **Direct Benefit Transfer (DBT) & Sanction Tracker**: Real-time webhook integration with PFMS and bank core lending APIs.
 
 ## 📂 Repository Structure
 
