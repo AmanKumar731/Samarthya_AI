@@ -91,1650 +91,2388 @@ const SCHEME_CATEGORIES = {
 
 // ============ Comprehensive Scheme Database ============
 const SCHEME_DATABASE = [
-  // 1. Pre-Matric Scholarship for PwD Students
   {
-    id: 'pre_matric_pwd',
-    name: 'Pre-Matric Scholarship for Students with Disabilities',
-    nameHi: 'दिव्यांग विद्यार्थियों के लिए प्री-मैट्रिक छात्रवृत्ति',
-    ministry: 'Ministry of Social Justice & Empowerment',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'acid_attack', 'dwarfism', 'muscular_dystrophy'],
-      educationLevels: ['primary', 'upper_primary', 'secondary'],
-      maxIncome: 250000,
-      ageRange: [5, 18],
-      gender: 'all',
-      states: 'all',
+    "id": "pre_matric_pwd",
+    "name": "Pre-Matric Scholarship for Students with Disabilities",
+    "nameHi": "दिव्यांग विद्यार्थियों के लिए प्री-मैट्रिक छात्रवृत्ति",
+    "ministry": "Ministry of Social Justice & Empowerment",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple",
+        "blood_disorder",
+        "acid_attack",
+        "dwarfism",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": [
+        "primary",
+        "upper_primary",
+        "secondary"
+      ],
+      "maxIncome": 250000,
+      "ageRange": [
+        5,
+        18
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹700/month (Day Scholar) — ₹1,100/month (Hosteller)',
-      description: 'Monthly maintenance allowance + books/stationery grant + disability-related ad hoc grants',
+    "benefits": {
+      "amount": "₹700/month (Day Scholar) — ₹1,100/month (Hosteller)",
+      "description": "Monthly maintenance allowance + books/stationery grant + disability-related ad hoc grants"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Income Certificate (below ₹2.5 lakh)',
-      'School Bonafide Certificate',
-      'Aadhaar Card',
-      'Bank Account (student/parent)',
-      'Passport-size Photograph',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Income Certificate (below ₹2.5 lakh)",
+      "School Bonafide Certificate",
+      "Aadhaar Card",
+      "Bank Account (student/parent)",
+      "Passport-size Photograph"
     ],
-    applyUrl: 'https://scholarships.gov.in/',
-    deadline: '2026-12-31',
+    "applyUrl": "https://scholarships.gov.in/",
+    "deadline": "2026-12-31"
   },
-
-  // 2. Post-Matric Scholarship for PwD Students
   {
-    id: 'post_matric_pwd',
-    name: 'Post-Matric Scholarship for Students with Disabilities',
-    nameHi: 'दिव्यांग विद्यार्थियों के लिए पोस्ट-मैट्रिक छात्रवृत्ति',
-    ministry: 'Ministry of Social Justice & Empowerment',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'acid_attack', 'dwarfism', 'muscular_dystrophy'],
-      educationLevels: ['higher_secondary', 'graduate', 'post_graduate', 'professional', 'vocational'],
-      maxIncome: 250000,
-      ageRange: [14, 35],
-      gender: 'all',
-      states: 'all',
+    "id": "post_matric_pwd",
+    "name": "Post-Matric Scholarship for Students with Disabilities",
+    "nameHi": "दिव्यांग विद्यार्थियों के लिए पोस्ट-मैट्रिक छात्रवृत्ति",
+    "ministry": "Ministry of Social Justice & Empowerment",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple",
+        "blood_disorder",
+        "acid_attack",
+        "dwarfism",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": [
+        "higher_secondary",
+        "graduate",
+        "post_graduate",
+        "professional",
+        "vocational"
+      ],
+      "maxIncome": 250000,
+      "ageRange": [
+        14,
+        35
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹1,200/month (Day Scholar) — ₹3,000/month (Hosteller)',
-      description: 'Full tuition fee waiver + maintenance allowance + reader allowance for blind students + helper allowance',
+    "benefits": {
+      "amount": "₹1,200/month (Day Scholar) — ₹3,000/month (Hosteller)",
+      "description": "Full tuition fee waiver + maintenance allowance + reader allowance for blind students + helper allowance"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Income Certificate (below ₹2.5 lakh)',
-      'Previous Year Mark Sheet',
-      'College / Institute Admission Letter',
-      'Aadhaar Card',
-      'Bank Account Details',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Income Certificate (below ₹2.5 lakh)",
+      "Previous Year Mark Sheet",
+      "College / Institute Admission Letter",
+      "Aadhaar Card",
+      "Bank Account Details"
     ],
-    applyUrl: 'https://scholarships.gov.in/',
-    deadline: '2026-11-30',
+    "applyUrl": "https://scholarships.gov.in/",
+    "deadline": "2026-11-30"
   },
-
-  // 3. National Scholarship for Persons with Disabilities
   {
-    id: 'national_scholarship_pwd',
-    name: 'National Scholarship for Persons with Disabilities (Top Class)',
-    nameHi: 'दिव्यांगजनों के लिए राष्ट्रीय छात्रवृत्ति (टॉप क्लास)',
-    ministry: 'Department of Empowerment of Persons with Disabilities',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'acid_attack', 'dwarfism', 'muscular_dystrophy'],
-      educationLevels: ['graduate', 'post_graduate', 'professional'],
-      maxIncome: 600000,
-      ageRange: [17, 35],
-      gender: 'all',
-      states: 'all',
+    "id": "adip_scheme",
+    "name": "ADIP Scheme (Assistive Devices / Implants / Prosthetics)",
+    "nameHi": "एडिप योजना (सहायक उपकरण / प्रत्यारोपण)",
+    "ministry": "Department of Empowerment of Persons with Disabilities",
+    "category": "assistive",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "multiple",
+        "muscular_dystrophy",
+        "dwarfism"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 300000,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Up to ₹2,00,000/year',
-      description: 'Full tuition fee + maintenance allowance + book grant for TOP-class institutions (IITs, NITs, AIIMS, etc.)',
+    "benefits": {
+      "amount": "Up to ₹10,000 per device (free for income ≤₹15,000/month)",
+      "description": "Free or subsidized wheelchairs, hearing aids, crutches, prosthetic limbs, Braille kits, artificial limbs, and more"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Admission Letter from Notified Institute',
-      'Income Certificate (below ₹6 lakh)',
-      'Marksheet of last qualifying exam',
-      'Aadhaar Card',
-      'Bank Account',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Income Certificate (below ₹3 lakh)",
+      "Aadhaar Card",
+      "Medical Prescription for Device",
+      "Photograph"
     ],
-    applyUrl: 'https://scholarships.gov.in/',
-    deadline: '2026-10-31',
+    "applyUrl": "https://www.disabilityaffairs.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 4. ADIP Scheme
   {
-    id: 'adip_scheme',
-    name: 'ADIP Scheme (Assistive Devices / Implants / Prosthetics)',
-    nameHi: 'एडिप योजना (सहायक उपकरण / प्रत्यारोपण)',
-    ministry: 'Department of Empowerment of Persons with Disabilities',
-    category: 'assistive',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'multiple', 'muscular_dystrophy', 'dwarfism'],
-      educationLevels: 'all',
-      maxIncome: 300000,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "nhfdc_edu_loan",
+    "name": "NHFDC Educational Loan for Disabled Students",
+    "nameHi": "एनएचएफडीसी दिव्यांग छात्रों के लिए शिक्षा ऋण",
+    "ministry": "National Handicapped Finance & Development Corporation",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple",
+        "blood_disorder",
+        "acid_attack",
+        "dwarfism",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": [
+        "higher_secondary",
+        "graduate",
+        "post_graduate",
+        "professional",
+        "vocational"
+      ],
+      "maxIncome": 500000,
+      "ageRange": [
+        16,
+        35
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Up to ₹10,000 per device (free for income ≤₹15,000/month)',
-      description: 'Free or subsidized wheelchairs, hearing aids, crutches, prosthetic limbs, Braille kits, artificial limbs, and more',
+    "benefits": {
+      "amount": "Up to ₹10,00,000 at 4% interest",
+      "description": "Concessional education loan for higher studies in India and abroad at subsidized interest rate"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Income Certificate (below ₹3 lakh)',
-      'Aadhaar Card',
-      'Medical Prescription for Device',
-      'Photograph',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Admission Letter",
+      "Income Certificate",
+      "Aadhaar Card",
+      "Bank Details",
+      "Surety/Collateral (if above ₹5 lakh)"
     ],
-    applyUrl: 'https://www.disabilityaffairs.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://nhfdc.nic.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 5. NHFDC Educational Loan
   {
-    id: 'nhfdc_edu_loan',
-    name: 'NHFDC Educational Loan for Disabled Students',
-    nameHi: 'एनएचएफडीसी दिव्यांग छात्रों के लिए शिक्षा ऋण',
-    ministry: 'National Handicapped Finance & Development Corporation',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'acid_attack', 'dwarfism', 'muscular_dystrophy'],
-      educationLevels: ['higher_secondary', 'graduate', 'post_graduate', 'professional', 'vocational'],
-      maxIncome: 500000,
-      ageRange: [16, 35],
-      gender: 'all',
-      states: 'all',
+    "id": "sugamya_bharat",
+    "name": "Sugamya Bharat Abhiyan – Accessible India Campaign",
+    "nameHi": "सुगम्य भारत अभियान",
+    "ministry": "Department of Empowerment of Persons with Disabilities",
+    "category": "transport",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 9999999,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Up to ₹10,00,000 at 4% interest',
-      description: 'Concessional education loan for higher studies in India and abroad at subsidized interest rate',
+    "benefits": {
+      "amount": "Free Accessibility Infrastructure",
+      "description": "Ensures accessible govt buildings, transport, and ICT ecosystem — sign language interpreters, Braille, ramps"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Admission Letter',
-      'Income Certificate',
-      'Aadhaar Card',
-      'Bank Details',
-      'Surety/Collateral (if above ₹5 lakh)',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Aadhaar Card"
     ],
-    applyUrl: 'https://nhfdc.nic.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://www.disabilityaffairs.gov.in/content/page/accessible-india-campaign.php",
+    "deadline": "2027-12-31"
   },
-
-  // 6. Sugamya Bharat
   {
-    id: 'sugamya_bharat',
-    name: 'Sugamya Bharat Abhiyan – Accessible India Campaign',
-    nameHi: 'सुगम्य भारत अभियान',
-    ministry: 'Department of Empowerment of Persons with Disabilities',
-    category: 'transport',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 9999999,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "ddrs",
+    "name": "Deendayal Disabled Rehabilitation Scheme (DDRS)",
+    "nameHi": "दीनदयाल दिव्यांग पुनर्वास योजना (डीडीआरएस)",
+    "ministry": "Department of Empowerment of Persons with Disabilities",
+    "category": "healthcare",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 9999999,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Accessibility Infrastructure',
-      description: 'Ensures accessible govt buildings, transport, and ICT ecosystem — sign language interpreters, Braille, ramps',
+    "benefits": {
+      "amount": "Free Rehabilitation Services",
+      "description": "Grants to NGOs for special education, vocational training, rehab centers, community-based rehab, and pre-school training"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Aadhaar Card',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Aadhaar Card",
+      "Referral from medical authority or NGO"
     ],
-    applyUrl: 'https://www.disabilityaffairs.gov.in/content/page/accessible-india-campaign.php',
-    deadline: '2027-12-31',
+    "applyUrl": "https://www.disabilityaffairs.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 7. DDRS
   {
-    id: 'ddrs',
-    name: 'Deendayal Disabled Rehabilitation Scheme (DDRS)',
-    nameHi: 'दीनदयाल दिव्यांग पुनर्वास योजना (डीडीआरएस)',
-    ministry: 'Department of Empowerment of Persons with Disabilities',
-    category: 'healthcare',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple'],
-      educationLevels: 'all',
-      maxIncome: 9999999,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "igdps",
+    "name": "Indira Gandhi National Disability Pension Scheme",
+    "nameHi": "इंदिरा गांधी राष्ट्रीय दिव्यांग पेंशन योजना",
+    "ministry": "Ministry of Rural Development",
+    "category": "pension",
+    "eligibility": {
+      "disabilityPercentMin": 80,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 200000,
+      "ageRange": [
+        18,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Rehabilitation Services',
-      description: 'Grants to NGOs for special education, vocational training, rehab centers, community-based rehab, and pre-school training',
+    "benefits": {
+      "amount": "₹300/month (Central) + State Top-up",
+      "description": "Monthly pension for severely disabled persons (80%+) living below poverty line. States add their own top-up."
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Aadhaar Card',
-      'Referral from medical authority or NGO',
+    "requiredDocuments": [
+      "Disability Certificate (80%+)",
+      "BPL Card / Income Certificate",
+      "Aadhaar Card",
+      "Age Proof",
+      "Bank Account Details"
     ],
-    applyUrl: 'https://www.disabilityaffairs.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://nsap.nic.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 8. IGDPS
   {
-    id: 'igdps',
-    name: 'Indira Gandhi National Disability Pension Scheme',
-    nameHi: 'इंदिरा गांधी राष्ट्रीय दिव्यांग पेंशन योजना',
-    ministry: 'Ministry of Rural Development',
-    category: 'pension',
-    eligibility: {
-      disabilityPercentMin: 80,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 200000,
-      ageRange: [18, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "disha_scheme",
+    "name": "DISHA – Early Intervention and School Readiness Scheme",
+    "nameHi": "दिशा – प्रारंभिक हस्तक्षेप एवं विद्यालय तत्परता योजना",
+    "ministry": "National Trust (Ministry of Social Justice & Empowerment)",
+    "category": "healthcare",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "multiple"
+      ],
+      "educationLevels": [
+        "pre_primary",
+        "primary",
+        "not_enrolled"
+      ],
+      "maxIncome": 9999999,
+      "ageRange": [
+        0,
+        10
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹300/month (Central) + State Top-up',
-      description: 'Monthly pension for severely disabled persons (80%+) living below poverty line. States add their own top-up.',
+    "benefits": {
+      "amount": "Free Intervention Services",
+      "description": "Early intervention, therapy (physio, occupational, speech), and school readiness training for children 0-10 years"
     },
-    requiredDocuments: [
-      'Disability Certificate (80%+)',
-      'BPL Card / Income Certificate',
-      'Aadhaar Card',
-      'Age Proof',
-      'Bank Account Details',
+    "requiredDocuments": [
+      "Disability Certificate",
+      "Aadhaar Card (child/parent)",
+      "Age Proof (birth certificate)",
+      "Medical Assessment Report"
     ],
-    applyUrl: 'https://nsap.nic.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://thenationaltrust.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 9. DISHA
   {
-    id: 'disha_scheme',
-    name: 'DISHA – Early Intervention and School Readiness Scheme',
-    nameHi: 'दिशा – प्रारंभिक हस्तक्षेप एवं विद्यालय तत्परता योजना',
-    ministry: 'National Trust (Ministry of Social Justice & Empowerment)',
-    category: 'healthcare',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['cerebral_palsy', 'intellectual', 'autism', 'multiple'],
-      educationLevels: ['pre_primary', 'primary', 'not_enrolled'],
-      maxIncome: 9999999,
-      ageRange: [0, 10],
-      gender: 'all',
-      states: 'all',
+    "id": "vikaas_scheme",
+    "name": "VIKAAS – Day Care Scheme for PwD",
+    "nameHi": "विकास – दिव्यांगजनों के लिए डे केयर योजना",
+    "ministry": "National Trust (Ministry of Social Justice & Empowerment)",
+    "category": "healthcare",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "multiple"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 9999999,
+      "ageRange": [
+        10,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Intervention Services',
-      description: 'Early intervention, therapy (physio, occupational, speech), and school readiness training for children 0-10 years',
+    "benefits": {
+      "amount": "Free Day Care & Skill Training",
+      "description": "Free skill development, daily living activities training, and occupational therapy in registered day care centers"
     },
-    requiredDocuments: [
-      'Disability Certificate',
-      'Aadhaar Card (child/parent)',
-      'Age Proof (birth certificate)',
-      'Medical Assessment Report',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Aadhaar Card",
+      "Medical Records"
     ],
-    applyUrl: 'https://thenationaltrust.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://thenationaltrust.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 10. VIKAAS
   {
-    id: 'vikaas_scheme',
-    name: 'VIKAAS – Day Care Scheme for PwD',
-    nameHi: 'विकास – दिव्यांगजनों के लिए डे केयर योजना',
-    ministry: 'National Trust (Ministry of Social Justice & Empowerment)',
-    category: 'healthcare',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['cerebral_palsy', 'intellectual', 'autism', 'multiple'],
-      educationLevels: 'all',
-      maxIncome: 9999999,
-      ageRange: [10, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "gharaunda_scheme",
+    "name": "GHARAUNDA – Group Home for Adult PwD",
+    "nameHi": "घरौंदा – वयस्क दिव्यांगजनों के लिए ग्रुप होम",
+    "ministry": "National Trust (Ministry of Social Justice & Empowerment)",
+    "category": "housing",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "multiple"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 9999999,
+      "ageRange": [
+        18,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Day Care & Skill Training',
-      description: 'Free skill development, daily living activities training, and occupational therapy in registered day care centers',
+    "benefits": {
+      "amount": "Residential Care – Free / Subsidized",
+      "description": "Group homes providing shelter, food, and care for PwD adults who lack family support — lifelong accommodation"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Aadhaar Card',
-      'Medical Records',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Aadhaar Card",
+      "Medical Assessment",
+      "Guardian Details"
     ],
-    applyUrl: 'https://thenationaltrust.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://thenationaltrust.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 11. GHARAUNDA
   {
-    id: 'gharaunda_scheme',
-    name: 'GHARAUNDA – Group Home for Adult PwD',
-    nameHi: 'घरौंदा – वयस्क दिव्यांगजनों के लिए ग्रुप होम',
-    ministry: 'National Trust (Ministry of Social Justice & Empowerment)',
-    category: 'housing',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['cerebral_palsy', 'intellectual', 'autism', 'multiple'],
-      educationLevels: 'all',
-      maxIncome: 9999999,
-      ageRange: [18, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "railway_concession_pwd",
+    "name": "Railway Travel Concession for Persons with Disabilities",
+    "nameHi": "दिव्यांगजनों के लिए रेलवे यात्रा रियायत",
+    "ministry": "Ministry of Railways",
+    "category": "transport",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 9999999,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Residential Care – Free / Subsidized',
-      description: 'Group homes providing shelter, food, and care for PwD adults who lack family support — lifelong accommodation',
+    "benefits": {
+      "amount": "50%-75% Fare Concession",
+      "description": "Up to 75% concession in all classes for visually impaired, 50-75% for other disabilities + free escort ticket"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Aadhaar Card',
-      'Medical Assessment',
-      'Guardian Details',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Aadhaar Card / Photo ID",
+      "Concession Certificate from railway counter"
     ],
-    applyUrl: 'https://thenationaltrust.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://www.irctc.co.in/",
+    "deadline": "2027-12-31"
   },
-
-  // 12. Railway Concession
   {
-    id: 'railway_concession_pwd',
-    name: 'Railway Travel Concession for Persons with Disabilities',
-    nameHi: 'दिव्यांगजनों के लिए रेलवे यात्रा रियायत',
-    ministry: 'Ministry of Railways',
-    category: 'transport',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 9999999,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "air_travel_pwd",
+    "name": "Air Travel Concession for PwD (Air India)",
+    "nameHi": "दिव्यांगजनों के लिए हवाई यात्रा रियायत",
+    "ministry": "Ministry of Civil Aviation",
+    "category": "transport",
+    "eligibility": {
+      "disabilityPercentMin": 80,
+      "disabilityTypes": [
+        "visual",
+        "locomotor",
+        "cerebral_palsy",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 9999999,
+      "ageRange": [
+        5,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '50%-75% Fare Concession',
-      description: 'Up to 75% concession in all classes for visually impaired, 50-75% for other disabilities + free escort ticket',
+    "benefits": {
+      "amount": "50% Fare Concession (Economy Class)",
+      "description": "Concessional air fare on select airlines for severely disabled persons and their escorts"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Aadhaar Card / Photo ID',
-      'Concession Certificate from railway counter',
+    "requiredDocuments": [
+      "Disability Certificate (80%+)",
+      "Aadhaar Card / ID",
+      "Booking through authorized portal"
     ],
-    applyUrl: 'https://www.irctc.co.in/',
-    deadline: '2027-12-31',
+    "applyUrl": "https://www.airindia.com/",
+    "deadline": "2027-12-31"
   },
-
-  // 13. Air Travel Concession
   {
-    id: 'air_travel_pwd',
-    name: 'Air Travel Concession for PwD (Air India)',
-    nameHi: 'दिव्यांगजनों के लिए हवाई यात्रा रियायत',
-    ministry: 'Ministry of Civil Aviation',
-    category: 'transport',
-    eligibility: {
-      disabilityPercentMin: 80,
-      disabilityTypes: ['visual', 'locomotor', 'cerebral_palsy', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 9999999,
-      ageRange: [5, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "nrlm_pwd",
+    "name": "National Rural Livelihoods Mission – PwD Component",
+    "nameHi": "राष्ट्रीय ग्रामीण आजीविका मिशन – दिव्यांग घटक",
+    "ministry": "Ministry of Rural Development",
+    "category": "employment",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 300000,
+      "ageRange": [
+        18,
+        60
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '50% Fare Concession (Economy Class)',
-      description: 'Concessional air fare on select airlines for severely disabled persons and their escorts',
+    "benefits": {
+      "amount": "Up to ₹50,000 + Subsidized Loan",
+      "description": "Skill training, seed capital, self-help group formation, and subsidized credit for self-employment in rural areas"
     },
-    requiredDocuments: [
-      'Disability Certificate (80%+)',
-      'Aadhaar Card / ID',
-      'Booking through authorized portal',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "BPL / Income Certificate",
+      "Aadhaar Card",
+      "Bank Account",
+      "Rural Address Proof"
     ],
-    applyUrl: 'https://www.airindia.com/',
-    deadline: '2027-12-31',
+    "applyUrl": "https://aajeevika.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 14. NRLM PwD
   {
-    id: 'nrlm_pwd',
-    name: 'National Rural Livelihoods Mission – PwD Component',
-    nameHi: 'राष्ट्रीय ग्रामीण आजीविका मिशन – दिव्यांग घटक',
-    ministry: 'Ministry of Rural Development',
-    category: 'employment',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple'],
-      educationLevels: 'all',
-      maxIncome: 300000,
-      ageRange: [18, 60],
-      gender: 'all',
-      states: 'all',
+    "id": "udid_card",
+    "name": "UDID Card – Unique Disability ID",
+    "nameHi": "यूडीआईडी कार्ड – विशिष्ट दिव्यांग पहचान पत्र",
+    "ministry": "Department of Empowerment of Persons with Disabilities",
+    "category": "healthcare",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple",
+        "blood_disorder",
+        "acid_attack",
+        "dwarfism",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 9999999,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Up to ₹50,000 + Subsidized Loan',
-      description: 'Skill training, seed capital, self-help group formation, and subsidized credit for self-employment in rural areas',
+    "benefits": {
+      "amount": "Universal Disability ID – Free",
+      "description": "Single document for all PwD benefits across India. Links to disability certificates, Aadhaar, and all scheme portals."
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'BPL / Income Certificate',
-      'Aadhaar Card',
-      'Bank Account',
-      'Rural Address Proof',
+    "requiredDocuments": [
+      "Disability Certificate from CMO/Board",
+      "Aadhaar Card",
+      "Passport-size Photograph",
+      "Medical Reports"
     ],
-    applyUrl: 'https://aajeevika.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://www.swavlambancard.gov.in/",
+    "deadline": "2027-12-31"
   },
-
-  // 15. SIPDA
   {
-    id: 'sipda_skill',
-    name: 'SIPDA – Skill Training for Persons with Disabilities',
-    nameHi: 'सिपडा – दिव्यांगजनों के लिए कौशल प्रशिक्षण',
-    ministry: 'Department of Empowerment of Persons with Disabilities',
-    category: 'employment',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'autism', 'learning', 'speech', 'multiple'],
-      educationLevels: ['secondary', 'higher_secondary', 'graduate', 'vocational', 'not_enrolled'],
-      maxIncome: 500000,
-      ageRange: [15, 45],
-      gender: 'all',
-      states: 'all',
+    "id": "trust_fund_scholarship",
+    "name": "Trust Fund Scholarship for PwD Students",
+    "nameHi": "ट्रस्ट फंड छात्रवृत्ति – दिव्यांग छात्रों के लिए",
+    "ministry": "Ministry of Social Justice & Empowerment",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "learning",
+        "multiple"
+      ],
+      "educationLevels": [
+        "higher_secondary",
+        "graduate",
+        "post_graduate",
+        "professional",
+        "vocational"
+      ],
+      "maxIncome": 300000,
+      "ageRange": [
+        15,
+        30
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Skill Training + ₹2,000/month Stipend',
-      description: 'Free vocational and digital skill training with monthly stipend, food, and hostel facility for PwD students',
+    "benefits": {
+      "amount": "₹10,000 — ₹30,000/year",
+      "description": "Annual scholarship for technical and professional courses — engineering, medical, management & vocational streams"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Education Certificate',
-      'Aadhaar Card',
-      'Bank Account',
-      'Photograph',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Income Certificate",
+      "Admission Letter",
+      "Previous Marksheet",
+      "Aadhaar Card",
+      "Bank Account"
     ],
-    applyUrl: 'https://www.disabilityaffairs.gov.in/',
-    deadline: '2026-09-30',
+    "applyUrl": "https://scholarships.gov.in/",
+    "deadline": "2026-11-30"
   },
-
-  // 16. UDID Card
   {
-    id: 'udid_card',
-    name: 'UDID Card – Unique Disability ID',
-    nameHi: 'यूडीआईडी कार्ड – विशिष्ट दिव्यांग पहचान पत्र',
-    ministry: 'Department of Empowerment of Persons with Disabilities',
-    category: 'healthcare',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'acid_attack', 'dwarfism', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 9999999,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "rte_pwd",
+    "name": "Right to Education (RTE) – Free Education for PwD Children",
+    "nameHi": "शिक्षा का अधिकार (RTE) – दिव्यांग बच्चों के लिए निःशुल्क शिक्षा",
+    "ministry": "Ministry of Education",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 0,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple",
+        "blood_disorder",
+        "acid_attack",
+        "dwarfism",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": [
+        "pre_primary",
+        "primary",
+        "upper_primary"
+      ],
+      "maxIncome": 9999999,
+      "ageRange": [
+        3,
+        14
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Universal Disability ID – Free',
-      description: 'Single document for all PwD benefits across India. Links to disability certificates, Aadhaar, and all scheme portals.',
+    "benefits": {
+      "amount": "Free Compulsory Education",
+      "description": "Guaranteed free and compulsory elementary education (3-14 years) with special educator support, accessible infrastructure"
     },
-    requiredDocuments: [
-      'Disability Certificate from CMO/Board',
-      'Aadhaar Card',
-      'Passport-size Photograph',
-      'Medical Reports',
+    "requiredDocuments": [
+      "Disability Certificate (if applicable)",
+      "Age Proof (birth certificate)",
+      "Address Proof",
+      "Aadhaar Card"
     ],
-    applyUrl: 'https://www.swavlambancard.gov.in/',
-    deadline: '2027-12-31',
+    "applyUrl": "https://www.education.gov.in/",
+    "deadline": "2027-12-31"
   },
-
-  // 17. Trust Fund Scholarship
   {
-    id: 'trust_fund_scholarship',
-    name: 'Trust Fund Scholarship for PwD Students',
-    nameHi: 'ट्रस्ट फंड छात्रवृत्ति – दिव्यांग छात्रों के लिए',
-    ministry: 'Ministry of Social Justice & Empowerment',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'autism', 'learning', 'multiple'],
-      educationLevels: ['higher_secondary', 'graduate', 'post_graduate', 'professional', 'vocational'],
-      maxIncome: 300000,
-      ageRange: [15, 30],
-      gender: 'all',
-      states: 'all',
+    "id": "ayushman_pwd",
+    "name": "Ayushman Bharat PM-JAY – Health Insurance for PwD",
+    "nameHi": "आयुष्मान भारत PM-JAY – दिव्यांगजनों के लिए स्वास्थ्य बीमा",
+    "ministry": "Ministry of Health & Family Welfare",
+    "category": "healthcare",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple",
+        "blood_disorder",
+        "acid_attack",
+        "dwarfism",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 300000,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹10,000 — ₹30,000/year',
-      description: 'Annual scholarship for technical and professional courses — engineering, medical, management & vocational streams',
+    "benefits": {
+      "amount": "₹5,00,000/year Health Cover (Free)",
+      "description": "Cashless secondary and tertiary hospitalization at empaneled hospitals — surgery, therapy, diagnostics, and medication"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Income Certificate',
-      'Admission Letter',
-      'Previous Marksheet',
-      'Aadhaar Card',
-      'Bank Account',
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "BPL / SECC Card",
+      "Disability Certificate (optional, priority listing)",
+      "Family Details"
     ],
-    applyUrl: 'https://scholarships.gov.in/',
-    deadline: '2026-11-30',
+    "applyUrl": "https://pmjay.gov.in/",
+    "deadline": "2027-12-31"
   },
-
-  // 18. RTE for PwD
   {
-    id: 'rte_pwd',
-    name: 'Right to Education (RTE) – Free Education for PwD Children',
-    nameHi: 'शिक्षा का अधिकार (RTE) – दिव्यांग बच्चों के लिए निःशुल्क शिक्षा',
-    ministry: 'Ministry of Education',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 0,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'acid_attack', 'dwarfism', 'muscular_dystrophy'],
-      educationLevels: ['pre_primary', 'primary', 'upper_primary'],
-      maxIncome: 9999999,
-      ageRange: [3, 14],
-      gender: 'all',
-      states: 'all',
+    "id": "tax_exemption_pwd",
+    "name": "Income Tax Deduction under Section 80U / 80DD",
+    "nameHi": "धारा 80U/80DD के तहत आयकर कटौती",
+    "ministry": "Ministry of Finance (CBDT)",
+    "category": "pension",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple",
+        "blood_disorder",
+        "acid_attack",
+        "dwarfism",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 9999999,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Compulsory Education',
-      description: 'Guaranteed free and compulsory elementary education (3-14 years) with special educator support, accessible infrastructure',
+    "benefits": {
+      "amount": "₹75,000 — ₹1,25,000 Tax Deduction",
+      "description": "₹75K deduction for disability (40-79%), ₹1.25L deduction for severe disability (80%+). Also available via 80DD for dependent."
     },
-    requiredDocuments: [
-      'Disability Certificate (if applicable)',
-      'Age Proof (birth certificate)',
-      'Address Proof',
-      'Aadhaar Card',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "PAN Card",
+      "ITR Filing / Form 10-IA"
     ],
-    applyUrl: 'https://www.education.gov.in/',
-    deadline: '2027-12-31',
+    "applyUrl": "https://www.incometax.gov.in/",
+    "deadline": "2027-07-31"
   },
-
-  // 19. Ayushman Bharat
   {
-    id: 'ayushman_pwd',
-    name: 'Ayushman Bharat PM-JAY – Health Insurance for PwD',
-    nameHi: 'आयुष्मान भारत PM-JAY – दिव्यांगजनों के लिए स्वास्थ्य बीमा',
-    ministry: 'Ministry of Health & Family Welfare',
-    category: 'healthcare',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'acid_attack', 'dwarfism', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 300000,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "nhfdc_micro_credit",
+    "name": "NHFDC Micro-Credit for PwD Self-Employment",
+    "nameHi": "एनएचएफडीसी सूक्ष्म-ऋण – दिव्यांग स्व-रोजगार",
+    "ministry": "National Handicapped Finance & Development Corporation",
+    "category": "employment",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 300000,
+      "ageRange": [
+        18,
+        55
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹5,00,000/year Health Cover (Free)',
-      description: 'Cashless secondary and tertiary hospitalization at empaneled hospitals — surgery, therapy, diagnostics, and medication',
+    "benefits": {
+      "amount": "Up to ₹50,000 at 5% Interest",
+      "description": "Micro-credit loan for small business, petty trade, or ancillary activities. Simplified process, minimal documentation."
     },
-    requiredDocuments: [
-      'Aadhaar Card',
-      'BPL / SECC Card',
-      'Disability Certificate (optional, priority listing)',
-      'Family Details',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Income Certificate",
+      "Aadhaar Card",
+      "Business Plan (brief)",
+      "Bank Account"
     ],
-    applyUrl: 'https://pmjay.gov.in/',
-    deadline: '2027-12-31',
+    "applyUrl": "https://nhfdc.nic.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 20. Tax Exemption
   {
-    id: 'tax_exemption_pwd',
-    name: 'Income Tax Deduction under Section 80U / 80DD',
-    nameHi: 'धारा 80U/80DD के तहत आयकर कटौती',
-    ministry: 'Ministry of Finance (CBDT)',
-    category: 'pension',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'acid_attack', 'dwarfism', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 9999999,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "svanidhi_pwd",
+    "name": "PM SVANidhi – Micro Loan for PwD Street Vendors",
+    "nameHi": "पीएम स्वनिधि – दिव्यांग स्ट्रीट वेंडर्स के लिए सूक्ष्म ऋण",
+    "ministry": "Ministry of Housing & Urban Affairs",
+    "category": "employment",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "multiple"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 300000,
+      "ageRange": [
+        18,
+        65
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹75,000 — ₹1,25,000 Tax Deduction',
-      description: '₹75K deduction for disability (40-79%), ₹1.25L deduction for severe disability (80%+). Also available via 80DD for dependent.',
+    "benefits": {
+      "amount": "₹10,000 — ₹50,000 Working Capital (7% Subsidy)",
+      "description": "Collateral-free working capital micro-loan with 7% interest subsidy and digital payment cashback incentive"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'PAN Card',
-      'ITR Filing / Form 10-IA',
+    "requiredDocuments": [
+      "Disability Certificate",
+      "Street Vendor Certificate / Letter of Recommendation",
+      "Aadhaar Card",
+      "Bank Account"
     ],
-    applyUrl: 'https://www.incometax.gov.in/',
-    deadline: '2027-07-31',
+    "applyUrl": "https://pmsvanidhi.mohua.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 21. NHFDC Micro-credit
   {
-    id: 'nhfdc_micro_credit',
-    name: 'NHFDC Micro-Credit for PwD Self-Employment',
-    nameHi: 'एनएचएफडीसी सूक्ष्म-ऋण – दिव्यांग स्व-रोजगार',
-    ministry: 'National Handicapped Finance & Development Corporation',
-    category: 'employment',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple'],
-      educationLevels: 'all',
-      maxIncome: 300000,
-      ageRange: [18, 55],
-      gender: 'all',
-      states: 'all',
+    "id": "nphce_pwd",
+    "name": "National Programme for Healthcare of the Elderly (NPHCE)",
+    "nameHi": "वृद्धजनों के स्वास्थ्य हेतु राष्ट्रीय कार्यक्रम",
+    "ministry": "Ministry of Health & Family Welfare",
+    "category": "healthcare",
+    "eligibility": {
+      "disabilityPercentMin": 0,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 9999999,
+      "ageRange": [
+        60,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Up to ₹50,000 at 5% Interest',
-      description: 'Micro-credit loan for small business, petty trade, or ancillary activities. Simplified process, minimal documentation.',
+    "benefits": {
+      "amount": "Free Geriatric Healthcare",
+      "description": "Free outpatient services, physiotherapy, and geriatric care at district hospitals for elderly PwD"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Income Certificate',
-      'Aadhaar Card',
-      'Business Plan (brief)',
-      'Bank Account',
+    "requiredDocuments": [
+      "Age Proof (above 60)",
+      "Aadhaar Card",
+      "Disability Certificate (if applicable)"
     ],
-    applyUrl: 'https://nhfdc.nic.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://mohfw.gov.in/",
+    "deadline": "2027-12-31"
   },
-
-  // 22. Free Coaching
   {
-    id: 'free_coaching_pwd',
-    name: 'Free Coaching for Competitive Exams (PwD Category)',
-    nameHi: 'प्रतियोगी परीक्षाओं के लिए निःशुल्क कोचिंग (दिव्यांग वर्ग)',
-    ministry: 'Ministry of Social Justice & Empowerment',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'learning', 'speech', 'multiple'],
-      educationLevels: ['higher_secondary', 'graduate', 'post_graduate'],
-      maxIncome: 600000,
-      ageRange: [16, 35],
-      gender: 'all',
-      states: 'all',
+    "id": "state_disability_pension",
+    "name": "State Disability Pension (varies by state)",
+    "nameHi": "राज्य दिव्यांग पेंशन (राज्य अनुसार)",
+    "ministry": "State Social Welfare Departments",
+    "category": "pension",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple",
+        "muscular_dystrophy",
+        "blood_disorder"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 300000,
+      "ageRange": [
+        18,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Coaching + ₹3,000/month Stipend',
-      description: 'Free coaching for UPSC, SSC, banking, CAT, GATE, and similar exams + monthly maintenance allowance',
+    "benefits": {
+      "amount": "₹500 — ₹2,500/month (varies by state)",
+      "description": "Monthly pension to disabled persons from state welfare funds. Amount varies: UP ₹500, Delhi ₹2,500, Kerala ₹1,500, etc."
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Education Certificate',
-      'Income Certificate (below ₹6 lakh)',
-      'Aadhaar Card',
-      'Bank Account',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Income Certificate / BPL Card",
+      "Aadhaar Card",
+      "Domicile/Residence Proof",
+      "Bank Account"
     ],
-    applyUrl: 'https://socialjustice.gov.in/',
-    deadline: '2026-08-31',
+    "applyUrl": "https://www.india.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 23. PM SVANidhi
   {
-    id: 'svanidhi_pwd',
-    name: 'PM SVANidhi – Micro Loan for PwD Street Vendors',
-    nameHi: 'पीएम स्वनिधि – दिव्यांग स्ट्रीट वेंडर्स के लिए सूक्ष्म ऋण',
-    ministry: 'Ministry of Housing & Urban Affairs',
-    category: 'employment',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'multiple'],
-      educationLevels: 'all',
-      maxIncome: 300000,
-      ageRange: [18, 65],
-      gender: 'all',
-      states: 'all',
+    "id": "pmkvy_pwd",
+    "name": "PM Kaushal Vikas Yojana 4.0 – PwD Skill Track",
+    "nameHi": "पीएम कौशल विकास योजना 4.0 – दिव्यांग कौशल ट्रैक",
+    "ministry": "Ministry of Skill Development & Entrepreneurship",
+    "category": "employment",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "learning",
+        "speech",
+        "multiple"
+      ],
+      "educationLevels": [
+        "secondary",
+        "higher_secondary",
+        "graduate",
+        "vocational",
+        "not_enrolled"
+      ],
+      "maxIncome": 9999999,
+      "ageRange": [
+        15,
+        45
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹10,000 — ₹50,000 Working Capital (7% Subsidy)',
-      description: 'Collateral-free working capital micro-loan with 7% interest subsidy and digital payment cashback incentive',
+    "benefits": {
+      "amount": "Free Skill Training + Certification + Placement",
+      "description": "NSQF-aligned skill training in 500+ job roles, with accessible training centers, free meals, and placement assistance"
     },
-    requiredDocuments: [
-      'Disability Certificate',
-      'Street Vendor Certificate / Letter of Recommendation',
-      'Aadhaar Card',
-      'Bank Account',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Aadhaar Card",
+      "Education Certificate",
+      "Bank Account"
     ],
-    applyUrl: 'https://pmsvanidhi.mohua.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://www.pmkvyofficial.org/",
+    "deadline": "2027-03-31"
   },
-
-  // 24. NPHCE
   {
-    id: 'nphce_pwd',
-    name: 'National Programme for Healthcare of the Elderly (NPHCE)',
-    nameHi: 'वृद्धजनों के स्वास्थ्य हेतु राष्ट्रीय कार्यक्रम',
-    ministry: 'Ministry of Health & Family Welfare',
-    category: 'healthcare',
-    eligibility: {
-      disabilityPercentMin: 0,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 9999999,
-      ageRange: [60, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "cochlear_implant",
+    "name": "Cochlear Implant Surgery Programme for Deaf Children",
+    "nameHi": "बधिर बच्चों के लिए कॉक्लियर इम्प्लांट सर्जरी कार्यक्रम",
+    "ministry": "Department of Empowerment of Persons with Disabilities",
+    "category": "assistive",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "hearing"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 600000,
+      "ageRange": [
+        1,
+        12
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Geriatric Healthcare',
-      description: 'Free outpatient services, physiotherapy, and geriatric care at district hospitals for elderly PwD',
+    "benefits": {
+      "amount": "Surgery Cost Up to ₹6,00,000 (Free)",
+      "description": "Free cochlear implant surgery + device + post-surgery auditory-verbal therapy for pre-lingual deaf children"
     },
-    requiredDocuments: [
-      'Age Proof (above 60)',
-      'Aadhaar Card',
-      'Disability Certificate (if applicable)',
+    "requiredDocuments": [
+      "Hearing Assessment / Audiometry Report",
+      "Disability Certificate",
+      "Income Certificate (below ₹6 lakh)",
+      "Age Proof (1-12 years)",
+      "Aadhaar Card of child and parent",
+      "Medical fitness certificate"
     ],
-    applyUrl: 'https://mohfw.gov.in/',
-    deadline: '2027-12-31',
+    "applyUrl": "https://www.disabilityaffairs.gov.in/",
+    "deadline": "2026-12-31"
   },
-
-  // 25. State Disability Pension
   {
-    id: 'state_disability_pension',
-    name: 'State Disability Pension (varies by state)',
-    nameHi: 'राज्य दिव्यांग पेंशन (राज्य अनुसार)',
-    ministry: 'State Social Welfare Departments',
-    category: 'pension',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple', 'muscular_dystrophy', 'blood_disorder'],
-      educationLevels: 'all',
-      maxIncome: 300000,
-      ageRange: [18, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "rpwd_reservation",
+    "name": "Reservation in Government Employment (RPwD Act 2016)",
+    "nameHi": "सरकारी नौकरियों में आरक्षण (RPwD अधिनियम 2016)",
+    "ministry": "Department of Personnel & Training",
+    "category": "employment",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple",
+        "blood_disorder",
+        "acid_attack",
+        "dwarfism",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": [
+        "graduate",
+        "post_graduate",
+        "professional",
+        "vocational"
+      ],
+      "maxIncome": 9999999,
+      "ageRange": [
+        18,
+        40
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹500 — ₹2,500/month (varies by state)',
-      description: 'Monthly pension to disabled persons from state welfare funds. Amount varies: UP ₹500, Delhi ₹2,500, Kerala ₹1,500, etc.',
+    "benefits": {
+      "amount": "4% Reservation in All Govt Posts",
+      "description": "4% reservation across all government and PSU jobs (1% each for visual, hearing, locomotor, and intellectual disabilities)"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Income Certificate / BPL Card',
-      'Aadhaar Card',
-      'Domicile/Residence Proof',
-      'Bank Account',
+    "requiredDocuments": [
+      "Disability Certificate (40%+) / UDID Card",
+      "Education Qualification Certificates",
+      "Aadhaar Card",
+      "Age Proof"
     ],
-    applyUrl: 'https://www.india.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://www.india.gov.in/",
+    "deadline": "2027-12-31"
   },
-
-  // 26. NFPwD Fellowship
   {
-    id: 'nfpwd_fellowship',
-    name: 'National Fellowship for Persons with Disabilities (NFPwD)',
-    nameHi: 'दिव्यांगजनों के लिए राष्ट्रीय फेलोशिप (NFPwD)',
-    ministry: 'University Grants Commission (UGC)',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'acid_attack', 'dwarfism', 'muscular_dystrophy'],
-      educationLevels: ['post_graduate'],
-      maxIncome: 9999999,
-      ageRange: [20, 40],
-      gender: 'all',
-      states: 'all',
+    "id": "pm_daksha",
+    "name": "PM-DAKSHA – Skill Training & Livelihood for Marginalised",
+    "nameHi": "पीएम-दक्ष – सीमांत वर्ग के लिए कौशल प्रशिक्षण और आजीविका",
+    "ministry": "Ministry of Social Justice & Empowerment",
+    "category": "employment",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "learning",
+        "speech",
+        "multiple"
+      ],
+      "educationLevels": [
+        "secondary",
+        "higher_secondary",
+        "graduate",
+        "vocational",
+        "not_enrolled"
+      ],
+      "maxIncome": 300000,
+      "ageRange": [
+        18,
+        45
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹31,000/month (JRF) — ₹35,000/month (SRF)',
-      description: 'Junior/Senior Research Fellowship for M.Phil/Ph.D scholars with disabilities — covers tuition, contingency, escort, reader allowance',
+    "benefits": {
+      "amount": "Free Training + ₹1,500/month + Placement",
+      "description": "Up-skilling/re-skilling with monthly stipend, residential facility, certification, and 70% placement assistance"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'M.Phil / Ph.D Admission Letter',
-      'UGC NET / Qualifying Score',
-      'Aadhaar Card',
-      'Bank Account',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Caste/Category Certificate (if applicable)",
+      "Income Certificate",
+      "Aadhaar Card",
+      "Bank Account"
     ],
-    applyUrl: 'https://scholarships.gov.in/',
-    deadline: '2026-10-15',
+    "applyUrl": "https://pmdaksh.dosje.gov.in/",
+    "deadline": "2026-12-31"
   },
-
-  // 27. PMKVY PwD
   {
-    id: 'pmkvy_pwd',
-    name: 'PM Kaushal Vikas Yojana 4.0 – PwD Skill Track',
-    nameHi: 'पीएम कौशल विकास योजना 4.0 – दिव्यांग कौशल ट्रैक',
-    ministry: 'Ministry of Skill Development & Entrepreneurship',
-    category: 'employment',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'autism', 'learning', 'speech', 'multiple'],
-      educationLevels: ['secondary', 'higher_secondary', 'graduate', 'vocational', 'not_enrolled'],
-      maxIncome: 9999999,
-      ageRange: [15, 45],
-      gender: 'all',
-      states: 'all',
+    "id": "inclusive_education",
+    "name": "Inclusive Education for CWSN under Samagra Shiksha",
+    "nameHi": "समग्र शिक्षा के तहत विशेष आवश्यकता वाले बच्चों की समावेशी शिक्षा",
+    "ministry": "Ministry of Education",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple",
+        "blood_disorder",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": [
+        "pre_primary",
+        "primary",
+        "upper_primary",
+        "secondary",
+        "higher_secondary"
+      ],
+      "maxIncome": 9999999,
+      "ageRange": [
+        3,
+        22
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Skill Training + Certification + Placement',
-      description: 'NSQF-aligned skill training in 500+ job roles, with accessible training centers, free meals, and placement assistance',
+    "benefits": {
+      "amount": "₹3,500/child/year + Transport + Aids",
+      "description": "Per-child grant for assistive devices, transport allowance, special educator support, therapeutic services, books allowance"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Aadhaar Card',
-      'Education Certificate',
-      'Bank Account',
+    "requiredDocuments": [
+      "Disability Certificate",
+      "School Enrollment Proof",
+      "Age Proof",
+      "Aadhaar Card"
     ],
-    applyUrl: 'https://www.pmkvyofficial.org/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://samagra.education.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 28. Cochlear Implant
   {
-    id: 'cochlear_implant',
-    name: 'Cochlear Implant Surgery Programme for Deaf Children',
-    nameHi: 'बधिर बच्चों के लिए कॉक्लियर इम्प्लांट सर्जरी कार्यक्रम',
-    ministry: 'Department of Empowerment of Persons with Disabilities',
-    category: 'assistive',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['hearing'],
-      educationLevels: 'all',
-      maxIncome: 600000,
-      ageRange: [1, 12],
-      gender: 'all',
-      states: 'all',
+    "id": "divyangjan_finance",
+    "name": "National Divyangjan Finance & Development Scheme",
+    "nameHi": "राष्ट्रीय दिव्यांगजन वित्त एवं विकास योजना",
+    "ministry": "NHFDC",
+    "category": "pension",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 500000,
+      "ageRange": [
+        18,
+        60
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Surgery Cost Up to ₹6,00,000 (Free)',
-      description: 'Free cochlear implant surgery + device + post-surgery auditory-verbal therapy for pre-lingual deaf children',
+    "benefits": {
+      "amount": "Loan up to ₹25,00,000 at 5-8% Interest",
+      "description": "Concessional loans for self-employment, business, education, vehicle purchase, and home modification"
     },
-    requiredDocuments: [
-      'Hearing Assessment / Audiometry Report',
-      'Disability Certificate',
-      'Income Certificate (below ₹6 lakh)',
-      'Age Proof (1-12 years)',
-      'Aadhaar Card of child and parent',
-      'Medical fitness certificate',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Income Certificate",
+      "Aadhaar Card",
+      "Business / Purpose Plan",
+      "Bank Account",
+      "Collateral (for higher amounts)"
     ],
-    applyUrl: 'https://www.disabilityaffairs.gov.in/',
-    deadline: '2026-12-31',
+    "applyUrl": "https://nhfdc.nic.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 29. RPwD Reservation
   {
-    id: 'rpwd_reservation',
-    name: 'Reservation in Government Employment (RPwD Act 2016)',
-    nameHi: 'सरकारी नौकरियों में आरक्षण (RPwD अधिनियम 2016)',
-    ministry: 'Department of Personnel & Training',
-    category: 'employment',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'acid_attack', 'dwarfism', 'muscular_dystrophy'],
-      educationLevels: ['graduate', 'post_graduate', 'professional', 'vocational'],
-      maxIncome: 9999999,
-      ageRange: [18, 40],
-      gender: 'all',
-      states: 'all',
+    "id": "up_divyang_pension",
+    "name": "Uttar Pradesh Divyangjan Maintenance Grant Scheme",
+    "nameHi": "उत्तर प्रदेश दिव्यांग भरण-पोषण अनुदान योजना",
+    "ministry": "Department for Empowerment of Persons with Disabilities, UP",
+    "category": "pension",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple",
+        "muscular_dystrophy",
+        "blood_disorder"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 200000,
+      "ageRange": [
+        18,
+        99
+      ],
+      "gender": "all",
+      "states": [
+        "uttar_pradesh"
+      ]
     },
-    benefits: {
-      amount: '4% Reservation in All Govt Posts',
-      description: '4% reservation across all government and PSU jobs (1% each for visual, hearing, locomotor, and intellectual disabilities)',
+    "benefits": {
+      "amount": "₹1,000/month Financial Aid",
+      "description": "Monthly direct benefit transfer (DBT) to eligible disabled residents of Uttar Pradesh below poverty line"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+) / UDID Card',
-      'Education Qualification Certificates',
-      'Aadhaar Card',
-      'Age Proof',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Income Certificate (below ₹2 lakh)",
+      "UP Domicile Certificate",
+      "Aadhaar Card",
+      "Bank Account (Aadhaar Linked)"
     ],
-    applyUrl: 'https://www.india.gov.in/',
-    deadline: '2027-12-31',
+    "applyUrl": "https://sspy-up.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 30. PM-DAKSHA
   {
-    id: 'pm_daksha',
-    name: 'PM-DAKSHA – Skill Training & Livelihood for Marginalised',
-    nameHi: 'पीएम-दक्ष – सीमांत वर्ग के लिए कौशल प्रशिक्षण और आजीविका',
-    ministry: 'Ministry of Social Justice & Empowerment',
-    category: 'employment',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'autism', 'learning', 'speech', 'multiple'],
-      educationLevels: ['secondary', 'higher_secondary', 'graduate', 'vocational', 'not_enrolled'],
-      maxIncome: 300000,
-      ageRange: [18, 45],
-      gender: 'all',
-      states: 'all',
+    "id": "bihar_mukhyamantri_divyang",
+    "name": "Bihar Mukhyamantri Divyangjan Swavalamban Yojana",
+    "nameHi": "बिहार मुख्यमंत्री दिव्यांगजन स्वावलंबन योजना",
+    "ministry": "Social Welfare Department, Government of Bihar",
+    "category": "stipend",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": [
+        "primary",
+        "upper_primary",
+        "secondary",
+        "higher_secondary",
+        "graduate",
+        "vocational"
+      ],
+      "maxIncome": 250000,
+      "ageRange": [
+        6,
+        45
+      ],
+      "gender": "all",
+      "states": [
+        "bihar"
+      ]
     },
-    benefits: {
-      amount: 'Free Training + ₹1,500/month + Placement',
-      description: 'Up-skilling/re-skilling with monthly stipend, residential facility, certification, and 70% placement assistance',
+    "benefits": {
+      "amount": "₹1,200 — ₹2,500/month Educational Allowance + Battery Tricycle",
+      "description": "Monthly scholarship allowance for students and free motorized tricycles for higher education / working PwD"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Caste/Category Certificate (if applicable)',
-      'Income Certificate',
-      'Aadhaar Card',
-      'Bank Account',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Bihar Residence Proof",
+      "School / College ID Proof",
+      "Income Certificate",
+      "Aadhaar Card"
     ],
-    applyUrl: 'https://pmdaksh.dosje.gov.in/',
-    deadline: '2026-12-31',
+    "applyUrl": "https://state.bihar.gov.in/socialwelfare/",
+    "deadline": "2027-03-31"
   },
-
-  // 31. Inclusive Education
   {
-    id: 'inclusive_education',
-    name: 'Inclusive Education for CWSN under Samagra Shiksha',
-    nameHi: 'समग्र शिक्षा के तहत विशेष आवश्यकता वाले बच्चों की समावेशी शिक्षा',
-    ministry: 'Ministry of Education',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'muscular_dystrophy'],
-      educationLevels: ['pre_primary', 'primary', 'upper_primary', 'secondary', 'higher_secondary'],
-      maxIncome: 9999999,
-      ageRange: [3, 22],
-      gender: 'all',
-      states: 'all',
+    "id": "delhi_disabled_pension",
+    "name": "Delhi Financial Assistance for Persons with Special Needs",
+    "nameHi": "दिल्ली विशेष आवश्यकता वाले व्यक्तियों के लिए वित्तीय सहायता योजना",
+    "ministry": "Department of Social Welfare, Govt of NCT of Delhi",
+    "category": "pension",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 300000,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": [
+        "delhi"
+      ]
     },
-    benefits: {
-      amount: '₹3,500/child/year + Transport + Aids',
-      description: 'Per-child grant for assistive devices, transport allowance, special educator support, therapeutic services, books allowance',
+    "benefits": {
+      "amount": "₹2,500/month Allowance",
+      "description": "Monthly pension and living maintenance allowance for PwD residents of Delhi NCT"
     },
-    requiredDocuments: [
-      'Disability Certificate',
-      'School Enrollment Proof',
-      'Age Proof',
-      'Aadhaar Card',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Proof of 5-year Residence in Delhi",
+      "Income Certificate",
+      "Aadhaar Card",
+      "Bank Passbook Details"
     ],
-    applyUrl: 'https://samagra.education.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://edistrict.delhigovt.nic.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 32. Divyangjan Finance
   {
-    id: 'divyangjan_finance',
-    name: 'National Divyangjan Finance & Development Scheme',
-    nameHi: 'राष्ट्रीय दिव्यांगजन वित्त एवं विकास योजना',
-    ministry: 'NHFDC',
-    category: 'pension',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 500000,
-      ageRange: [18, 60],
-      gender: 'all',
-      states: 'all',
+    "id": "maharashtra_divyang_scholarship",
+    "name": "Maharashtra State Post-Matric Scholarship for Divyang Students",
+    "nameHi": "महाराष्ट्र राज्य पोस्ट-मैट्रिक दिव्यांग छात्रवृत्ति योजना",
+    "ministry": "Social Justice & Special Assistance Dept, Maharashtra",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple"
+      ],
+      "educationLevels": [
+        "higher_secondary",
+        "graduate",
+        "post_graduate",
+        "professional",
+        "vocational"
+      ],
+      "maxIncome": 250000,
+      "ageRange": [
+        15,
+        35
+      ],
+      "gender": "all",
+      "states": [
+        "maharashtra"
+      ]
     },
-    benefits: {
-      amount: 'Loan up to ₹25,00,000 at 5-8% Interest',
-      description: 'Concessional loans for self-employment, business, education, vehicle purchase, and home modification',
+    "benefits": {
+      "amount": "Full Tuition Waiver + ₹1,500/month Maintenance",
+      "description": "Complete tuition and exam fee waiver along with hostel and transport stipends across Maharashtra"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Income Certificate',
-      'Aadhaar Card',
-      'Business / Purpose Plan',
-      'Bank Account',
-      'Collateral (for higher amounts)',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Domicile Certificate of Maharashtra",
+      "College Bonafide Certificate",
+      "Income Certificate",
+      "Aadhaar Card"
     ],
-    applyUrl: 'https://nhfdc.nic.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://mahadbt.maharashtra.gov.in/",
+    "deadline": "2026-11-30"
   },
-
-  // 33. UP Divyang Pension & Grant
   {
-    id: 'up_divyang_pension',
-    name: 'Uttar Pradesh Divyangjan Maintenance Grant Scheme',
-    nameHi: 'उत्तर प्रदेश दिव्यांग भरण-पोषण अनुदान योजना',
-    ministry: 'Department for Empowerment of Persons with Disabilities, UP',
-    category: 'pension',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple', 'muscular_dystrophy', 'blood_disorder'],
-      educationLevels: 'all',
-      maxIncome: 200000,
-      ageRange: [18, 99],
-      gender: 'all',
-      states: ['uttar_pradesh'],
+    "id": "tamilnadu_differently_abled_stipend",
+    "name": "Tamil Nadu Maintenance Allowance for Severely Differently Abled",
+    "nameHi": "तमिलनाडु गंभीर रूप से दिव्यांगजनों हेतु रखरखाव भत्ता",
+    "ministry": "Welfare of Differently Abled Persons Department, TN",
+    "category": "stipend",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 300000,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": [
+        "tamil_nadu"
+      ]
     },
-    benefits: {
-      amount: '₹1,000/month Financial Aid',
-      description: 'Monthly direct benefit transfer (DBT) to eligible disabled residents of Uttar Pradesh below poverty line',
+    "benefits": {
+      "amount": "₹2,000/month Allowance + Free Reader Allowance",
+      "description": "Monthly maintenance support + reader allowance for visually impaired students in schools and colleges"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Income Certificate (below ₹2 lakh)',
-      'UP Domicile Certificate',
-      'Aadhaar Card',
-      'Bank Account (Aadhaar Linked)',
+    "requiredDocuments": [
+      "National Disability Identity Card / Certificate",
+      "TN Residence Certificate",
+      "Aadhaar Card",
+      "Bank Passbook Copy"
     ],
-    applyUrl: 'https://sspy-up.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://www.tn.gov.in/scda",
+    "deadline": "2027-03-31"
   },
-
-  // 34. Bihar Mukhyamantri Divyang Swavalamban
   {
-    id: 'bihar_mukhyamantri_divyang',
-    name: 'Bihar Mukhyamantri Divyangjan Swavalamban Yojana',
-    nameHi: 'बिहार मुख्यमंत्री दिव्यांगजन स्वावलंबन योजना',
-    ministry: 'Social Welfare Department, Government of Bihar',
-    category: 'stipend',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'autism', 'multiple', 'muscular_dystrophy'],
-      educationLevels: ['primary', 'upper_primary', 'secondary', 'higher_secondary', 'graduate', 'vocational'],
-      maxIncome: 250000,
-      ageRange: [6, 45],
-      gender: 'all',
-      states: ['bihar'],
+    "id": "karnataka_nagalu_pension",
+    "name": "Karnataka State Disability Pension & Education Stipend (Mythri Scheme)",
+    "nameHi": "कर्नाटक राज्य दिव्यांग पेंशन एवं शिक्षा वजीफा योजना",
+    "ministry": "Directorate for the Empowerment of Differently Abled, Karnataka",
+    "category": "pension",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 200000,
+      "ageRange": [
+        6,
+        99
+      ],
+      "gender": "all",
+      "states": [
+        "karnataka"
+      ]
     },
-    benefits: {
-      amount: '₹1,200 — ₹2,500/month Educational Allowance + Battery Tricycle',
-      description: 'Monthly scholarship allowance for students and free motorized tricycles for higher education / working PwD',
+    "benefits": {
+      "amount": "₹1,200 — ₹2,000/month Pension & Educational Allowance",
+      "description": "Financial assistance and laptop / braille device subsidy for students in schools and universities"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Bihar Residence Proof',
-      'School / College ID Proof',
-      'Income Certificate',
-      'Aadhaar Card',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Karnataka Domicile Certificate",
+      "Income Certificate",
+      "Aadhaar Card",
+      "Bank Account Details"
     ],
-    applyUrl: 'https://state.bihar.gov.in/socialwelfare/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://dwd.karnataka.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 35. Delhi Special Needs Assistance
   {
-    id: 'delhi_disabled_pension',
-    name: 'Delhi Financial Assistance for Persons with Special Needs',
-    nameHi: 'दिल्ली विशेष आवश्यकता वाले व्यक्तियों के लिए वित्तीय सहायता योजना',
-    ministry: 'Department of Social Welfare, Govt of NCT of Delhi',
-    category: 'pension',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 300000,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: ['delhi'],
+    "id": "westbengal_manabik_pension",
+    "name": "West Bengal Manabik Pension Scheme for Persons with Disabilities",
+    "nameHi": "पश्चिम बंगाल मानबिक पेंशन योजना",
+    "ministry": "Department of Women & Child Development and Social Welfare, WB",
+    "category": "pension",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 100000,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": [
+        "west_bengal"
+      ]
     },
-    benefits: {
-      amount: '₹2,500/month Allowance',
-      description: 'Monthly pension and living maintenance allowance for PwD residents of Delhi NCT',
+    "benefits": {
+      "amount": "₹1,000/month Pension",
+      "description": "Monthly cash assistance to disabled citizens of West Bengal with household income below ₹1 lakh/year"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Proof of 5-year Residence in Delhi',
-      'Income Certificate',
-      'Aadhaar Card',
-      'Bank Passbook Details',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "West Bengal Resident Proof",
+      "Income Certificate",
+      "Aadhaar Card",
+      "Bank Passbook"
     ],
-    applyUrl: 'https://edistrict.delhigovt.nic.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://wb.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 36. Maharashtra Post-Matric Divyang Scholarship
   {
-    id: 'maharashtra_divyang_scholarship',
-    name: 'Maharashtra State Post-Matric Scholarship for Divyang Students',
-    nameHi: 'महाराष्ट्र राज्य पोस्ट-मैट्रिक दिव्यांग छात्रवृत्ति योजना',
-    ministry: 'Social Justice & Special Assistance Dept, Maharashtra',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple'],
-      educationLevels: ['higher_secondary', 'graduate', 'post_graduate', 'professional', 'vocational'],
-      maxIncome: 250000,
-      ageRange: [15, 35],
-      gender: 'all',
-      states: ['maharashtra'],
+    "id": "rajasthan_vishesh_yogjyan",
+    "name": "Rajasthan Vishesh Yogyajan Higher Education Aid & Stipend",
+    "nameHi": "राजस्थान विशेष योग्यजन उच्च शिक्षा सहायता एवं छात्रवृत्ति",
+    "ministry": "Social Justice & Empowerment Department, Rajasthan",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple"
+      ],
+      "educationLevels": [
+        "secondary",
+        "higher_secondary",
+        "graduate",
+        "post_graduate",
+        "professional",
+        "vocational"
+      ],
+      "maxIncome": 250000,
+      "ageRange": [
+        12,
+        35
+      ],
+      "gender": "all",
+      "states": [
+        "rajasthan"
+      ]
     },
-    benefits: {
-      amount: 'Full Tuition Waiver + ₹1,500/month Maintenance',
-      description: 'Complete tuition and exam fee waiver along with hostel and transport stipends across Maharashtra',
+    "benefits": {
+      "amount": "₹1,000 — ₹2,500/month + Free Scooty/Tricycle Support",
+      "description": "Monthly scholarship stipend plus free motorized scooty allotment for college-going disabled students"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Domicile Certificate of Maharashtra',
-      'College Bonafide Certificate',
-      'Income Certificate',
-      'Aadhaar Card',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Rajasthan Jan Aadhaar / Bhamashah Card",
+      "College Marksheet",
+      "Income Certificate",
+      "Aadhaar Card"
     ],
-    applyUrl: 'https://mahadbt.maharashtra.gov.in/',
-    deadline: '2026-11-30',
+    "applyUrl": "https://sjmsnew.rajasthan.gov.in/",
+    "deadline": "2026-11-30"
   },
-
-  // 37. Tamil Nadu Differently Abled Maintenance Allowance
   {
-    id: 'tamilnadu_differently_abled_stipend',
-    name: 'Tamil Nadu Maintenance Allowance for Severely Differently Abled',
-    nameHi: 'तमिलनाडु गंभीर रूप से दिव्यांगजनों हेतु रखरखाव भत्ता',
-    ministry: 'Welfare of Differently Abled Persons Department, TN',
-    category: 'stipend',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 300000,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: ['tamil_nadu'],
+    "id": "mp_divyang_education_stipend",
+    "name": "Madhya Pradesh Divyang Vidyarthi Protsahan Yojana",
+    "nameHi": "मध्य प्रदेश दिव्यांग विद्यार्थी प्रोत्साहन योजना",
+    "ministry": "Social Justice & Disabled Welfare Dept, Madhya Pradesh",
+    "category": "stipend",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "learning",
+        "multiple"
+      ],
+      "educationLevels": [
+        "primary",
+        "upper_primary",
+        "secondary",
+        "higher_secondary",
+        "graduate",
+        "post_graduate"
+      ],
+      "maxIncome": 300000,
+      "ageRange": [
+        6,
+        30
+      ],
+      "gender": "all",
+      "states": [
+        "madhya_pradesh"
+      ]
     },
-    benefits: {
-      amount: '₹2,000/month Allowance + Free Reader Allowance',
-      description: 'Monthly maintenance support + reader allowance for visually impaired students in schools and colleges',
+    "benefits": {
+      "amount": "₹600 — ₹1,500/month Stipend + Free Laptop Award for Top Performers",
+      "description": "Monthly stipend support for schooling and higher education, plus laptop incentives for meritorious PwD students"
     },
-    requiredDocuments: [
-      'National Disability Identity Card / Certificate',
-      'TN Residence Certificate',
-      'Aadhaar Card',
-      'Bank Passbook Copy',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "MP Samagra ID",
+      "School / University Bonafide Certificate",
+      "Income Certificate",
+      "Aadhaar Card"
     ],
-    applyUrl: 'https://www.tn.gov.in/scda',
-    deadline: '2027-03-31',
+    "applyUrl": "https://socialjustice.mp.gov.in/",
+    "deadline": "2026-12-31"
   },
-
-  // 38. Karnataka Disability Pension & Stipend
   {
-    id: 'karnataka_nagalu_pension',
-    name: 'Karnataka State Disability Pension & Education Stipend (Mythri Scheme)',
-    nameHi: 'कर्नाटक राज्य दिव्यांग पेंशन एवं शिक्षा वजीफा योजना',
-    ministry: 'Directorate for the Empowerment of Differently Abled, Karnataka',
-    category: 'pension',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 200000,
-      ageRange: [6, 99],
-      gender: 'all',
-      states: ['karnataka'],
+    "id": "kerala_aswasakiranam",
+    "name": "Kerala Aswasakiranam Scheme – Caregiver Allowance for PwD",
+    "nameHi": "केरल आश्वासन किरणम योजना – देखभालकर्ता सहायता",
+    "ministry": "Social Justice Department, Government of Kerala",
+    "category": "healthcare",
+    "eligibility": {
+      "disabilityPercentMin": 60,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 250000,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": [
+        "kerala"
+      ]
     },
-    benefits: {
-      amount: '₹1,200 — ₹2,000/month Pension & Educational Allowance',
-      description: 'Financial assistance and laptop / braille device subsidy for students in schools and universities',
+    "benefits": {
+      "amount": "₹600/month Caregiver Stipend",
+      "description": "Monthly financial assistance given directly to caregivers of physically/mentally bedridden disabled individuals in Kerala"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Karnataka Domicile Certificate',
-      'Income Certificate',
-      'Aadhaar Card',
-      'Bank Account Details',
+    "requiredDocuments": [
+      "Disability Certificate (60%+)",
+      "Kerala Resident Proof",
+      "Medical Officer Certificate",
+      "Aadhaar Card of Patient & Caregiver",
+      "Bank Account Details"
     ],
-    applyUrl: 'https://dwd.karnataka.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "http://www.sjd.kerala.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 39. West Bengal Manabik Pension Scheme
   {
-    id: 'westbengal_manabik_pension',
-    name: 'West Bengal Manabik Pension Scheme for Persons with Disabilities',
-    nameHi: 'पश्चिम बंगाल मानबिक पेंशन योजना',
-    ministry: 'Department of Women & Child Development and Social Welfare, WB',
-    category: 'pension',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 100000,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: ['west_bengal'],
+    "id": "haryana_divyang_pension",
+    "name": "Haryana State Divyang Pension & Higher Education Allowance",
+    "nameHi": "हरियाणा राज्य दिव्यांग पेंशन एवं उच्च शिक्षा सहायता योजना",
+    "ministry": "Social Justice & Empowerment Department, Haryana",
+    "category": "pension",
+    "eligibility": {
+      "disabilityPercentMin": 60,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 300000,
+      "ageRange": [
+        18,
+        99
+      ],
+      "gender": "all",
+      "states": [
+        "haryana"
+      ]
     },
-    benefits: {
-      amount: '₹1,000/month Pension',
-      description: 'Monthly cash assistance to disabled citizens of West Bengal with household income below ₹1 lakh/year',
+    "benefits": {
+      "amount": "₹3,000/month Pension",
+      "description": "Monthly disability pension allowance provided to Haryana residents with 60%+ disability"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'West Bengal Resident Proof',
-      'Income Certificate',
-      'Aadhaar Card',
-      'Bank Passbook',
+    "requiredDocuments": [
+      "Disability Certificate (60%+)",
+      "Parivar Pehchan Patra (PPP) Haryana",
+      "Domicile Certificate",
+      "Aadhaar Card",
+      "Bank Account"
     ],
-    applyUrl: 'https://wb.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://pension.socialjusticehry.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 40. Rajasthan Vishesh Yogyajan Scholarship
   {
-    id: 'rajasthan_vishesh_yogjyan',
-    name: 'Rajasthan Vishesh Yogyajan Higher Education Aid & Stipend',
-    nameHi: 'राजस्थान विशेष योग्यजन उच्च शिक्षा सहायता एवं छात्रवृत्ति',
-    ministry: 'Social Justice & Empowerment Department, Rajasthan',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple'],
-      educationLevels: ['secondary', 'higher_secondary', 'graduate', 'post_graduate', 'professional', 'vocational'],
-      maxIncome: 250000,
-      ageRange: [12, 35],
-      gender: 'all',
-      states: ['rajasthan'],
+    "id": "punjab_divyang_pension",
+    "name": "Punjab State Disability Pension & Education Financial Support",
+    "nameHi": "पंजाब राज्य दिव्यांगता पेंशन एवं शिक्षा सहायता",
+    "ministry": "Department of Social Security and Women & Child Development, Punjab",
+    "category": "pension",
+    "eligibility": {
+      "disabilityPercentMin": 50,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 200000,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": [
+        "punjab"
+      ]
     },
-    benefits: {
-      amount: '₹1,000 — ₹2,500/month + Free Scooty/Tricycle Support',
-      description: 'Monthly scholarship stipend plus free motorized scooty allotment for college-going disabled students',
+    "benefits": {
+      "amount": "₹1,500/month Pension",
+      "description": "Monthly financial assistance to disabled residents in Punjab"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Rajasthan Jan Aadhaar / Bhamashah Card',
-      'College Marksheet',
-      'Income Certificate',
-      'Aadhaar Card',
+    "requiredDocuments": [
+      "Disability Certificate (50%+)",
+      "Punjab Residence Proof",
+      "Income Certificate",
+      "Aadhaar Card",
+      "Bank Account Passbook"
     ],
-    applyUrl: 'https://sjmsnew.rajasthan.gov.in/',
-    deadline: '2026-11-30',
+    "applyUrl": "https://connect.punjab.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 41. MP Divyang Vidyarthi Protsahan
   {
-    id: 'mp_divyang_education_stipend',
-    name: 'Madhya Pradesh Divyang Vidyarthi Protsahan Yojana',
-    nameHi: 'मध्य प्रदेश दिव्यांग विद्यार्थी प्रोत्साहन योजना',
-    ministry: 'Social Justice & Disabled Welfare Dept, Madhya Pradesh',
-    category: 'stipend',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'autism', 'learning', 'multiple'],
-      educationLevels: ['primary', 'upper_primary', 'secondary', 'higher_secondary', 'graduate', 'post_graduate'],
-      maxIncome: 300000,
-      ageRange: [6, 30],
-      gender: 'all',
-      states: ['madhya_pradesh'],
+    "id": "pradhan_mantri_awas_pwd",
+    "name": "Pradhan Mantri Awas Yojana (PMAY) – Priority Housing for PwD",
+    "nameHi": "प्रधानमंत्री आवास योजना – दिव्यांगजन प्राथमिकता आवास",
+    "ministry": "Ministry of Housing & Urban Affairs / Ministry of Rural Development",
+    "category": "housing",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "multiple",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 300000,
+      "ageRange": [
+        18,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹600 — ₹1,500/month Stipend + Free Laptop Award for Top Performers',
-      description: 'Monthly stipend support for schooling and higher education, plus laptop incentives for meritorious PwD students',
+    "benefits": {
+      "amount": "Up to ₹2,67,000 Subsidy / Ground Floor Allocation",
+      "description": "Mandatory ground floor housing unit reservation + Interest subsidy for PwD applicants under PMAY Urban and Gramin"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'MP Samagra ID',
-      'School / University Bonafide Certificate',
-      'Income Certificate',
-      'Aadhaar Card',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Income Certificate / BPL Card",
+      "Aadhaar Card",
+      "No-Pucca-House Declaration Certificate",
+      "Bank Account Details"
     ],
-    applyUrl: 'https://socialjustice.mp.gov.in/',
-    deadline: '2026-12-31',
+    "applyUrl": "https://pmaymis.gov.in/",
+    "deadline": "2027-12-31"
   },
-
-  // 42. Kerala Aswasakiranam Caregiver Scheme
   {
-    id: 'kerala_aswasakiranam',
-    name: 'Kerala Aswasakiranam Scheme – Caregiver Allowance for PwD',
-    nameHi: 'केरल आश्वासन किरणम योजना – देखभालकर्ता सहायता',
-    ministry: 'Social Justice Department, Government of Kerala',
-    category: 'healthcare',
-    eligibility: {
-      disabilityPercentMin: 60,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 250000,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: ['kerala'],
+    "id": "pm_vishwakarma_pwd",
+    "name": "PM Vishwakarma Scheme – Specialized Artisan Support for PwD",
+    "nameHi": "पीएम विश्वकर्मा योजना – दिव्यांग कारीगर विशेष सहायता",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises (MSME)",
+    "category": "employment",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "multiple"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 500000,
+      "ageRange": [
+        18,
+        65
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹600/month Caregiver Stipend',
-      description: 'Monthly financial assistance given directly to caregivers of physically/mentally bedridden disabled individuals in Kerala',
+    "benefits": {
+      "amount": "₹15,000 Tool Kit Grant + ₹3,00,000 Loan at 5%",
+      "description": "Skill training with ₹500/day stipend, free accessible toolkits, and collateral-free enterprise loan for traditional artisans"
     },
-    requiredDocuments: [
-      'Disability Certificate (60%+)',
-      'Kerala Resident Proof',
-      'Medical Officer Certificate',
-      'Aadhaar Card of Patient & Caregiver',
-      'Bank Account Details',
+    "requiredDocuments": [
+      "Disability Certificate / UDID Card",
+      "Artisan Trade Certificate / Recommendation",
+      "Aadhaar Card",
+      "Bank Account Details"
     ],
-    applyUrl: 'http://www.sjd.kerala.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://pmvishwakarma.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 43. Haryana Divyang Pension & Higher Education Allowance
   {
-    id: 'haryana_divyang_pension',
-    name: 'Haryana State Divyang Pension & Higher Education Allowance',
-    nameHi: 'हरियाणा राज्य दिव्यांग पेंशन एवं उच्च शिक्षा सहायता योजना',
-    ministry: 'Social Justice & Empowerment Department, Haryana',
-    category: 'pension',
-    eligibility: {
-      disabilityPercentMin: 60,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 300000,
-      ageRange: [18, 99],
-      gender: 'all',
-      states: ['haryana'],
+    "id": "samarth_scheme",
+    "name": "Samarth Scheme – Respite Care for Autism & Cerebral Palsy",
+    "nameHi": "समर्थ योजना – सेरेब्रल पाल्सी एवं ऑटिज्म देखभाल सहायता",
+    "ministry": "National Trust (Ministry of Social Justice & Empowerment)",
+    "category": "healthcare",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "cerebral_palsy",
+        "autism",
+        "intellectual",
+        "multiple"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 9999999,
+      "ageRange": [
+        0,
+        99
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹3,000/month Pension',
-      description: 'Monthly disability pension allowance provided to Haryana residents with 60%+ disability',
+    "benefits": {
+      "amount": "Free Respite Care & Residential Support",
+      "description": "Short-term and long-term respite care centers providing therapeutic support, nutrition, and relief to families"
     },
-    requiredDocuments: [
-      'Disability Certificate (60%+)',
-      'Parivar Pehchan Patra (PPP) Haryana',
-      'Domicile Certificate',
-      'Aadhaar Card',
-      'Bank Account',
+    "requiredDocuments": [
+      "Disability Certificate under National Trust Act",
+      "Aadhaar Card",
+      "Guardian Authorization Letter",
+      "Medical Diagnostic Report"
     ],
-    applyUrl: 'https://pension.socialjusticehry.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://thenationaltrust.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 44. Punjab State Disability Pension
   {
-    id: 'punjab_divyang_pension',
-    name: 'Punjab State Disability Pension & Education Financial Support',
-    nameHi: 'पंजाब राज्य दिव्यांगता पेंशन एवं शिक्षा सहायता',
-    ministry: 'Department of Social Security and Women & Child Development, Punjab',
-    category: 'pension',
-    eligibility: {
-      disabilityPercentMin: 50,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple'],
-      educationLevels: 'all',
-      maxIncome: 200000,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: ['punjab'],
+    "id": "prerna_scheme",
+    "name": "Prerna Scheme – Marketing Assistance for PwD Micro-Entrepreneurs",
+    "nameHi": "प्रेरणा योजना – दिव्यांग सूक्ष्म उद्यमियों हेतु विपणन सहायता",
+    "ministry": "National Trust (MSJE)",
+    "category": "employment",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "multiple"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 500000,
+      "ageRange": [
+        18,
+        60
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹1,500/month Pension',
-      description: 'Monthly financial assistance to disabled residents in Punjab',
+    "benefits": {
+      "amount": "Financial Assistance up to ₹10,000 per Exhibition/Stall",
+      "description": "Support for PwD artisans and entrepreneurs to participate in trade fairs, exhibitions, and online marketplaces"
     },
-    requiredDocuments: [
-      'Disability Certificate (50%+)',
-      'Punjab Residence Proof',
-      'Income Certificate',
-      'Aadhaar Card',
-      'Bank Account Passbook',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "UDID Card",
+      "Product Sample / Business Profile",
+      "Aadhaar Card",
+      "Bank Details"
     ],
-    applyUrl: 'https://connect.punjab.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://thenationaltrust.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 45. PM Awas Yojana (PMAY) Priority Housing for PwD
   {
-    id: 'pradhan_mantri_awas_pwd',
-    name: 'Pradhan Mantri Awas Yojana (PMAY) – Priority Housing for PwD',
-    nameHi: 'प्रधानमंत्री आवास योजना – दिव्यांगजन प्राथमिकता आवास',
-    ministry: 'Ministry of Housing & Urban Affairs / Ministry of Rural Development',
-    category: 'housing',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'multiple', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 300000,
-      ageRange: [18, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "sahayog_scheme",
+    "name": "Sahayog Scheme – Caregiver Training and Support Program",
+    "nameHi": "सहयोग योजना – देखभालकर्ता प्रशिक्षण एवं सहायता",
+    "ministry": "National Trust (MSJE)",
+    "category": "healthcare",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "multiple"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 9999999,
+      "ageRange": [
+        18,
+        50
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Up to ₹2,67,000 Subsidy / Ground Floor Allocation',
-      description: 'Mandatory ground floor housing unit reservation + Interest subsidy for PwD applicants under PMAY Urban and Gramin',
+    "benefits": {
+      "amount": "Free Certified Caregiver Training + ₹1,000 Monthly Support",
+      "description": "Training program for parents, family members, and professional caregivers to provide specialized care for severe PwD"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Income Certificate / BPL Card',
-      'Aadhaar Card',
-      'No-Pucca-House Declaration Certificate',
-      'Bank Account Details',
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Dependent PwD Disability Certificate",
+      "Educational Qualification Proof"
     ],
-    applyUrl: 'https://pmaymis.gov.in/',
-    deadline: '2027-12-31',
+    "applyUrl": "https://thenationaltrust.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 46. PM Vishwakarma Scheme (PwD Artisan Support)
   {
-    id: 'pm_vishwakarma_pwd',
-    name: 'PM Vishwakarma Scheme – Specialized Artisan Support for PwD',
-    nameHi: 'पीएम विश्वकर्मा योजना – दिव्यांग कारीगर विशेष सहायता',
-    ministry: 'Ministry of Micro, Small and Medium Enterprises (MSME)',
-    category: 'employment',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'multiple'],
-      educationLevels: 'all',
-      maxIncome: 500000,
-      ageRange: [18, 65],
-      gender: 'all',
-      states: 'all',
+    "id": "badhte_kadam",
+    "name": "Badhte Kadam – Community Inclusive Education & Awareness Drive",
+    "nameHi": "बढ़ते कदम – समुदाय आधारित समावेशी शिक्षा अभियान",
+    "ministry": "National Trust (MSJE)",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 0,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple"
+      ],
+      "educationLevels": [
+        "pre_primary",
+        "primary",
+        "upper_primary",
+        "secondary"
+      ],
+      "maxIncome": 9999999,
+      "ageRange": [
+        3,
+        18
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹15,000 Tool Kit Grant + ₹3,00,000 Loan at 5%',
-      description: 'Skill training with ₹500/day stipend, free accessible toolkits, and collateral-free enterprise loan for traditional artisans',
+    "benefits": {
+      "amount": "Free Inclusive Learning Material & School Support Kits",
+      "description": "Community-level identification, inclusion, and provision of adaptive learning materials for special students in schools"
     },
-    requiredDocuments: [
-      'Disability Certificate / UDID Card',
-      'Artisan Trade Certificate / Recommendation',
-      'Aadhaar Card',
-      'Bank Account Details',
+    "requiredDocuments": [
+      "School Identity Card / Enrollment Letter",
+      "Disability Assessment Certificate",
+      "Aadhaar Card"
     ],
-    applyUrl: 'https://pmvishwakarma.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://thenationaltrust.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 47. National Overseas Scholarship for PwD
   {
-    id: 'national_overseas_scholarship_pwd',
-    name: 'National Overseas Scholarship for Students with Disabilities',
-    nameHi: 'दिव्यांग विद्यार्थियों के लिए राष्ट्रीय ओवरसीज छात्रवृत्ति',
-    ministry: 'Department of Empowerment of Persons with Disabilities',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple'],
-      educationLevels: ['graduate', 'post_graduate'],
-      maxIncome: 800000,
-      ageRange: [18, 35],
-      gender: 'all',
-      states: 'all',
+    "id": "skill_council_pwd",
+    "name": "SCPwD Industry-Aligned Certified Vocational Training",
+    "nameHi": "दिव्यांगजन कौशल परिषद उद्योग-उन्मुख प्रमाणित प्रशिक्षण",
+    "ministry": "Skill Council for Persons with Disabilities (MSDE)",
+    "category": "employment",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "learning",
+        "speech",
+        "multiple"
+      ],
+      "educationLevels": [
+        "secondary",
+        "higher_secondary",
+        "graduate",
+        "vocational",
+        "not_enrolled"
+      ],
+      "maxIncome": 600000,
+      "ageRange": [
+        18,
+        40
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Up to $15,400/year (US) / £9,900/year (UK) + Airfare + Tuition',
-      description: 'Full financial assistance for Master\'s and Ph.D degrees in top foreign universities abroad',
+    "benefits": {
+      "amount": "Free Training + ₹2,500/month Stipend + Direct Job Placement",
+      "description": "Specialized IT, retail, hospitality, and BPO skills training tailored to specific disability profiles with placement drive"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Unconditional Offer Letter from Top 500 Foreign University',
-      'Income Certificate (below ₹8 lakh)',
-      'Passport Copy',
-      'Academic Marksheets & GRE/IELTS Scores',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Educational Qualification Marksheet",
+      "Aadhaar Card",
+      "Bank Account Passbook"
     ],
-    applyUrl: 'https://nosmsje.gov.in/',
-    deadline: '2026-09-15',
+    "applyUrl": "https://scpwd.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 48. Samarth Scheme for Cerebral Palsy & Autism Care
   {
-    id: 'samarth_scheme',
-    name: 'Samarth Scheme – Respite Care for Autism & Cerebral Palsy',
-    nameHi: 'समर्थ योजना – सेरेब्रल पाल्सी एवं ऑटिज्म देखभाल सहायता',
-    ministry: 'National Trust (Ministry of Social Justice & Empowerment)',
-    category: 'healthcare',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['cerebral_palsy', 'autism', 'intellectual', 'multiple'],
-      educationLevels: 'all',
-      maxIncome: 9999999,
-      ageRange: [0, 99],
-      gender: 'all',
-      states: 'all',
+    "id": "swavlamban_health_insurance",
+    "name": "Swavlamban Health Insurance Scheme for Persons with Disabilities",
+    "nameHi": "स्वावलंबन स्वास्थ्य बीमा योजना",
+    "ministry": "Department of Empowerment of Persons with Disabilities & New India Assurance",
+    "category": "healthcare",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "mental_illness",
+        "autism",
+        "learning",
+        "speech",
+        "multiple",
+        "blood_disorder",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": "all",
+      "maxIncome": 300000,
+      "ageRange": [
+        0,
+        65
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Respite Care & Residential Support',
-      description: 'Short-term and long-term respite care centers providing therapeutic support, nutrition, and relief to families',
+    "benefits": {
+      "amount": "₹3,00,000/year Health Insurance (90% Subsidized Premium)",
+      "description": "Affordable health insurance covering OPD treatment, pre-existing conditions, corrective surgery, and therapy for PwD family"
     },
-    requiredDocuments: [
-      'Disability Certificate under National Trust Act',
-      'Aadhaar Card',
-      'Guardian Authorization Letter',
-      'Medical Diagnostic Report',
+    "requiredDocuments": [
+      "Disability Certificate (40%+)",
+      "Income Certificate (below ₹3 lakh)",
+      "Aadhaar Card",
+      "Family Details"
     ],
-    applyUrl: 'https://thenationaltrust.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://www.disabilityaffairs.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 49. Prerna Scheme for PwD Self-Employment Marketing
   {
-    id: 'prerna_scheme',
-    name: 'Prerna Scheme – Marketing Assistance for PwD Micro-Entrepreneurs',
-    nameHi: 'प्रेरणा योजना – दिव्यांग सूक्ष्म उद्यमियों हेतु विपणन सहायता',
-    ministry: 'National Trust (MSJE)',
-    category: 'employment',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'autism', 'multiple'],
-      educationLevels: 'all',
-      maxIncome: 500000,
-      ageRange: [18, 60],
-      gender: 'all',
-      states: 'all',
+    "id": "pm_usp_central_sector_scholarship",
+    "name": "PM-USP Central Sector Scheme of Scholarship for College and University Students",
+    "nameHi": "कॉलेज और विश्वविद्यालय के छात्रों के लिए पीएम-यूएसपी केंद्रीय क्षेत्र छात्रवृत्ति",
+    "ministry": "Department of Higher Education, Ministry of Education",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 0,
+      "disabilityTypes": "all",
+      "educationLevels": [
+        "graduate",
+        "post_graduate",
+        "professional"
+      ],
+      "maxIncome": 450000,
+      "ageRange": [
+        17,
+        26
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Financial Assistance up to ₹10,000 per Exhibition/Stall',
-      description: 'Support for PwD artisans and entrepreneurs to participate in trade fairs, exhibitions, and online marketplaces',
+    "benefits": {
+      "amount": "₹12,000/year (Graduation) — ₹20,000/year (Post-Graduation)",
+      "description": "Direct Benefit Transfer (DBT) annual cash scholarship to cover day-to-day college expenses for top percentile students"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'UDID Card',
-      'Product Sample / Business Profile',
-      'Aadhaar Card',
-      'Bank Details',
+    "requiredDocuments": [
+      "Class 12 Mark Sheet (top 80th percentile)",
+      "Income Certificate (below ₹4.5 lakh)",
+      "College Bonafide Certificate & Fee Receipt",
+      "Aadhaar Card",
+      "Bank Passbook"
     ],
-    applyUrl: 'https://thenationaltrust.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://scholarships.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 50. Sahayog Scheme for Caregivers
   {
-    id: 'sahayog_scheme',
-    name: 'Sahayog Scheme – Caregiver Training and Support Program',
-    nameHi: 'सहयोग योजना – देखभालकर्ता प्रशिक्षण एवं सहायता',
-    ministry: 'National Trust (MSJE)',
-    category: 'healthcare',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['cerebral_palsy', 'intellectual', 'autism', 'multiple'],
-      educationLevels: 'all',
-      maxIncome: 9999999,
-      ageRange: [18, 50],
-      gender: 'all',
-      states: 'all',
+    "id": "aicte_saksham_degree_scholarship",
+    "name": "AICTE Saksham Scholarship Scheme for Specially-Abled Students",
+    "nameHi": "विशेष योग्यजन छात्रों के लिए एआईसीटीई सक्षम छात्रवृत्ति योजना",
+    "ministry": "All India Council for Technical Education (AICTE)",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 40,
+      "disabilityTypes": [
+        "visual",
+        "hearing",
+        "locomotor",
+        "cerebral_palsy",
+        "intellectual",
+        "autism",
+        "multiple",
+        "dwarfism",
+        "muscular_dystrophy"
+      ],
+      "educationLevels": [
+        "graduate",
+        "professional",
+        "vocational"
+      ],
+      "maxIncome": 800000,
+      "ageRange": [
+        17,
+        30
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Certified Caregiver Training + ₹1,000 Monthly Support',
-      description: 'Training program for parents, family members, and professional caregivers to provide specialized care for severe PwD',
+    "benefits": {
+      "amount": "₹50,000 per annum",
+      "description": "Lump sum financial assistance of ₹50,000 per year towards tuition fees, laptop/assistive software purchase, and academic contingencies"
     },
-    requiredDocuments: [
-      'Aadhaar Card',
-      'Dependent PwD Disability Certificate',
-      'Educational Qualification Proof',
+    "requiredDocuments": [
+      "Disability Certificate / UDID Card (40%+)",
+      "AICTE Approved Institute Bonafide Letter",
+      "Family Income Certificate (below ₹8 lakh)",
+      "Class 10/12 Mark Sheets",
+      "Aadhaar Card"
     ],
-    applyUrl: 'https://thenationaltrust.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://scholarships.gov.in/",
+    "deadline": "2027-01-31"
   },
-
-  // 51. Badhte Kadam Inclusive Education Drive
   {
-    id: 'badhte_kadam',
-    name: 'Badhte Kadam – Community Inclusive Education & Awareness Drive',
-    nameHi: 'बढ़ते कदम – समुदाय आधारित समावेशी शिक्षा अभियान',
-    ministry: 'National Trust (MSJE)',
-    category: 'scholarship',
-    eligibility: {
-      disabilityPercentMin: 0,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple'],
-      educationLevels: ['pre_primary', 'primary', 'upper_primary', 'secondary'],
-      maxIncome: 9999999,
-      ageRange: [3, 18],
-      gender: 'all',
-      states: 'all',
+    "id": "ishan_uday_special_scholarship",
+    "name": "Ishan Uday Special Scholarship Scheme for North Eastern Region",
+    "nameHi": "पूर्वोत्तर क्षेत्र के लिए ईशान उदय विशेष छात्रवृत्ति योजना",
+    "ministry": "University Grants Commission (UGC) & Ministry of DoNER",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 0,
+      "disabilityTypes": "all",
+      "educationLevels": [
+        "graduate",
+        "professional"
+      ],
+      "maxIncome": 450000,
+      "ageRange": [
+        17,
+        28
+      ],
+      "gender": "all",
+      "states": [
+        "assam",
+        "arunachal_pradesh",
+        "manipur",
+        "meghalaya",
+        "mizoram",
+        "nagaland",
+        "sikkim",
+        "tripura"
+      ]
     },
-    benefits: {
-      amount: 'Free Inclusive Learning Material & School Support Kits',
-      description: 'Community-level identification, inclusion, and provision of adaptive learning materials for special students in schools',
+    "benefits": {
+      "amount": "₹5,400/month (General Degree) — ₹7,800/month (Technical/Medical/Professional)",
+      "description": "Monthly direct stipend for students of North Eastern states pursuing 1st year undergraduate degree programs in India"
     },
-    requiredDocuments: [
-      'School Identity Card / Enrollment Letter',
-      'Disability Assessment Certificate',
-      'Aadhaar Card',
+    "requiredDocuments": [
+      "Domicile Certificate of NER State",
+      "Income Certificate (below ₹4.5 lakh)",
+      "Class 12 Passing Certificate",
+      "University Admission Slip",
+      "Aadhaar Card"
     ],
-    applyUrl: 'https://thenationaltrust.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://scholarships.gov.in/",
+    "deadline": "2027-03-31"
   },
-
-  // 52. NITI Aayog Inclusive Assistive Tech Grant
   {
-    id: 'niti_aayog_accessible_tech',
-    name: 'NITI Aayog Inclusive Assistive Technology Innovation Grant',
-    nameHi: 'नीति आयोग समावेशी सहायक तकनीक नवाचार अनुदान',
-    ministry: 'NITI Aayog (Atal Innovation Mission)',
-    category: 'assistive',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'autism', 'learning', 'speech', 'multiple'],
-      educationLevels: ['graduate', 'post_graduate', 'professional', 'vocational'],
-      maxIncome: 9999999,
-      ageRange: [18, 45],
-      gender: 'all',
-      states: 'all',
+    "id": "pragati_scholarship_girls_technical",
+    "name": "AICTE Pragati Scholarship Scheme for Girl Students (Technical Degree/Diploma)",
+    "nameHi": "छात्राओं के लिए एआईसीटीई प्रगति छात्रवृत्ति योजना (तकनीकी शिक्षा)",
+    "ministry": "All India Council for Technical Education (AICTE)",
+    "category": "scholarship",
+    "eligibility": {
+      "disabilityPercentMin": 0,
+      "disabilityTypes": "all",
+      "educationLevels": [
+        "graduate",
+        "professional",
+        "vocational"
+      ],
+      "maxIncome": 800000,
+      "ageRange": [
+        16,
+        25
+      ],
+      "gender": "female",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Grant up to ₹5,00,000 for Assistive Innovation',
-      description: 'Funding grant for disabled students and innovators building low-cost accessible hardware, AI tools, or software devices',
+    "benefits": {
+      "amount": "₹50,000 per annum (for all years of study)",
+      "description": "Empowering young women in engineering and technology with ₹50,000 annual scholarship covering tuition, books, and computer equipment"
     },
-    requiredDocuments: [
-      'Disability Certificate / UDID Card',
-      'Project Innovation Proposal / Prototype',
-      'Institute Affiliation Letter',
-      'Aadhaar Card',
+    "requiredDocuments": [
+      "Class 10/12 Mark Sheets",
+      "AICTE College Admission Confirmation",
+      "Family Income Certificate (below ₹8 lakh)",
+      "Aadhaar Card",
+      "Bank Passbook"
     ],
-    applyUrl: 'https://aim.gov.in/',
-    deadline: '2026-10-31',
+    "applyUrl": "https://scholarships.gov.in/",
+    "deadline": "2027-01-31"
   },
-
-  // 53. Skill Council for Persons with Disabilities (SCPwD) Training
   {
-    id: 'skill_council_pwd',
-    name: 'SCPwD Industry-Aligned Certified Vocational Training',
-    nameHi: 'दिव्यांगजन कौशल परिषद उद्योग-उन्मुख प्रमाणित प्रशिक्षण',
-    ministry: 'Skill Council for Persons with Disabilities (MSDE)',
-    category: 'employment',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'autism', 'learning', 'speech', 'multiple'],
-      educationLevels: ['secondary', 'higher_secondary', 'graduate', 'vocational', 'not_enrolled'],
-      maxIncome: 600000,
-      ageRange: [18, 40],
-      gender: 'all',
-      states: 'all',
+    "id": "pm_vishwakarma_artisan_scheme",
+    "name": "PM Vishwakarma Yojana (Artisan Training, Toolkit & Enterprise Credit)",
+    "nameHi": "पीएम विश्वकर्मा योजना (कारीगर प्रशिक्षण, टूलकिट एवं रियायती ऋण)",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises (MSME)",
+    "category": "employment",
+    "eligibility": {
+      "disabilityPercentMin": 0,
+      "disabilityTypes": "all",
+      "educationLevels": "all",
+      "maxIncome": 400000,
+      "ageRange": [
+        18,
+        60
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: 'Free Training + ₹2,500/month Stipend + Direct Job Placement',
-      description: 'Specialized IT, retail, hospitality, and BPO skills training tailored to specific disability profiles with placement drive',
+    "benefits": {
+      "amount": "₹15,000 Free Modern Toolkit e-Voucher + Collateral-Free Loans up to ₹3,00,000 (5% interest)",
+      "description": "Recognition through PM Vishwakarma Certificate & ID Card, 5-7 days basic skill training with ₹500/day stipend, ₹15,000 modern toolkit grant, and collateral-free enterprise loan (Tranche 1: ₹1 Lakh, Tranche 2: ₹2 Lakh)"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Educational Qualification Marksheet',
-      'Aadhaar Card',
-      'Bank Account Passbook',
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Mobile Number linked to Aadhaar",
+      "Bank Passbook",
+      "Traditional Trade Self-Declaration / Gram Panchayat Verification"
     ],
-    applyUrl: 'https://scpwd.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://pmvishwakarma.gov.in/",
+    "deadline": "2027-12-31"
   },
-
-  // 54. Swavlamban Health Insurance Scheme for PwD
   {
-    id: 'swavlamban_health_insurance',
-    name: 'Swavlamban Health Insurance Scheme for Persons with Disabilities',
-    nameHi: 'स्वावलंबन स्वास्थ्य बीमा योजना',
-    ministry: 'Department of Empowerment of Persons with Disabilities & New India Assurance',
-    category: 'healthcare',
-    eligibility: {
-      disabilityPercentMin: 40,
-      disabilityTypes: ['visual', 'hearing', 'locomotor', 'cerebral_palsy', 'intellectual', 'mental_illness', 'autism', 'learning', 'speech', 'multiple', 'blood_disorder', 'muscular_dystrophy'],
-      educationLevels: 'all',
-      maxIncome: 300000,
-      ageRange: [0, 65],
-      gender: 'all',
-      states: 'all',
+    "id": "pm_svanidhi_micro_credit",
+    "name": "PM SVANidhi (Micro-Credit Facility for Street Vendors & Nano Traders)",
+    "nameHi": "पीएम स्वनिधि (स्ट्रीट वेंडरों के लिए सूक्ष्म ऋण सुविधा)",
+    "ministry": "Ministry of Housing and Urban Affairs (MoHUA)",
+    "category": "employment",
+    "eligibility": {
+      "disabilityPercentMin": 0,
+      "disabilityTypes": "all",
+      "educationLevels": "all",
+      "maxIncome": 350000,
+      "ageRange": [
+        18,
+        65
+      ],
+      "gender": "all",
+      "states": "all"
     },
-    benefits: {
-      amount: '₹3,00,000/year Health Insurance (90% Subsidized Premium)',
-      description: 'Affordable health insurance covering OPD treatment, pre-existing conditions, corrective surgery, and therapy for PwD family',
+    "benefits": {
+      "amount": "₹10,000 (1st Tranche) ➔ ₹20,000 (2nd Tranche) ➔ ₹50,000 (3rd Tranche)",
+      "description": "Collateral-free working capital loan with 7% interest subsidy on timely repayment + ₹1,200 annual cashback on digital UPI transactions"
     },
-    requiredDocuments: [
-      'Disability Certificate (40%+)',
-      'Income Certificate (below ₹3 lakh)',
-      'Aadhaar Card',
-      'Family Details',
+    "requiredDocuments": [
+      "Certificate of Vending / Letter of Recommendation (LoR) from Urban Local Body",
+      "Aadhaar Card",
+      "Bank Account Details"
     ],
-    applyUrl: 'https://www.disabilityaffairs.gov.in/',
-    deadline: '2027-03-31',
+    "applyUrl": "https://pmsvanidhi.mohua.gov.in/",
+    "deadline": "2027-12-31"
   },
+  {
+    "id": "pm_jay_senior_citizen_topup",
+    "name": "Ayushman Bharat PM-JAY Universal Senior Citizen Health Coverage (70+ Age)",
+    "nameHi": "आयुष्मान भारत वरिष्ठ नागरिक स्वास्थ्य सुरक्षा योजना (70+ आयु)",
+    "ministry": "National Health Authority (NHA), MoHFW",
+    "category": "healthcare",
+    "eligibility": {
+      "disabilityPercentMin": 0,
+      "disabilityTypes": "all",
+      "educationLevels": "all",
+      "maxIncome": 0,
+      "ageRange": [
+        70,
+        110
+      ],
+      "gender": "all",
+      "states": "all"
+    },
+    "benefits": {
+      "amount": "₹5,00,000 annual distinct family floater health cover",
+      "description": "Separate dedicated cashless inpatient hospitalization cover of ₹5 Lakh/year for all citizens aged 70+, regardless of household wealth or income"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card with date of birth verification",
+      "Active Mobile Number",
+      "Ration Card (optional)"
+    ],
+    "applyUrl": "https://beneficiary.nha.gov.in/",
+    "deadline": "2027-12-31"
+  },
+  {
+    "id": "pm_surya_ghar_muft_bijli",
+    "name": "PM Surya Ghar: Muft Bijli Yojana (Rooftop Solar Subsidy)",
+    "nameHi": "पीएम सूर्य घर: मुफ्त बिजली योजना (रूफटॉप सोलर सब्सिडी)",
+    "ministry": "Ministry of New and Renewable Energy (MNRE)",
+    "category": "housing",
+    "eligibility": {
+      "disabilityPercentMin": 0,
+      "disabilityTypes": "all",
+      "educationLevels": "all",
+      "maxIncome": 600000,
+      "ageRange": [
+        18,
+        75
+      ],
+      "gender": "all",
+      "states": "all"
+    },
+    "benefits": {
+      "amount": "Up to ₹78,000 Direct Capital Subsidy + 300 Units Free Monthly Electricity",
+      "description": "₹30,000 subsidy for 1 kW, ₹60,000 for 2 kW, and ₹78,000 for 3 kW+ rooftop solar systems with low-interest bank loans at 7% p.a."
+    },
+    "requiredDocuments": [
+      "Electricity Consumer Connection Bill",
+      "Roof Ownership / House Tax Receipt",
+      "Aadhaar Card",
+      "Bank Passbook"
+    ],
+    "applyUrl": "https://pmsuryaghar.gov.in/",
+    "deadline": "2027-12-31"
+  }
 ];

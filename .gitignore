@@ -1,21 +1,34 @@
-# Python
+# Node & Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js & Production Builds
+.next/
+out/
+build/
+dist/
+
+# Python & Virtual Environments
 __pycache__/
 *.py[cod]
 *$py.class
 venv/
 .venv/
 env/
+.pytest_cache/
+*.coverage
 
-# OS
+# OS & Editor
 .DS_Store
 Thumbs.db
-
-# IDE & Editor
 .vscode/
 .idea/
 *.swp
 
-# Environment variables (do not commit secrets)
+# Environment Variables
 .env
 .env.example
 .env*.local
+!frontend/.env.example
+!backend/.env.example

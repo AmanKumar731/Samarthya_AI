@@ -432,58 +432,6 @@
       "deadline": "2026-11-30"
     },
     {
-      "id": "national_scholarship_pwd",
-      "name": "National Scholarship for Persons with Disabilities (Top Class)",
-      "nameHi": "दिव्यांगजनों के लिए राष्ट्रीय छात्रवृत्ति (टॉप क्लास)",
-      "ministry": "Department of Empowerment of Persons with Disabilities",
-      "category": "scholarship",
-      "eligibility": {
-        "disabilityPercentMin": 40,
-        "disabilityTypes": [
-          "visual",
-          "hearing",
-          "locomotor",
-          "cerebral_palsy",
-          "intellectual",
-          "mental_illness",
-          "autism",
-          "learning",
-          "speech",
-          "multiple",
-          "blood_disorder",
-          "acid_attack",
-          "dwarfism",
-          "muscular_dystrophy"
-        ],
-        "educationLevels": [
-          "graduate",
-          "post_graduate",
-          "professional"
-        ],
-        "maxIncome": 600000,
-        "ageRange": [
-          17,
-          35
-        ],
-        "gender": "all",
-        "states": "all"
-      },
-      "benefits": {
-        "amount": "Up to ₹2,00,000/year",
-        "description": "Full tuition fee + maintenance allowance + book grant for TOP-class institutions (IITs, NITs, AIIMS, etc.)"
-      },
-      "requiredDocuments": [
-        "Disability Certificate (40%+)",
-        "Admission Letter from Notified Institute",
-        "Income Certificate (below ₹6 lakh)",
-        "Marksheet of last qualifying exam",
-        "Aadhaar Card",
-        "Bank Account"
-      ],
-      "applyUrl": "https://scholarships.gov.in/",
-      "deadline": "2026-10-31"
-    },
-    {
       "id": "adip_scheme",
       "name": "ADIP Scheme (Assistive Devices / Implants / Prosthetics)",
       "nameHi": "एडिप योजना (सहायक उपकरण / प्रत्यारोपण)",
@@ -924,54 +872,6 @@
       "deadline": "2027-03-31"
     },
     {
-      "id": "sipda_skill",
-      "name": "SIPDA – Skill Training for Persons with Disabilities",
-      "nameHi": "सिपडा – दिव्यांगजनों के लिए कौशल प्रशिक्षण",
-      "ministry": "Department of Empowerment of Persons with Disabilities",
-      "category": "employment",
-      "eligibility": {
-        "disabilityPercentMin": 40,
-        "disabilityTypes": [
-          "visual",
-          "hearing",
-          "locomotor",
-          "cerebral_palsy",
-          "intellectual",
-          "autism",
-          "learning",
-          "speech",
-          "multiple"
-        ],
-        "educationLevels": [
-          "secondary",
-          "higher_secondary",
-          "graduate",
-          "vocational",
-          "not_enrolled"
-        ],
-        "maxIncome": 500000,
-        "ageRange": [
-          15,
-          45
-        ],
-        "gender": "all",
-        "states": "all"
-      },
-      "benefits": {
-        "amount": "Free Skill Training + ₹2,000/month Stipend",
-        "description": "Free vocational and digital skill training with monthly stipend, food, and hostel facility for PwD students"
-      },
-      "requiredDocuments": [
-        "Disability Certificate (40%+)",
-        "Education Certificate",
-        "Aadhaar Card",
-        "Bank Account",
-        "Photograph"
-      ],
-      "applyUrl": "https://www.disabilityaffairs.gov.in/",
-      "deadline": "2026-09-30"
-    },
-    {
       "id": "udid_card",
       "name": "UDID Card – Unique Disability ID",
       "nameHi": "यूडीआईडी कार्ड – विशिष्ट दिव्यांग पहचान पत्र",
@@ -1248,51 +1148,6 @@
       "deadline": "2027-03-31"
     },
     {
-      "id": "free_coaching_pwd",
-      "name": "Free Coaching for Competitive Exams (PwD Category)",
-      "nameHi": "प्रतियोगी परीक्षाओं के लिए निःशुल्क कोचिंग (दिव्यांग वर्ग)",
-      "ministry": "Ministry of Social Justice & Empowerment",
-      "category": "scholarship",
-      "eligibility": {
-        "disabilityPercentMin": 40,
-        "disabilityTypes": [
-          "visual",
-          "hearing",
-          "locomotor",
-          "cerebral_palsy",
-          "intellectual",
-          "learning",
-          "speech",
-          "multiple"
-        ],
-        "educationLevels": [
-          "higher_secondary",
-          "graduate",
-          "post_graduate"
-        ],
-        "maxIncome": 600000,
-        "ageRange": [
-          16,
-          35
-        ],
-        "gender": "all",
-        "states": "all"
-      },
-      "benefits": {
-        "amount": "Free Coaching + ₹3,000/month Stipend",
-        "description": "Free coaching for UPSC, SSC, banking, CAT, GATE, and similar exams + monthly maintenance allowance"
-      },
-      "requiredDocuments": [
-        "Disability Certificate (40%+)",
-        "Education Certificate",
-        "Income Certificate (below ₹6 lakh)",
-        "Aadhaar Card",
-        "Bank Account"
-      ],
-      "applyUrl": "https://socialjustice.gov.in/",
-      "deadline": "2026-08-31"
-    },
-    {
       "id": "svanidhi_pwd",
       "name": "PM SVANidhi – Micro Loan for PwD Street Vendors",
       "nameHi": "पीएम स्वनिधि – दिव्यांग स्ट्रीट वेंडर्स के लिए सूक्ष्म ऋण",
@@ -1411,55 +1266,6 @@
       ],
       "applyUrl": "https://www.india.gov.in/",
       "deadline": "2027-03-31"
-    },
-    {
-      "id": "nfpwd_fellowship",
-      "name": "National Fellowship for Persons with Disabilities (NFPwD)",
-      "nameHi": "दिव्यांगजनों के लिए राष्ट्रीय फेलोशिप (NFPwD)",
-      "ministry": "University Grants Commission (UGC)",
-      "category": "scholarship",
-      "eligibility": {
-        "disabilityPercentMin": 40,
-        "disabilityTypes": [
-          "visual",
-          "hearing",
-          "locomotor",
-          "cerebral_palsy",
-          "intellectual",
-          "mental_illness",
-          "autism",
-          "learning",
-          "speech",
-          "multiple",
-          "blood_disorder",
-          "acid_attack",
-          "dwarfism",
-          "muscular_dystrophy"
-        ],
-        "educationLevels": [
-          "post_graduate"
-        ],
-        "maxIncome": 9999999,
-        "ageRange": [
-          20,
-          40
-        ],
-        "gender": "all",
-        "states": "all"
-      },
-      "benefits": {
-        "amount": "₹31,000/month (JRF) — ₹35,000/month (SRF)",
-        "description": "Junior/Senior Research Fellowship for M.Phil/Ph.D scholars with disabilities — covers tuition, contingency, escort, reader allowance"
-      },
-      "requiredDocuments": [
-        "Disability Certificate (40%+)",
-        "M.Phil / Ph.D Admission Letter",
-        "UGC NET / Qualifying Score",
-        "Aadhaar Card",
-        "Bank Account"
-      ],
-      "applyUrl": "https://scholarships.gov.in/",
-      "deadline": "2026-10-15"
     },
     {
       "id": "pmkvy_pwd",
@@ -2372,52 +2178,6 @@
       "deadline": "2027-03-31"
     },
     {
-      "id": "national_overseas_scholarship_pwd",
-      "name": "National Overseas Scholarship for Students with Disabilities",
-      "nameHi": "दिव्यांग विद्यार्थियों के लिए राष्ट्रीय ओवरसीज छात्रवृत्ति",
-      "ministry": "Department of Empowerment of Persons with Disabilities",
-      "category": "scholarship",
-      "eligibility": {
-        "disabilityPercentMin": 40,
-        "disabilityTypes": [
-          "visual",
-          "hearing",
-          "locomotor",
-          "cerebral_palsy",
-          "intellectual",
-          "mental_illness",
-          "autism",
-          "learning",
-          "speech",
-          "multiple"
-        ],
-        "educationLevels": [
-          "graduate",
-          "post_graduate"
-        ],
-        "maxIncome": 800000,
-        "ageRange": [
-          18,
-          35
-        ],
-        "gender": "all",
-        "states": "all"
-      },
-      "benefits": {
-        "amount": "Up to $15,400/year (US) / £9,900/year (UK) + Airfare + Tuition",
-        "description": "Full financial assistance for Master's and Ph.D degrees in top foreign universities abroad"
-      },
-      "requiredDocuments": [
-        "Disability Certificate (40%+)",
-        "Unconditional Offer Letter from Top 500 Foreign University",
-        "Income Certificate (below ₹8 lakh)",
-        "Passport Copy",
-        "Academic Marksheets & GRE/IELTS Scores"
-      ],
-      "applyUrl": "https://nosmsje.gov.in/",
-      "deadline": "2026-09-15"
-    },
-    {
       "id": "samarth_scheme",
       "name": "Samarth Scheme – Respite Care for Autism & Cerebral Palsy",
       "nameHi": "समर्थ योजना – सेरेब्रल पाल्सी एवं ऑटिज्म देखभाल सहायता",
@@ -2575,52 +2335,6 @@
       "deadline": "2027-03-31"
     },
     {
-      "id": "niti_aayog_accessible_tech",
-      "name": "NITI Aayog Inclusive Assistive Technology Innovation Grant",
-      "nameHi": "नीति आयोग समावेशी सहायक तकनीक नवाचार अनुदान",
-      "ministry": "NITI Aayog (Atal Innovation Mission)",
-      "category": "assistive",
-      "eligibility": {
-        "disabilityPercentMin": 40,
-        "disabilityTypes": [
-          "visual",
-          "hearing",
-          "locomotor",
-          "cerebral_palsy",
-          "intellectual",
-          "autism",
-          "learning",
-          "speech",
-          "multiple"
-        ],
-        "educationLevels": [
-          "graduate",
-          "post_graduate",
-          "professional",
-          "vocational"
-        ],
-        "maxIncome": 9999999,
-        "ageRange": [
-          18,
-          45
-        ],
-        "gender": "all",
-        "states": "all"
-      },
-      "benefits": {
-        "amount": "Grant up to ₹5,00,000 for Assistive Innovation",
-        "description": "Funding grant for disabled students and innovators building low-cost accessible hardware, AI tools, or software devices"
-      },
-      "requiredDocuments": [
-        "Disability Certificate / UDID Card",
-        "Project Innovation Proposal / Prototype",
-        "Institute Affiliation Letter",
-        "Aadhaar Card"
-      ],
-      "applyUrl": "https://aim.gov.in/",
-      "deadline": "2026-10-31"
-    },
-    {
       "id": "skill_council_pwd",
       "name": "SCPwD Industry-Aligned Certified Vocational Training",
       "nameHi": "दिव्यांगजन कौशल परिषद उद्योग-उन्मुख प्रमाणित प्रशिक्षण",
@@ -2710,6 +2424,290 @@
       ],
       "applyUrl": "https://www.disabilityaffairs.gov.in/",
       "deadline": "2027-03-31"
+    },
+    {
+      "id": "pm_usp_central_sector_scholarship",
+      "name": "PM-USP Central Sector Scheme of Scholarship for College and University Students",
+      "nameHi": "कॉलेज और विश्वविद्यालय के छात्रों के लिए पीएम-यूएसपी केंद्रीय क्षेत्र छात्रवृत्ति",
+      "ministry": "Department of Higher Education, Ministry of Education",
+      "category": "scholarship",
+      "eligibility": {
+        "disabilityPercentMin": 0,
+        "disabilityTypes": "all",
+        "educationLevels": [
+          "graduate",
+          "post_graduate",
+          "professional"
+        ],
+        "maxIncome": 450000,
+        "ageRange": [
+          17,
+          26
+        ],
+        "gender": "all",
+        "states": "all"
+      },
+      "benefits": {
+        "amount": "₹12,000/year (Graduation) — ₹20,000/year (Post-Graduation)",
+        "description": "Direct Benefit Transfer (DBT) annual cash scholarship to cover day-to-day college expenses for top percentile students"
+      },
+      "requiredDocuments": [
+        "Class 12 Mark Sheet (top 80th percentile)",
+        "Income Certificate (below ₹4.5 lakh)",
+        "College Bonafide Certificate & Fee Receipt",
+        "Aadhaar Card",
+        "Bank Passbook"
+      ],
+      "applyUrl": "https://scholarships.gov.in/",
+      "deadline": "2027-03-31"
+    },
+    {
+      "id": "aicte_saksham_degree_scholarship",
+      "name": "AICTE Saksham Scholarship Scheme for Specially-Abled Students",
+      "nameHi": "विशेष योग्यजन छात्रों के लिए एआईसीटीई सक्षम छात्रवृत्ति योजना",
+      "ministry": "All India Council for Technical Education (AICTE)",
+      "category": "scholarship",
+      "eligibility": {
+        "disabilityPercentMin": 40,
+        "disabilityTypes": [
+          "visual",
+          "hearing",
+          "locomotor",
+          "cerebral_palsy",
+          "intellectual",
+          "autism",
+          "multiple",
+          "dwarfism",
+          "muscular_dystrophy"
+        ],
+        "educationLevels": [
+          "graduate",
+          "professional",
+          "vocational"
+        ],
+        "maxIncome": 800000,
+        "ageRange": [
+          17,
+          30
+        ],
+        "gender": "all",
+        "states": "all"
+      },
+      "benefits": {
+        "amount": "₹50,000 per annum",
+        "description": "Lump sum financial assistance of ₹50,000 per year towards tuition fees, laptop/assistive software purchase, and academic contingencies"
+      },
+      "requiredDocuments": [
+        "Disability Certificate / UDID Card (40%+)",
+        "AICTE Approved Institute Bonafide Letter",
+        "Family Income Certificate (below ₹8 lakh)",
+        "Class 10/12 Mark Sheets",
+        "Aadhaar Card"
+      ],
+      "applyUrl": "https://scholarships.gov.in/",
+      "deadline": "2027-01-31"
+    },
+    {
+      "id": "ishan_uday_special_scholarship",
+      "name": "Ishan Uday Special Scholarship Scheme for North Eastern Region",
+      "nameHi": "पूर्वोत्तर क्षेत्र के लिए ईशान उदय विशेष छात्रवृत्ति योजना",
+      "ministry": "University Grants Commission (UGC) & Ministry of DoNER",
+      "category": "scholarship",
+      "eligibility": {
+        "disabilityPercentMin": 0,
+        "disabilityTypes": "all",
+        "educationLevels": [
+          "graduate",
+          "professional"
+        ],
+        "maxIncome": 450000,
+        "ageRange": [
+          17,
+          28
+        ],
+        "gender": "all",
+        "states": [
+          "assam",
+          "arunachal_pradesh",
+          "manipur",
+          "meghalaya",
+          "mizoram",
+          "nagaland",
+          "sikkim",
+          "tripura"
+        ]
+      },
+      "benefits": {
+        "amount": "₹5,400/month (General Degree) — ₹7,800/month (Technical/Medical/Professional)",
+        "description": "Monthly direct stipend for students of North Eastern states pursuing 1st year undergraduate degree programs in India"
+      },
+      "requiredDocuments": [
+        "Domicile Certificate of NER State",
+        "Income Certificate (below ₹4.5 lakh)",
+        "Class 12 Passing Certificate",
+        "University Admission Slip",
+        "Aadhaar Card"
+      ],
+      "applyUrl": "https://scholarships.gov.in/",
+      "deadline": "2027-03-31"
+    },
+    {
+      "id": "pragati_scholarship_girls_technical",
+      "name": "AICTE Pragati Scholarship Scheme for Girl Students (Technical Degree/Diploma)",
+      "nameHi": "छात्राओं के लिए एआईसीटीई प्रगति छात्रवृत्ति योजना (तकनीकी शिक्षा)",
+      "ministry": "All India Council for Technical Education (AICTE)",
+      "category": "scholarship",
+      "eligibility": {
+        "disabilityPercentMin": 0,
+        "disabilityTypes": "all",
+        "educationLevels": [
+          "graduate",
+          "professional",
+          "vocational"
+        ],
+        "maxIncome": 800000,
+        "ageRange": [
+          16,
+          25
+        ],
+        "gender": "female",
+        "states": "all"
+      },
+      "benefits": {
+        "amount": "₹50,000 per annum (for all years of study)",
+        "description": "Empowering young women in engineering and technology with ₹50,000 annual scholarship covering tuition, books, and computer equipment"
+      },
+      "requiredDocuments": [
+        "Class 10/12 Mark Sheets",
+        "AICTE College Admission Confirmation",
+        "Family Income Certificate (below ₹8 lakh)",
+        "Aadhaar Card",
+        "Bank Passbook"
+      ],
+      "applyUrl": "https://scholarships.gov.in/",
+      "deadline": "2027-01-31"
+    },
+    {
+      "id": "pm_vishwakarma_artisan_scheme",
+      "name": "PM Vishwakarma Yojana (Artisan Training, Toolkit & Enterprise Credit)",
+      "nameHi": "पीएम विश्वकर्मा योजना (कारीगर प्रशिक्षण, टूलकिट एवं रियायती ऋण)",
+      "ministry": "Ministry of Micro, Small and Medium Enterprises (MSME)",
+      "category": "employment",
+      "eligibility": {
+        "disabilityPercentMin": 0,
+        "disabilityTypes": "all",
+        "educationLevels": "all",
+        "maxIncome": 400000,
+        "ageRange": [
+          18,
+          60
+        ],
+        "gender": "all",
+        "states": "all"
+      },
+      "benefits": {
+        "amount": "₹15,000 Free Modern Toolkit e-Voucher + Collateral-Free Loans up to ₹3,00,000 (5% interest)",
+        "description": "Recognition through PM Vishwakarma Certificate & ID Card, 5-7 days basic skill training with ₹500/day stipend, ₹15,000 modern toolkit grant, and collateral-free enterprise loan (Tranche 1: ₹1 Lakh, Tranche 2: ₹2 Lakh)"
+      },
+      "requiredDocuments": [
+        "Aadhaar Card",
+        "Mobile Number linked to Aadhaar",
+        "Bank Passbook",
+        "Traditional Trade Self-Declaration / Gram Panchayat Verification"
+      ],
+      "applyUrl": "https://pmvishwakarma.gov.in/",
+      "deadline": "2027-12-31"
+    },
+    {
+      "id": "pm_svanidhi_micro_credit",
+      "name": "PM SVANidhi (Micro-Credit Facility for Street Vendors & Nano Traders)",
+      "nameHi": "पीएम स्वनिधि (स्ट्रीट वेंडरों के लिए सूक्ष्म ऋण सुविधा)",
+      "ministry": "Ministry of Housing and Urban Affairs (MoHUA)",
+      "category": "employment",
+      "eligibility": {
+        "disabilityPercentMin": 0,
+        "disabilityTypes": "all",
+        "educationLevels": "all",
+        "maxIncome": 350000,
+        "ageRange": [
+          18,
+          65
+        ],
+        "gender": "all",
+        "states": "all"
+      },
+      "benefits": {
+        "amount": "₹10,000 (1st Tranche) ➔ ₹20,000 (2nd Tranche) ➔ ₹50,000 (3rd Tranche)",
+        "description": "Collateral-free working capital loan with 7% interest subsidy on timely repayment + ₹1,200 annual cashback on digital UPI transactions"
+      },
+      "requiredDocuments": [
+        "Certificate of Vending / Letter of Recommendation (LoR) from Urban Local Body",
+        "Aadhaar Card",
+        "Bank Account Details"
+      ],
+      "applyUrl": "https://pmsvanidhi.mohua.gov.in/",
+      "deadline": "2027-12-31"
+    },
+    {
+      "id": "pm_jay_senior_citizen_topup",
+      "name": "Ayushman Bharat PM-JAY Universal Senior Citizen Health Coverage (70+ Age)",
+      "nameHi": "आयुष्मान भारत वरिष्ठ नागरिक स्वास्थ्य सुरक्षा योजना (70+ आयु)",
+      "ministry": "National Health Authority (NHA), MoHFW",
+      "category": "healthcare",
+      "eligibility": {
+        "disabilityPercentMin": 0,
+        "disabilityTypes": "all",
+        "educationLevels": "all",
+        "maxIncome": 0,
+        "ageRange": [
+          70,
+          110
+        ],
+        "gender": "all",
+        "states": "all"
+      },
+      "benefits": {
+        "amount": "₹5,00,000 annual distinct family floater health cover",
+        "description": "Separate dedicated cashless inpatient hospitalization cover of ₹5 Lakh/year for all citizens aged 70+, regardless of household wealth or income"
+      },
+      "requiredDocuments": [
+        "Aadhaar Card with date of birth verification",
+        "Active Mobile Number",
+        "Ration Card (optional)"
+      ],
+      "applyUrl": "https://beneficiary.nha.gov.in/",
+      "deadline": "2027-12-31"
+    },
+    {
+      "id": "pm_surya_ghar_muft_bijli",
+      "name": "PM Surya Ghar: Muft Bijli Yojana (Rooftop Solar Subsidy)",
+      "nameHi": "पीएम सूर्य घर: मुफ्त बिजली योजना (रूफटॉप सोलर सब्सिडी)",
+      "ministry": "Ministry of New and Renewable Energy (MNRE)",
+      "category": "housing",
+      "eligibility": {
+        "disabilityPercentMin": 0,
+        "disabilityTypes": "all",
+        "educationLevels": "all",
+        "maxIncome": 600000,
+        "ageRange": [
+          18,
+          75
+        ],
+        "gender": "all",
+        "states": "all"
+      },
+      "benefits": {
+        "amount": "Up to ₹78,000 Direct Capital Subsidy + 300 Units Free Monthly Electricity",
+        "description": "₹30,000 subsidy for 1 kW, ₹60,000 for 2 kW, and ₹78,000 for 3 kW+ rooftop solar systems with low-interest bank loans at 7% p.a."
+      },
+      "requiredDocuments": [
+        "Electricity Consumer Connection Bill",
+        "Roof Ownership / House Tax Receipt",
+        "Aadhaar Card",
+        "Bank Passbook"
+      ],
+      "applyUrl": "https://pmsuryaghar.gov.in/",
+      "deadline": "2027-12-31"
     }
   ],
   "CREDIT_SCHEME_DATABASE": [

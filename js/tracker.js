@@ -370,8 +370,8 @@ const ApplicationTracker = {
         schemeId: 'post_matric_pwd',
         schemeName: 'Post-Matric Scholarship for Students with Disabilities',
         ministry: 'Department of Empowerment of Persons with Disabilities',
-        appliedDate: '2026-02-10',
-        deadline: '2026-03-31',
+        appliedDate: '2026-10-10',
+        deadline: '2027-03-31',
         status: 'verification',
         benefitAmount: '₹48,000 / year',
         refNo: 'NSP-2026-PWD-849201'
@@ -382,8 +382,8 @@ const ApplicationTracker = {
         schemeId: 'adip_scheme',
         schemeName: 'ADIP Scheme (Free Assistive Devices)',
         ministry: 'Ministry of Social Justice and Empowerment',
-        appliedDate: '2026-01-20',
-        deadline: '2026-04-15',
+        appliedDate: '2026-10-20',
+        deadline: '2027-04-15',
         status: 'review',
         benefitAmount: 'Motorized Tricycle / Braille Kit',
         refNo: 'ALIMCO-CAMP-2026-5531'
