@@ -30,11 +30,18 @@
   <link rel="stylesheet" href="css/section06-portals.css?v=12.0">
   <link rel="stylesheet" href="css/mobile-navbar.css?v=1.0">
   <link rel="stylesheet" href="css/vector-wordmark.css?v=1.0">
+  <link rel="stylesheet" href="css/blind-accessibility.css?v=1.0">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 
 <body>
+  <!-- Accessible Skip Navigation for Blind and Keyboard Users -->
+  <a href="#mainContent" class="skip-nav-link">Skip to Main Content</a>
+  <button type="button" class="skip-nav-link" style="left: 180px;" onclick="AccessibilityModeManager.selectMode('blind')">Activate Blind Voice Navigation (Press Enter)</button>
+
+  <!-- Screen Reader Real-Time Live Region -->
+  <div id="blindAriaAnnouncer" class="sr-only" role="status" aria-live="assertive" aria-atomic="true"></div>
   <!-- Loading Overlay -->
   <div class="loading-overlay" id="loadingOverlay">
     <div class="loading-spinner"></div>
@@ -71,6 +78,13 @@
 
     <!-- Desktop Utilities Group (>= 1024px) -->
     <div class="nav-utilities-group" id="navUtilitiesGroup">
+      <!-- Dual Experience Mode Switcher (Standard vs. Blind Voice Navigation) -->
+      <button type="button" class="nav-experience-pill" id="headerExperienceBtn" onclick="AccessibilityModeManager.openModal()" aria-label="Select Experience: Standard or Blind Voice Navigation" title="Select Experience Mode (Alt + M)">
+        <span class="nav-experience-dot"></span>
+        <span id="headerExperienceIcon">👁️</span>
+        <span id="headerExperienceText">Standard Mode</span>
+      </button>
+
       <button type="button" class="nav-cta-btn" onclick="App.navigate('match')" aria-label="Find Eligible Schemes">
         <span data-i18n="navFindSchemes">🎯 Find Schemes</span>
       </button>
@@ -174,6 +188,12 @@
 
       <!-- Action Buttons & Utilities -->
       <div class="mobile-nav-actions">
+        <!-- 0. Experience Mode Switcher -->
+        <button type="button" class="mobile-btn-secondary" style="border-color:#6366F1;color:#A5B4FC" onclick="AccessibilityModeManager.openModal(); MobileNav.close();" aria-label="Select Experience: Standard or Blind Voice Navigation">
+          <span style="font-size:16px">👁️</span>
+          <span>Switch Experience Mode</span>
+        </button>
+
         <!-- 1. Find Schemes (Primary Electric Blue) -->
         <button type="button" class="mobile-btn-primary" onclick="App.navigate('match'); MobileNav.close();" aria-label="Find Eligible Schemes">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -2052,6 +2072,134 @@
   <!-- Drawer Backdrop (Click-Outside Closer for AI Assistant Drawer) -->
   <div class="drawer-backdrop" id="drawerBackdrop" onclick="SamarthyaAI.close();"></div>
 
+  <!-- ==========================================================================
+       DUAL EXPERIENCE SYSTEM: EXPERIENCE SELECTION MODAL
+       ========================================================================== -->
+  <div class="experience-modal-overlay" id="experienceModal" role="dialog" aria-modal="true" aria-labelledby="experienceModalTitle" aria-hidden="true">
+    <div class="experience-modal-container">
+      <div class="experience-modal-header">
+        <div class="experience-eyebrow">
+          <span>⚡</span> <span>Saksham Accessibility Architecture</span>
+        </div>
+        <h2 class="experience-modal-title" id="experienceModalTitle">Select Your Experience / अपना अनुभव चुनें</h2>
+        <p class="experience-modal-subtitle">
+          Choose how you would like to interact with Saksham. You can switch between modes at any time.
+        </p>
+      </div>
+
+      <div class="experience-cards-grid">
+        <!-- Card 1: Standard Experience -->
+        <div class="experience-card" id="expCardStandard" tabindex="0" role="button" aria-pressed="true" onclick="AccessibilityModeManager.selectMode('standard')">
+          <div class="experience-card-top">
+            <div class="experience-icon-wrap">👁️</div>
+            <span class="experience-badge">Visual Default</span>
+          </div>
+          <div>
+            <h3 class="experience-card-title">Standard Experience</h3>
+            <p class="experience-card-desc">Browse and interact with Saksham using the regular visual interface.</p>
+            <ul class="experience-feature-list">
+              <li>Mouse, keyboard, and touchscreen interaction</li>
+              <li>Existing visual form steps and scheme cards</li>
+              <li>High-speed filtering and financial calculators</li>
+            </ul>
+          </div>
+          <button type="button" class="experience-select-btn" onclick="event.stopPropagation(); AccessibilityModeManager.selectMode('standard')">
+            <span>Select Standard Experience</span> <span>&rarr;</span>
+          </button>
+        </div>
+
+        <!-- Card 2: Blind Accessibility Experience -->
+        <div class="experience-card blind-card" id="expCardBlind" tabindex="0" role="button" aria-pressed="false" onclick="AccessibilityModeManager.selectMode('blind')">
+          <div class="experience-card-top">
+            <div class="experience-icon-wrap">🎙️</div>
+            <span class="experience-badge" style="background:#10B981;color:#0B0F19">Voice First</span>
+          </div>
+          <div>
+            <h3 class="experience-card-title">Blind / Voice Navigation</h3>
+            <p class="experience-card-desc">Navigate Saksham, complete forms, and access government schemes entirely through voice.</p>
+            <ul class="experience-feature-list">
+              <li>100% voice-guided conversational journey</li>
+              <li>Spoken question-by-question form filling</li>
+              <li>Automatic verbal verification &amp; audio scheme explanations</li>
+            </ul>
+          </div>
+          <button type="button" class="experience-select-btn" onclick="event.stopPropagation(); AccessibilityModeManager.selectMode('blind')">
+            <span>Activate Voice Navigation</span> <span>&rarr;</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="experience-modal-footer">
+        <div class="experience-shortcut-hint">
+          <span>Keyboard Shortcut:</span>
+          <kbd class="experience-kbd">Alt</kbd> + <kbd class="experience-kbd">M</kbd>
+          <span>to switch modes anytime</span>
+        </div>
+        <button type="button" class="experience-close-btn" onclick="AccessibilityModeManager.closeModal()">
+          ✕ Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       BLIND VOICE ASSISTANT DOCK & INTERACTION BAR
+       ========================================================================== -->
+  <div class="blind-voice-dock" id="blindVoiceAssistantDock" role="region" aria-label="Saksham Voice Assistant Controls">
+    <div class="blind-dock-inner">
+      <div class="blind-dock-meta">
+        <div class="blind-status-wrap">
+          <div class="blind-status-pill listening" id="blindStatusPill">
+            <span class="blind-status-dot"></span>
+            <span id="blindStatusText">Listening...</span>
+          </div>
+          <span class="blind-step-badge" id="blindStepBadge">Step 1 of 8: Full Name</span>
+          <span id="blindStatusAria" class="sr-only" role="status" aria-live="polite">Status: Listening</span>
+        </div>
+        <div style="font-size:12px;color:#94A3B8;display:flex;align-items:center;gap:12px">
+          <span>Press <kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;color:#fff">Space</kbd> to Pause/Resume</span>
+          <span>Press <kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;color:#fff">R</kbd> to Repeat</span>
+          <span>Press <kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;color:#fff">C</kbd> to Stop</span>
+        </div>
+      </div>
+
+      <div class="blind-speech-display">
+        <div class="blind-assistant-bubble">
+          <span class="blind-bubble-icon">🤖</span>
+          <div class="blind-bubble-text" id="blindAssistantText">
+            Welcome to Saksham. Your voice assistant is ready.
+          </div>
+        </div>
+        <div class="blind-user-bubble">
+          <span class="blind-bubble-icon" style="font-size:16px">🎙️</span>
+          <div class="blind-user-text" id="blindUserTranscript">
+            Listening for your voice...
+          </div>
+        </div>
+      </div>
+
+      <div class="blind-dock-controls">
+        <div class="blind-btn-group-main">
+          <button type="button" class="blind-ctrl-btn btn-mic" id="blindMicBtn" onclick="VoiceAssistantController.toggleMic()" aria-label="Toggle Microphone Recording">
+            <span>🎙️</span> <span>Pause Listening</span>
+          </button>
+          <button type="button" class="blind-ctrl-btn btn-repeat" onclick="VoiceAssistantController.repeatLastInstruction()" aria-label="Repeat Last Instruction">
+            <span>🔁</span> <span>Repeat Instruction</span>
+          </button>
+          <button type="button" class="blind-ctrl-btn" onclick="VoiceAssistantController.toggleLanguage()" aria-label="Change Language between English and Hindi">
+            <span>🌐</span> <span>English / हिंदी</span>
+          </button>
+          <button type="button" class="blind-ctrl-btn btn-stop" onclick="VoiceAssistantController.stop()" aria-label="Stop Voice Assistant">
+            <span>🛑</span> <span>Stop Assistant</span>
+          </button>
+        </div>
+        <button type="button" class="blind-ctrl-btn btn-standard" onclick="AccessibilityModeManager.selectMode('standard')" aria-label="Switch back to Standard Experience">
+          <span>👁️</span> <span>Switch to Standard Mode</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- GSAP & ScrollTrigger CDN (Awwwards Grade Motion) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -2084,6 +2232,7 @@
   <script src="js/section02-mission.js?v=12.0"></script>
   <script src="js/mobile-nav.js?v=1.0"></script>
   <script src="js/vector-wordmark.js?v=1.0"></script>
+  <script src="js/blind-accessibility.js?v=1.0"></script>
   <script src="js/app.js?v=11.0"></script>
 </body>
 

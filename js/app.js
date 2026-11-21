@@ -21,6 +21,7 @@ const App = {
     // Initialize core feature engines
     if (window.SamarthyaDB) SamarthyaDB.init();
     if (window.AccessibilitySuite) AccessibilitySuite.init();
+    if (window.AccessibilityModeManager) AccessibilityModeManager.init();
     if (window.WisprFlow) WisprFlow.init();
     if (window.SamarthyaAI) SamarthyaAI.init();
     if (window.WhatsAppLead) WhatsAppLead.init();

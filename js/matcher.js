@@ -87,11 +87,12 @@ const SamarthyaMatcher = {
           ? 'No disability required for this scheme'
           : 'This scheme requires a disability certificate';
       } else {
-        const intersection = profileDTypes.filter(d => schemeDTypes.includes(d));
-        passed = intersection.length > 0;
+        const isAllTypes = schemeDTypes === 'all' || !Array.isArray(schemeDTypes);
+        const intersection = isAllTypes ? profileDTypes : profileDTypes.filter(d => schemeDTypes.includes(d));
+        passed = isAllTypes || intersection.length > 0;
         detail = passed
           ? `Matched: ${intersection.map(d => this.getDisabilityLabel(d)).join(', ')}`
-          : `Requires covered category (${schemeDTypes.slice(0, 3).map(d => this.getDisabilityLabel(d)).join(', ')})`;
+          : `Requires covered category (${Array.isArray(schemeDTypes) ? schemeDTypes.slice(0, 3).map(d => this.getDisabilityLabel(d)).join(', ') : 'All categories'})`;
       }
 
       if (passed) {
