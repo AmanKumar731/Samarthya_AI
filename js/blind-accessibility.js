@@ -1,11 +1,87 @@
 // ==========================================================================
 // Saksham — Dual Experience & Blind User Voice Navigation Architecture
 // Compliant with WCAG 2.1 AAA Accessibility and Voice-First Principles
+// Hardened with Strict State Machine, Mutual Exclusion & Anti-Echo Lifecycle
 // ==========================================================================
 
 /**
+ * 0. Conversation State Machine & Explicit States
+ * Ensures SPEAKING and LISTENING are mutually exclusive at all times.
+ */
+const ConversationState = {
+  IDLE: 'IDLE',
+  SPEAKING: 'SPEAKING',
+  LISTENING: 'LISTENING',
+  PROCESSING: 'PROCESSING',
+  WAITING_FOR_CONFIRMATION: 'WAITING_FOR_CONFIRMATION',
+  ERROR: 'ERROR'
+};
+
+/**
+ * Anti-Echo & Self-Hearing Guard
+ * Rejects transcripts that echo recent AI speech or questions within the tail window.
+ */
+const EchoGuard = {
+  recentAiUtterances: [], // Array of { text: string, tokens: string[], timestamp: number }
+
+  recordAiUtterance(text) {
+    if (!text) return;
+    const normalized = text.toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()?"'\n\r]/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!normalized) return;
+
+    this.recentAiUtterances.push({
+      text: normalized,
+      tokens: normalized.split(' ').filter(w => w.length > 2),
+      timestamp: Date.now()
+    });
+
+    // Prune entries older than 12 seconds
+    const cutoff = Date.now() - 12000;
+    this.recentAiUtterances = this.recentAiUtterances.filter(u => u.timestamp > cutoff);
+  },
+
+  isAiEcho(userTranscript) {
+    if (!userTranscript) return false;
+    const now = Date.now();
+    const cleanUser = userTranscript.toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()?"'\n\r]/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!cleanUser) return false;
+
+    // Never reject simple affirmative or negative answers as echo
+    const shortConfirmations = [
+      'yes', 'no', 'yeah', 'yep', 'nope', 'haan', 'nahi', 'nahin',
+      'sahi', 'sahi hai', 'theek hai', 'correct', 'wrong', 'right', 'हाँ', 'नहीं', 'सही है'
+    ];
+    if (shortConfirmations.includes(cleanUser)) {
+      return false;
+    }
+
+    // Check against recent assistant utterances from the last 8 seconds
+    for (const u of this.recentAiUtterances) {
+      if (now - u.timestamp > 8000) continue;
+
+      // 1. Exact or substring match (e.g. user transcript is part of or contains AI sentence)
+      if (u.text.includes(cleanUser) || cleanUser.includes(u.text)) {
+        return true;
+      }
+
+      // 2. High token overlap (if >50% of words in user transcript match AI words)
+      const userTokens = cleanUser.split(' ').filter(w => w.length > 2);
+      if (userTokens.length >= 2) {
+        const matchingTokens = userTokens.filter(t => u.tokens.includes(t));
+        if (matchingTokens.length / userTokens.length >= 0.5) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+};
+
+/**
  * 1. SpeechSynthesisService
- * Robust Text-to-Speech service supporting English & Hindi with promise-based speech queue
+ * Robust Text-to-Speech service supporting English & Hindi.
+ * Guaranteed: Completely suspends speech recognition and enforces tail delay.
  */
 const SpeechSynthesisService = {
   isSpeaking: false,
@@ -23,7 +99,6 @@ const SpeechSynthesisService = {
   loadVoices() {
     if (!('speechSynthesis' in window)) return;
     const voices = window.speechSynthesis.getVoices();
-    // Prioritize natural Indian English and Hindi voices
     if (this.lang.startsWith('hi')) {
       this.selectedVoice = voices.find(v => v.lang === 'hi-IN' || v.lang.startsWith('hi')) || null;
     } else {
@@ -40,11 +115,19 @@ const SpeechSynthesisService = {
 
   speak(text, options = {}) {
     return new Promise((resolve) => {
-      if (!('speechSynthesis' in window)) {
-        console.warn('SpeechSynthesis not available');
+      if (!('speechSynthesis' in window) || !text) {
         resolve();
         return;
       }
+
+      // ========================================================
+      // STEP 1: IMMEDIATELY ABORT SPEECH RECOGNITION BEFORE TTS
+      // ========================================================
+      SpeechRecognitionService.abortAndMute();
+      VoiceAssistantController.setState(ConversationState.SPEAKING);
+
+      // Record for EchoGuard protection
+      EchoGuard.recordAiUtterance(text);
 
       this.cancel();
 
@@ -52,36 +135,43 @@ const SpeechSynthesisService = {
       this.currentUtterance = utterance;
       utterance.lang = options.lang || this.lang;
       if (this.selectedVoice) utterance.voice = this.selectedVoice;
-      utterance.rate = options.rate || 0.95; // Slightly slower for crisp comprehension
+      utterance.rate = options.rate || 0.95;
       utterance.pitch = options.pitch || 1.0;
 
-      // Update screen reader live region simultaneously
+      // Update screen reader live region
       const ariaLive = document.getElementById('blindAriaAnnouncer');
-      if (ariaLive) {
-        ariaLive.textContent = text;
-      }
+      if (ariaLive) ariaLive.textContent = text;
 
       // Update Voice Dock UI text
       const assistantText = document.getElementById('blindAssistantText');
-      if (assistantText) {
-        assistantText.textContent = text;
-      }
+      if (assistantText) assistantText.textContent = text;
 
-      // Update visual status pill to Speaking
-      VoiceAssistantController.setStatus('speaking', 'Speaking...');
-
-      utterance.onend = () => {
+      let hasFinished = false;
+      const finishSpeech = async () => {
+        if (hasFinished) return;
+        hasFinished = true;
+        clearTimeout(safetyTimer);
         this.isSpeaking = false;
         this.currentUtterance = null;
+
+        // Post-TTS tail delay (650ms) before resolving
+        await new Promise(r => setTimeout(r, 650));
+        VoiceAssistantController.setState(ConversationState.IDLE);
         resolve();
       };
 
+      utterance.onend = finishSpeech;
       utterance.onerror = (e) => {
         console.warn('SpeechSynthesis error:', e);
-        this.isSpeaking = false;
-        this.currentUtterance = null;
-        resolve();
+        finishSpeech();
       };
+
+      // Fallback safety timeout in case browser TTS engine fails to fire onend
+      const maxDuration = Math.max(3500, text.length * 90);
+      const safetyTimer = setTimeout(() => {
+        console.warn('SpeechSynthesis safety timeout triggered');
+        finishSpeech();
+      }, maxDuration);
 
       this.isSpeaking = true;
       window.speechSynthesis.speak(utterance);
@@ -99,17 +189,22 @@ const SpeechSynthesisService = {
 
 /**
  * 2. SpeechRecognitionService
- * Robust Speech-to-Text provider wrapping Web Speech API with pause/resume and error recovery
+ * Wraps Web Speech API with strict state machine checks, monotonic session IDs,
+ * hardware echo cancellation constraints, and instant abort capabilities.
  */
 const SpeechRecognitionService = {
   recognition: null,
+  mediaStream: null,
   isListening: false,
   isPaused: false,
+  sessionCounter: 0,
+  currentSessionId: null,
   lang: 'en-IN',
   onResultCallback: null,
   onErrorCallback: null,
 
-  init() {
+  async init() {
+    // 1. Initialize Web Speech API
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
       console.warn('SpeechRecognition API not available in this browser');
@@ -124,6 +219,16 @@ const SpeechRecognitionService = {
       this.recognition.lang = this.lang;
 
       this.recognition.onresult = (event) => {
+        // Enforce Session & State Guard: Never accept speech during SPEAKING or PROCESSING
+        const activeSession = this.currentSessionId;
+        if (!this.isListening || !activeSession) return;
+
+        const currentState = VoiceAssistantController.state;
+        if (currentState === ConversationState.SPEAKING || currentState === ConversationState.PROCESSING) {
+          console.warn('Discarded recognition result during', currentState);
+          return;
+        }
+
         let interim = '';
         let final = '';
 
@@ -136,23 +241,44 @@ const SpeechRecognitionService = {
           }
         }
 
-        const displayText = (final || interim).trim();
-        const userTextEl = document.getElementById('blindUserTranscript');
-        if (userTextEl && displayText) {
-          userTextEl.textContent = `"${displayText}"`;
+        const rawText = (final || interim).trim();
+        if (!rawText) return;
+
+        // Echo Guard: Discard if the transcript matches recent AI speech
+        if (EchoGuard.isAiEcho(rawText)) {
+          console.warn('EchoGuard detected AI speech feedback, discarding:', rawText);
+          return;
         }
 
-        if (final && typeof this.onResultCallback === 'function') {
-          this.onResultCallback(final.trim());
+        // Display user speech transcript
+        const userTextEl = document.getElementById('blindUserTranscript');
+        if (userTextEl) {
+          userTextEl.textContent = `"${rawText}"`;
+        }
+
+        // Process final speech ONCE
+        if (final) {
+          const finalClean = final.trim();
+          if (!finalClean || EchoGuard.isAiEcho(finalClean)) return;
+
+          const cb = this.onResultCallback;
+
+          // Stop recognition immediately and enter PROCESSING state
+          this.abortAndMute();
+          VoiceAssistantController.setState(ConversationState.PROCESSING);
+
+          if (typeof cb === 'function') {
+            cb(finalClean);
+          }
         }
       };
 
       this.recognition.onerror = (e) => {
-        if (e.error === 'no-speech') return; // Silence pause is normal
+        if (e.error === 'no-speech' || e.error === 'aborted') return;
 
         console.warn('SpeechRecognition error:', e.error);
         if (e.error === 'not-allowed') {
-          VoiceAssistantController.setStatus('error', 'Microphone Denied');
+          VoiceAssistantController.setState(ConversationState.ERROR);
           SpeechSynthesisService.speak(
             this.lang.startsWith('hi')
               ? 'माइक्रोफ़ोन एक्सेस अस्वीकार कर दिया गया था। कृपया अपनी ब्राउज़र सेटिंग्स में माइक्रोफ़ोन की अनुमति दें।'
@@ -166,7 +292,9 @@ const SpeechRecognitionService = {
       };
 
       this.recognition.onend = () => {
-        if (this.isListening && !this.isPaused) {
+        // Auto-reconnect ONLY if explicitly in LISTENING or WAITING_FOR_CONFIRMATION states
+        const s = VoiceAssistantController.state;
+        if (this.isListening && !this.isPaused && (s === ConversationState.LISTENING || s === ConversationState.WAITING_FOR_CONFIRMATION)) {
           try {
             this.recognition.start();
           } catch (e) {}
@@ -174,6 +302,25 @@ const SpeechRecognitionService = {
       };
     } catch (err) {
       console.warn('SpeechRecognition init failed:', err);
+    }
+
+    // 2. Hardware Echo Cancellation audio constraints
+    await this.initHardwareEchoCancellation();
+  },
+
+  async initHardwareEchoCancellation() {
+    if (typeof navigator !== 'undefined' && navigator.mediaDevices && navigator.mediaDevices.getUserMedia && !this.mediaStream) {
+      try {
+        this.mediaStream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true
+          }
+        });
+      } catch (e) {
+        // Fallback gracefully; browser Web Speech API will continue
+      }
     }
   },
 
@@ -184,45 +331,90 @@ const SpeechRecognitionService = {
     }
   },
 
-  start(onResult, onError) {
+  startListening(onResult, onError) {
+    // Mutual Exclusion: Never start listening if assistant is actively speaking or processing
+    const curState = VoiceAssistantController.state;
+    if (curState === ConversationState.SPEAKING || curState === ConversationState.PROCESSING) {
+      console.warn('Blocked speech recognition start while in state:', curState);
+      return;
+    }
+
     if (!this.recognition) this.init();
     if (!this.recognition) return;
 
-    this.onResultCallback = onResult;
-    this.onErrorCallback = onError;
+    // Increment monotonic session ID
+    const sessionId = ++this.sessionCounter;
+    this.currentSessionId = sessionId;
     this.isListening = true;
     this.isPaused = false;
+    this.onResultCallback = onResult;
+    this.onErrorCallback = onError;
 
-    VoiceAssistantController.setStatus('listening', 'Listening...');
+    // Enable hardware audio tracks
+    if (this.mediaStream) {
+      this.mediaStream.getAudioTracks().forEach(track => { track.enabled = true; });
+    }
+
+    // Set UI state
+    const isConfirming = ConversationalFormEngine.stage === 'confirming_answer' || ConversationalFormEngine.stage === 'review';
+    VoiceAssistantController.setState(
+      isConfirming ? ConversationState.WAITING_FOR_CONFIRMATION : ConversationState.LISTENING
+    );
+
+    // Reset user transcript display for the fresh session
+    const userTextEl = document.getElementById('blindUserTranscript');
+    if (userTextEl) {
+      userTextEl.textContent = 'Listening for your voice...';
+    }
 
     try {
       this.recognition.lang = this.lang;
       this.recognition.start();
-    } catch (e) {}
+    } catch (e) {
+      // Ignore if already active
+    }
+  },
+
+  abortAndMute() {
+    this.isListening = false;
+    this.currentSessionId = null;
+    this.onResultCallback = null;
+
+    // Mute hardware audio stream tracks to cut audio feedback into speech recognition
+    if (this.mediaStream) {
+      this.mediaStream.getAudioTracks().forEach(track => { track.enabled = false; });
+    }
+
+    if (this.recognition) {
+      try {
+        this.recognition.abort(); // Instant cancellation
+      } catch (e) {}
+    }
   },
 
   pause() {
     this.isPaused = true;
-    try {
-      if (this.recognition) this.recognition.stop();
-    } catch (e) {}
-    VoiceAssistantController.setStatus('confirming', 'Paused');
+    this.abortAndMute();
+    VoiceAssistantController.setState(ConversationState.IDLE);
+    const micBtn = document.getElementById('blindMicBtn');
+    if (micBtn) {
+      micBtn.classList.add('paused');
+      micBtn.innerHTML = '<span>▶️</span> <span>Resume Listening</span>';
+    }
   },
 
   resume() {
     this.isPaused = false;
-    VoiceAssistantController.setStatus('listening', 'Listening...');
-    try {
-      if (this.recognition) this.recognition.start();
-    } catch (e) {}
+    const micBtn = document.getElementById('blindMicBtn');
+    if (micBtn) {
+      micBtn.classList.remove('paused');
+      micBtn.innerHTML = '<span>🎙️</span> <span>Pause Listening</span>';
+    }
+    ConversationalFormEngine.resumeListening();
   },
 
   stop() {
-    this.isListening = false;
-    this.isPaused = false;
-    try {
-      if (this.recognition) this.recognition.stop();
-    } catch (e) {}
+    this.abortAndMute();
   }
 };
 
@@ -427,7 +619,7 @@ const FormValidationService = {
 
 /**
  * 4. VoiceCommandInterpreter
- * Identifies global control, navigation, or conversational affirmative/negative intents
+ * Identifies global control, navigation, or affirmative/negative confirmation intents
  */
 const VoiceCommandInterpreter = {
   isAffirmative(text) {
@@ -448,7 +640,7 @@ const VoiceCommandInterpreter = {
     if (t.includes('repeat') || t.includes('dobara') || t.includes('phir se')) {
       return { type: 'repeat' };
     }
-    if (t.includes('stop') || t.includes('pause') || t.includes('ruko') || t.includes('rok do')) {
+    if (t.includes('pause') || t.includes('stop listening') || t.includes('ruko') || t.includes('rok do')) {
       return { type: 'pause' };
     }
     if (t.includes('resume') || t.includes('continue') || t.includes('shuru')) {
@@ -472,7 +664,8 @@ const VoiceCommandInterpreter = {
 
 /**
  * 5. ConversationalFormEngine
- * Step-by-step state machine asking one question at a time with explicit verification
+ * Form-filling state machine asking one question at a time.
+ * Enforces mutual exclusion: Microphone recognition is only active AFTER TTS finishes.
  */
 const ConversationalFormEngine = {
   currentStepIndex: 0,
@@ -491,7 +684,7 @@ const ConversationalFormEngine = {
     disabilityPercent: 0,
     educationLevel: '',
     annualIncome: null,
-    requirement: 'welfare' // 'welfare' or 'credit'
+    requirement: 'welfare'
   },
 
   steps: [
@@ -690,10 +883,19 @@ const ConversationalFormEngine = {
     }
 
     const promptText = isHi ? step.promptHi : step.promptEn;
+
+    // AI speaks question with recognition strictly STOPPED & MUTED
     await SpeechSynthesisService.speak(promptText);
 
-    // After assistant finishes speaking, activate listening for answer
-    SpeechRecognitionService.start(
+    // ONLY after speech completely ends + tail delay: start fresh listening session
+    SpeechRecognitionService.startListening(
+      (speech) => this.handleUserSpeech(speech),
+      (err) => console.warn('Form speech error:', err)
+    );
+  },
+
+  resumeListening() {
+    SpeechRecognitionService.startListening(
       (speech) => this.handleUserSpeech(speech),
       (err) => console.warn('Form speech error:', err)
     );
@@ -723,10 +925,14 @@ const ConversationalFormEngine = {
           ? `${step.labelHi} सफलतापूर्वक दर्ज हो गया।`
           : `${step.labelEn} successfully saved.`;
 
+        // Speaks confirmation with microphone muted
         await SpeechSynthesisService.speak(confirmMsg);
+
         this.currentStepIndex++;
         this.pendingKey = null;
         this.pendingValue = null;
+
+        // Moves to next question cleanly
         this.askCurrentStep();
       } else if (VoiceCommandInterpreter.isNegative(transcript)) {
         const retryMsg = isHi
@@ -734,7 +940,7 @@ const ConversationalFormEngine = {
           : 'No problem. Please state your answer again.';
         await SpeechSynthesisService.speak(retryMsg);
         this.stage = 'asking';
-        SpeechRecognitionService.start(
+        SpeechRecognitionService.startListening(
           (s) => this.handleUserSpeech(s),
           (e) => {}
         );
@@ -743,7 +949,7 @@ const ConversationalFormEngine = {
           ? 'कृपया केवल हाँ या नहीं बोलकर पुष्टि करें।'
           : 'Please confirm by saying Yes or No.';
         await SpeechSynthesisService.speak(clarMsg);
-        SpeechRecognitionService.start(
+        SpeechRecognitionService.startListening(
           (s) => this.handleUserSpeech(s),
           (e) => {}
         );
@@ -767,7 +973,7 @@ const ConversationalFormEngine = {
             ? 'आप किस जानकारी को बदलना चाहते हैं? आप नाम, आयु, राज्य, दिव्यांगता, या आय कह सकते हैं।'
             : 'Which information would you like to change? You can say name, age, state, disability, or income.'
         );
-        SpeechRecognitionService.start(
+        SpeechRecognitionService.startListening(
           (s) => this.handleCorrectionTarget(s),
           (e) => {}
         );
@@ -784,12 +990,14 @@ const ConversationalFormEngine = {
       this.pendingKey = step.key;
       this.pendingValue = parsed;
       this.stage = 'confirming_answer';
-      VoiceAssistantController.setStatus('confirming', 'Confirming Answer');
 
       const confirmText = isHi ? step.formatConfirmHi(parsed) : step.formatConfirmEn(parsed);
+
+      // AI speaks confirmation question with recognition strictly STOPPED & MUTED
       await SpeechSynthesisService.speak(confirmText);
 
-      SpeechRecognitionService.start(
+      // ONLY after speech completes + tail delay: start listening for confirmation
+      SpeechRecognitionService.startListening(
         (s) => this.handleUserSpeech(s),
         (e) => {}
       );
@@ -799,7 +1007,7 @@ const ConversationalFormEngine = {
         : `I could not understand that properly. Could you please repeat your ${step.labelEn}?`;
       await SpeechSynthesisService.speak(errPrompt);
 
-      SpeechRecognitionService.start(
+      SpeechRecognitionService.startListening(
         (s) => this.handleUserSpeech(s),
         (e) => {}
       );
@@ -826,7 +1034,7 @@ const ConversationalFormEngine = {
           ? 'कृपया उस फ़ील्ड का नाम बताएं जिसे आप बदलना चाहते हैं।'
           : 'Please specify the field you want to modify, such as name, state, or income.'
       );
-      SpeechRecognitionService.start(
+      SpeechRecognitionService.startListening(
         (s) => this.handleCorrectionTarget(s),
         (e) => {}
       );
@@ -835,7 +1043,6 @@ const ConversationalFormEngine = {
 
   async startReview() {
     this.stage = 'review';
-    VoiceAssistantController.setStatus('confirming', 'Review Profile');
     const isHi = this.lang === 'hi';
 
     const p = this.profile;
@@ -859,7 +1066,7 @@ const ConversationalFormEngine = {
 
     await SpeechSynthesisService.speak(reviewText);
 
-    SpeechRecognitionService.start(
+    SpeechRecognitionService.startListening(
       (s) => this.handleUserSpeech(s),
       (e) => {}
     );
@@ -885,7 +1092,7 @@ const ConversationalFormEngine = {
       SpeechSynthesisService.setLanguage(this.lang);
       SpeechRecognitionService.setLanguage(this.lang);
       SpeechSynthesisService.speak(this.lang === 'hi' ? 'अब मैं हिंदी में बोलूंगा।' : 'Switched to English.');
-      setTimeout(() => this.askCurrentStep(), 1500);
+      setTimeout(() => this.askCurrentStep(), 1200);
     } else if (cmd.type === 'nav_home') {
       if (typeof App !== 'undefined') App.navigate('home');
       SpeechSynthesisService.speak(this.lang === 'hi' ? 'होमपेज पर नेविगेट किया गया।' : 'Navigated to Homepage.');
@@ -959,11 +1166,13 @@ const VoiceSchemePresenter = {
         results = SamarthyaMatcher.match(matchProfile, SCHEME_DATABASE);
       }
 
-      // Trigger visual rendering on Match page for teachers/companions
       if (typeof ResultsRenderer !== 'undefined' && results.length > 0) {
         ResultsRenderer.render(results, matchProfile);
       }
     }
+
+    this.results = results;
+    this.currentIndex = 0;
 
     if (results.length === 0) {
       await SpeechSynthesisService.speak(
@@ -982,7 +1191,7 @@ const VoiceSchemePresenter = {
     await SpeechSynthesisService.speak(introMsg);
 
     // Listen for follow-up questions
-    SpeechRecognitionService.start(
+    SpeechRecognitionService.startListening(
       (speech) => this.handleSchemeQuestions(speech),
       (err) => {}
     );
@@ -996,7 +1205,6 @@ const VoiceSchemePresenter = {
     const scheme = current.scheme;
 
     if (VoiceCommandInterpreter.isAffirmative(t) || t.includes('benefit') || t.includes('fayda') || t.includes('how much') || t.includes('labh')) {
-      // Explain financial benefits
       const benefits = isHi
         ? (scheme.benefitsHi || scheme.benefits || scheme.concession || 'रियायती ब्याज दर और ऋण स्थगन सहायता')
         : (scheme.benefits || scheme.concession || 'Low interest concessional funding with moratorium holiday');
@@ -1005,7 +1213,6 @@ const VoiceSchemePresenter = {
         : `The key benefits of this scheme are: ${benefits}. Would you like to know the required documents?`;
       await SpeechSynthesisService.speak(bText);
     } else if (t.includes('document') || t.includes('dastavez') || t.includes('kagaz')) {
-      // Explain required documents
       const docs = scheme.documentsRequired
         ? scheme.documentsRequired.join(', ')
         : (scheme.documents ? scheme.documents.join(', ') : 'Aadhaar, Caste/Disability Certificate, Domicile and Bank Details');
@@ -1014,14 +1221,12 @@ const VoiceSchemePresenter = {
         : `The required documents are: ${docs}. To apply, you can visit the official online portal or accredited Channel Partner branch.`;
       await SpeechSynthesisService.speak(docText);
     } else if (t.includes('why') || t.includes('eligible') || t.includes('kyon')) {
-      // Explain why eligible
       const reasons = current.matchedReasons ? current.matchedReasons.join('. ') : 'Your disability, state, and income criteria match.';
       const whyText = isHi
         ? `आप पात्र हैं क्योंकि: ${reasons}`
         : `You are eligible because: ${reasons}`;
       await SpeechSynthesisService.speak(whyText);
     } else if (t.includes('next') || t.includes('agla') || t.includes('dusri')) {
-      // Next scheme
       if (this.currentIndex + 1 < this.results.length) {
         this.currentIndex++;
         const next = this.results[this.currentIndex];
@@ -1039,7 +1244,7 @@ const VoiceSchemePresenter = {
     }
 
     // Keep listening for next command
-    SpeechRecognitionService.start(
+    SpeechRecognitionService.startListening(
       (s) => this.handleSchemeQuestions(s),
       (e) => {}
     );
@@ -1052,6 +1257,54 @@ const VoiceSchemePresenter = {
  */
 const VoiceAssistantController = {
   isActive: false,
+  state: ConversationState.IDLE,
+
+  setState(newState) {
+    this.state = newState;
+
+    const pill = document.getElementById('blindStatusPill');
+    const text = document.getElementById('blindStatusText');
+    const statusAria = document.getElementById('blindStatusAria');
+
+    if (!pill || !text) return;
+
+    let cssClass = 'listening';
+    let label = 'Listening...';
+
+    switch (newState) {
+      case ConversationState.IDLE:
+        cssClass = 'idle';
+        label = 'Ready';
+        break;
+      case ConversationState.SPEAKING:
+        cssClass = 'speaking';
+        label = 'Speaking...';
+        break;
+      case ConversationState.LISTENING:
+        cssClass = 'listening';
+        label = 'Listening...';
+        break;
+      case ConversationState.PROCESSING:
+        cssClass = 'processing';
+        label = 'Processing...';
+        break;
+      case ConversationState.WAITING_FOR_CONFIRMATION:
+        cssClass = 'confirming';
+        label = 'Waiting for Confirmation';
+        break;
+      case ConversationState.ERROR:
+        cssClass = 'error';
+        label = 'Microphone Error';
+        break;
+    }
+
+    pill.className = `blind-status-pill ${cssClass}`;
+    text.textContent = label;
+
+    if (statusAria) {
+      statusAria.textContent = `Status: ${label}`;
+    }
+  },
 
   async start() {
     this.isActive = true;
@@ -1059,9 +1312,9 @@ const VoiceAssistantController = {
     if (dock) dock.classList.add('open');
 
     SpeechSynthesisService.init();
-    SpeechRecognitionService.init();
+    await SpeechRecognitionService.init();
 
-    // Welcome Greeting
+    // Welcome Greeting (Recognition is strictly muted)
     const greeting = "Welcome to Saksham. Your voice assistant is ready. I will guide you through every step of the process. You can speak naturally, ask me to repeat anything, or say stop at any time.";
     await SpeechSynthesisService.speak(greeting);
 
@@ -1069,7 +1322,8 @@ const VoiceAssistantController = {
     const langPrompt = "Would you like to continue in English, or Hindi? You can say English, or Hindi.";
     await SpeechSynthesisService.speak(langPrompt);
 
-    SpeechRecognitionService.start(
+    // ONLY after both greetings finish: start listening for language preference
+    SpeechRecognitionService.startListening(
       (speech) => this.handleInitialLanguageSelection(speech),
       (err) => console.warn('Initial speech error:', err)
     );
@@ -1095,7 +1349,6 @@ const VoiceAssistantController = {
 
     await SpeechSynthesisService.speak(ackMsg);
 
-    // Explain & Initiate Conversational Form Filling
     const startMsg = isHi
       ? 'अब हम आपके लिए सर्वोत्तम सरकारी योजनाएं और छात्रवृत्ति खोजने के लिए एक छोटा पात्रता मूल्यांकन शुरू कर रहे हैं।'
       : 'We will now begin your step-by-step eligibility assessment to discover entitled schemes and financial assistance.';
@@ -1107,19 +1360,10 @@ const VoiceAssistantController = {
   },
 
   toggleMic() {
-    const micBtn = document.getElementById('blindMicBtn');
     if (SpeechRecognitionService.isListening && !SpeechRecognitionService.isPaused) {
       SpeechRecognitionService.pause();
-      if (micBtn) {
-        micBtn.classList.add('paused');
-        micBtn.innerHTML = '<span>▶️</span> <span>Resume Listening</span>';
-      }
     } else {
       SpeechRecognitionService.resume();
-      if (micBtn) {
-        micBtn.classList.remove('paused');
-        micBtn.innerHTML = '<span>🎙️</span> <span>Pause Listening</span>';
-      }
     }
   },
 
@@ -1135,24 +1379,10 @@ const VoiceAssistantController = {
     this.isActive = false;
     SpeechSynthesisService.cancel();
     SpeechRecognitionService.stop();
+    this.setState(ConversationState.IDLE);
 
     const dock = document.getElementById('blindVoiceAssistantDock');
     if (dock) dock.classList.remove('open');
-  },
-
-  setStatus(statusType, label) {
-    const pill = document.getElementById('blindStatusPill');
-    const text = document.getElementById('blindStatusText');
-    if (!pill || !text) return;
-
-    pill.className = `blind-status-pill ${statusType}`;
-    text.textContent = label;
-
-    // Update screen reader status
-    const statusAria = document.getElementById('blindStatusAria');
-    if (statusAria) {
-      statusAria.textContent = `Status: ${label}`;
-    }
   }
 };
 
@@ -1167,12 +1397,10 @@ const AccessibilityModeManager = {
     SpeechSynthesisService.init();
     this.setupKeyboardShortcuts();
 
-    // Check saved mode in localStorage
     const saved = localStorage.getItem('saksham_experience_mode');
     if (saved === 'blind') {
       this.selectMode('blind', false);
     } else if (!saved) {
-      // First visit: Show Experience Selector Modal after page loads
       setTimeout(() => {
         this.openModal();
       }, 700);
@@ -1212,11 +1440,9 @@ const AccessibilityModeManager = {
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
 
-      // Focus the selected or first card
       const activeCard = modal.querySelector('.experience-card.selected') || modal.querySelector('.experience-card');
       if (activeCard) activeCard.focus();
 
-      // Announce for screen readers
       const ariaLive = document.getElementById('blindAriaAnnouncer');
       if (ariaLive) {
         ariaLive.textContent = "Experience Selection dialog opened. Choose between Standard Experience or Blind Voice Navigation.";
@@ -1275,7 +1501,9 @@ const AccessibilityModeManager = {
   }
 };
 
-// Export to window
+// Export services to window
+window.ConversationState = ConversationState;
+window.EchoGuard = EchoGuard;
 window.SpeechSynthesisService = SpeechSynthesisService;
 window.SpeechRecognitionService = SpeechRecognitionService;
 window.FormValidationService = FormValidationService;
