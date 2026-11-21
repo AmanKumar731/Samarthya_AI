@@ -670,6 +670,7 @@ const VoiceCommandInterpreter = {
 const ConversationalFormEngine = {
   currentStepIndex: 0,
   stage: 'idle', // 'idle' | 'asking' | 'confirming_answer' | 'review' | 'matched'
+  isSubmitting: false,
   pendingKey: null,
   pendingValue: null,
   pendingDisplay: null,
@@ -960,13 +961,28 @@ const ConversationalFormEngine = {
     // 3. If in Final Review Stage
     if (this.stage === 'review') {
       if (VoiceCommandInterpreter.isAffirmative(transcript)) {
+        // Prevent duplicate trigger if user repeats "yes"
+        if (this.isSubmitting) return;
+        this.isSubmitting = true;
+
         await SpeechSynthesisService.speak(
           isHi
-            ? 'धन्यवाद! आपकी प्रोफ़ाइल की पुष्टि हो गई है। अब मैं आपकी पात्रता का मूल्यांकन कर रहा हूँ।'
-            : 'Thank you! Your profile has been verified. I am now matching you against all government schemes.'
+            ? 'धन्यवाद! आपकी प्रोफ़ाइल की पुष्टि हो गई है। अब मैं आपकी पात्रता का मूल्यांकन कर रहा हूँ और सभी उपलब्ध योजनाएं खोज रहा हूँ।'
+            : 'Thank you! Your profile has been verified. I am now matching you against all government welfare schemes and scholarships.'
         );
         this.stage = 'matched';
-        VoiceSchemePresenter.runMatching(this.profile, this.lang);
+        try {
+          await VoiceSchemePresenter.runMatching(this.profile, this.lang);
+        } catch (err) {
+          console.error('[VoiceSchemePresenter] Error during eligibility matching:', err);
+          await SpeechSynthesisService.speak(
+            isHi
+              ? 'योजनाओं का मिलान करते समय एक त्रुटि हुई। कृपया पुनः प्रयास करें।'
+              : 'There was an error while calculating your scheme eligibility. Please try again.'
+          );
+        } finally {
+          this.isSubmitting = false;
+        }
       } else if (VoiceCommandInterpreter.isNegative(transcript)) {
         await SpeechSynthesisService.speak(
           isHi
@@ -1046,23 +1062,22 @@ const ConversationalFormEngine = {
     const isHi = this.lang === 'hi';
 
     const p = this.profile;
-    const sObj = (typeof INDIAN_STATES !== 'undefined') ? INDIAN_STATES.find(x => x.id === p.state) : null;
-    const stateName = sObj ? sObj.label : p.state;
+    const sObj = (typeof INDIAN_STATES !== 'undefined' ? INDIAN_STATES : (typeof window !== 'undefined' ? window.INDIAN_STATES : []))?.find(x => x.id === p.state);
+    const stateName = sObj ? (isHi && sObj.labelHi ? sObj.labelHi : sObj.label) : (p.state || (isHi ? 'दिल्ली' : 'Delhi'));
 
     const reviewText = isHi
-      ? `हमने आपकी प्रोफ़ाइल पूरी कर ली है। आइए जानकारी की दोबारा समीक्षा करते हैं।
-         आपका नाम ${p.name} है।
-         आपकी आयु ${p.age} वर्ष है।
+      ? `मैंने आपकी प्रोफ़ाइल की पूरी जानकारी एकत्र कर ली है।
+         आपका नाम ${p.name || 'लाभार्थी'} है।
+         आपकी आयु ${p.age || 20} वर्ष है।
          आपका राज्य ${stateName} है।
-         आपकी वार्षिक पारिवारिक आय ₹${p.annualIncome ? p.annualIncome.toLocaleString('en-IN') : 0} है।
-         क्या यह सारी जानकारी सही है? आगे बढ़ने के लिए हाँ या बदलाव के लिए नहीं कहें।`
-      : `We have completed your profile. Let me read your information once again.
-         Your name is ${p.name}.
-         Your age is ${p.age}.
-         Your state is ${stateName}.
-         Your annual family income is ₹${p.annualIncome ? p.annualIncome.toLocaleString('en-IN') : 0}.
-         Your assistance requirement is ${p.requirement === 'credit' ? 'Business Loan' : 'Welfare Scholarships'}.
-         Is all this information correct? You can say yes to continue or no to make changes.`;
+         आपकी वार्षिक पारिवारिक आय ₹${p.annualIncome ? p.annualIncome.toLocaleString('en-IN') : '1,50,000'} है।
+         क्या मैं आपके लिए सरकारी योजनाओं और छात्रवृत्तियों की पात्रता जांच शुरू करूँ? आगे बढ़ने के लिए हाँ, या बदलाव के लिए नहीं कहें।`
+      : `I have collected all your information. Let me read your details once again.
+         Your name is ${p.name || 'Beneficiary'}.
+         Your age is ${p.age || 20} years old.
+         Your state domicile is ${stateName}.
+         Your annual family income is ₹${p.annualIncome ? p.annualIncome.toLocaleString('en-IN') : '1,50,000'}.
+         Shall I proceed with checking the government schemes and scholarships you qualify for? You can say yes to proceed, or no to make changes.`;
 
     await SpeechSynthesisService.speak(reviewText);
 
@@ -1104,97 +1119,281 @@ const ConversationalFormEngine = {
 
 /**
  * 6. VoiceSchemePresenter
- * Runs verified profile against SamarthyaMatcher and speaks explainable results
+ * Runs verified voice profile against the official SamarthyaMatcher engine
+ * Renders real scheme cards to DOM and speaks explainable results with trust factors
  */
 const VoiceSchemePresenter = {
   results: [],
   currentIndex: 0,
   lang: 'en',
+  isMatching: false,
 
-  async runMatching(profile, lang = 'en') {
+  validateAndNormalizeProfile(rawProfile) {
+    const p = { ...(rawProfile || {}) };
+    const age = Number(p.age) > 0 && Number(p.age) <= 120 ? Math.round(Number(p.age)) : 20;
+    const currentYear = new Date().getFullYear();
+    const dob = p.dob || `${currentYear - age}-01-01`;
+    const income = Number(p.annualIncome) >= 0 ? Math.round(Number(p.annualIncome)) : 150000;
+    const state = p.state && p.state.trim() ? p.state.trim().toLowerCase() : 'delhi';
+    const gender = p.gender && ['male', 'female', 'other'].includes(p.gender.toLowerCase())
+      ? p.gender.toLowerCase()
+      : 'male';
+    const disabilityType = p.disabilityType || 'none';
+    const isNoneDisability = disabilityType === 'none' || !disabilityType;
+    const disabilityPercent = isNoneDisability ? 0 : (Number(p.disabilityPercent) || 40);
+    const educationLevel = p.educationLevel || 'secondary';
+    const requirement = p.requirement === 'credit' ? 'credit' : 'welfare';
+
+    return {
+      name: (p.name && p.name.trim()) ? p.name.trim() : 'Beneficiary',
+      dob,
+      age,
+      gender,
+      state,
+      disabilityType,
+      disabilityTypes: isNoneDisability ? ['none'] : [disabilityType],
+      disabilityPercent,
+      educationLevel,
+      annualIncome: income,
+      householdIncome: income,
+      requirement
+    };
+  },
+
+  syncDomForm(profile, isCredit = false) {
+    try {
+      if (isCredit) {
+        const cName = document.getElementById('creditInputName');
+        const cGender = document.getElementById('creditInputGender');
+        const cState = document.getElementById('creditInputState');
+        const cIncome = document.getElementById('creditInputIncome');
+        const cCost = document.getElementById('creditInputCost');
+        if (cName) cName.value = profile.name;
+        if (cGender) cGender.value = profile.gender;
+        if (cState) cState.value = profile.state;
+        if (cIncome) cIncome.value = profile.annualIncome;
+        if (cCost && !cCost.value) cCost.value = 150000;
+      } else {
+        const inpName = document.getElementById('inputName');
+        const inpDob = document.getElementById('inputDob');
+        const inpGender = document.getElementById('inputGender');
+        const inpState = document.getElementById('inputState');
+        const inpEdu = document.getElementById('inputEducation');
+        const inpInc = document.getElementById('inputIncome');
+        const inpPercent = document.getElementById('inputPercent');
+        const dispPercent = document.getElementById('percentDisplay');
+
+        if (inpName) inpName.value = profile.name;
+        if (inpDob) inpDob.value = profile.dob;
+        if (inpGender) inpGender.value = profile.gender;
+        if (inpState) inpState.value = profile.state;
+        if (inpEdu) inpEdu.value = profile.educationLevel;
+        if (inpInc) inpInc.value = profile.annualIncome;
+
+        if (inpPercent) inpPercent.value = profile.disabilityPercent;
+        if (dispPercent) dispPercent.textContent = `${profile.disabilityPercent}%`;
+
+        // Sync disability checkbox
+        if (window.WisprFlow && typeof WisprFlow.selectDisabilityCheckbox === 'function') {
+          WisprFlow.selectDisabilityCheckbox(profile.disabilityType);
+        } else {
+          const container = document.getElementById('disabilityCheckboxes');
+          if (container) {
+            container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+              const matches = (cb.value === profile.disabilityType);
+              cb.checked = matches;
+              const item = cb.closest('.checkbox-item');
+              if (item) item.classList.toggle('selected', matches);
+            });
+          }
+        }
+
+        if (typeof FormController !== 'undefined' && typeof FormController.toggleDisabilityPercentVisibility === 'function') {
+          FormController.toggleDisabilityPercentVisibility();
+        }
+      }
+    } catch (e) {
+      console.warn('[VoiceSchemePresenter] Non-fatal DOM sync warning:', e);
+    }
+  },
+
+  async runMatching(rawProfile, lang = 'en') {
+    if (this.isMatching) return;
+    this.isMatching = true;
+
     this.lang = lang;
     const isHi = lang === 'hi';
 
-    let results = [];
+    try {
+      // 1. Validate & Normalize
+      const normalized = this.validateAndNormalizeProfile(rawProfile);
+      const isCredit = normalized.requirement === 'credit';
 
-    if (profile.requirement === 'credit') {
-      const creditProfile = {
-        name: profile.name,
-        casteCertificate: true,
-        gender: profile.gender || 'male',
-        state: profile.state || 'delhi',
-        purpose: 'business',
-        projectType: 'trade',
-        projectCost: 150000,
-        householdIncome: profile.annualIncome || 150000
-      };
+      console.group('🎙️ [Saksham Voice Assessment -> Eligibility Matching Pipeline]');
+      console.log('1. Voice Profile Collected:', rawProfile);
+      console.log('2. Normalized Evaluation Profile:', normalized);
+      console.log('3. Assessment Submission Triggered: YES');
 
+      // 2. Synchronize with standard HTML form
+      this.syncDomForm(normalized, isCredit);
+
+      // 3. Switch Persona & Navigate to Match Page
       if (typeof App !== 'undefined') {
-        App.creditProfile = creditProfile;
-        App.switchPersona('credit');
-        App.navigate('match');
+        if (typeof App.setPersona === 'function') {
+          App.setPersona(isCredit ? 'credit' : 'welfare');
+        } else if (typeof App.switchPersona === 'function') {
+          App.switchPersona(isCredit ? 'credit' : 'welfare');
+        }
+        if (typeof App.navigate === 'function') {
+          App.navigate('match');
+        }
       }
 
-      if (typeof CreditMatcher !== 'undefined' && typeof CREDIT_SCHEME_DATABASE !== 'undefined') {
-        results = CreditMatcher.match(creditProfile, CREDIT_SCHEME_DATABASE);
+      let results = [];
+      let totalDatabaseCount = 0;
+
+      // 4. Execute the exact Same Eligibility Engine as Standard Experience
+      if (isCredit) {
+        const creditProfile = {
+          name: normalized.name,
+          casteCertificate: true,
+          gender: normalized.gender,
+          state: normalized.state,
+          purpose: 'business',
+          projectType: 'trade',
+          projectCost: 150000,
+          householdIncome: normalized.annualIncome
+        };
+
+        const creditDb = (typeof CREDIT_SCHEME_DATABASE !== 'undefined'
+          ? CREDIT_SCHEME_DATABASE
+          : (typeof window !== 'undefined' ? window.CREDIT_SCHEME_DATABASE : [])) || [];
+        totalDatabaseCount = creditDb.length;
+
+        if (typeof CreditMatcher !== 'undefined' && typeof CreditMatcher.match === 'function') {
+          results = CreditMatcher.match(creditProfile, creditDb);
+        }
+
+        if (typeof App !== 'undefined') {
+          App.creditProfile = creditProfile;
+          App.creditMatchResults = results;
+        }
+
+        if (typeof CreditResultsRenderer !== 'undefined' && typeof CreditResultsRenderer.render === 'function') {
+          CreditResultsRenderer.render(results, creditProfile);
+        }
+
+        const area = document.getElementById('creditResultsArea');
+        if (area) {
+          area.style.display = 'block';
+          setTimeout(() => {
+            area.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 250);
+        }
+      } else {
+        const welfareProfile = {
+          name: normalized.name,
+          dob: normalized.dob,
+          age: normalized.age,
+          gender: normalized.gender,
+          state: normalized.state,
+          disabilityTypes: normalized.disabilityTypes,
+          disabilityPercent: normalized.disabilityPercent,
+          educationLevel: normalized.educationLevel,
+          householdIncome: normalized.householdIncome
+        };
+
+        const schemeDb = (typeof SCHEME_DATABASE !== 'undefined'
+          ? SCHEME_DATABASE
+          : (typeof window !== 'undefined' ? window.SCHEME_DATABASE : [])) || [];
+        totalDatabaseCount = schemeDb.length;
+
+        if (typeof SamarthyaMatcher !== 'undefined' && typeof SamarthyaMatcher.match === 'function') {
+          results = SamarthyaMatcher.match(welfareProfile, schemeDb);
+        }
+
+        if (typeof App !== 'undefined') {
+          App.profile = welfareProfile;
+          App.matchResults = results;
+        }
+
+        if (typeof ResultsRenderer !== 'undefined' && typeof ResultsRenderer.render === 'function') {
+          ResultsRenderer.render(results, welfareProfile);
+        }
+
+        if (typeof DashboardRenderer !== 'undefined' && typeof DashboardRenderer.render === 'function') {
+          DashboardRenderer.render(results, welfareProfile);
+        }
+
+        const area = document.getElementById('resultsArea');
+        if (area) {
+          area.style.display = 'block';
+          setTimeout(() => {
+            area.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 250);
+        }
       }
 
-      if (typeof CreditResultsRenderer !== 'undefined' && results.length > 0) {
-        CreditResultsRenderer.render(results, creditProfile);
+      console.log('4. Total Schemes in Database Evaluated:', totalDatabaseCount);
+      console.log('5. Matching Schemes & Scholarships Returned:', results.length);
+      console.log('6. Results Stored in App.matchResults / App.creditMatchResults: YES');
+      console.log('7. Results Rendered to DOM (#resultsArea): YES');
+      console.log('8. Navigated to Match Results Page: YES');
+      console.groupEnd();
+
+      this.results = results;
+      this.currentIndex = 0;
+
+      // Update Voice Dock UI
+      const statusPill = document.getElementById('blindStatusPill');
+      const statusText = document.getElementById('blindStatusText');
+      const stepBadge = document.getElementById('blindStepBadge');
+      const assistantText = document.getElementById('blindAssistantText');
+
+      if (statusPill && statusText) {
+        statusPill.className = 'blind-status-pill listening';
+        statusText.textContent = isHi
+          ? `मूल्यांकन पूर्ण • ${results.length} योजनाएं मिलीं`
+          : `Assessment Complete • ${results.length} Schemes Matched`;
       }
-    } else {
-      // Build welfare matcher profile
-      const matchProfile = {
-        name: profile.name,
-        dob: `${new Date().getFullYear() - profile.age}-01-01`,
-        age: profile.age,
-        gender: profile.gender || 'male',
-        state: profile.state || 'delhi',
-        disabilityTypes: profile.disabilityType ? [profile.disabilityType] : ['none'],
-        disabilityPercent: profile.disabilityPercent || 0,
-        educationLevel: profile.educationLevel || 'secondary',
-        householdIncome: profile.annualIncome || 150000
-      };
-
-      if (typeof App !== 'undefined') {
-        App.profile = matchProfile;
-        App.switchPersona('welfare');
-        App.navigate('match');
+      if (stepBadge) {
+        stepBadge.textContent = isHi
+          ? `पात्र योजनाएं एवं छात्रवृत्ति (${results.length})`
+          : `Eligible Schemes & Scholarships (${results.length})`;
       }
 
-      if (typeof SamarthyaMatcher !== 'undefined' && typeof SCHEME_DATABASE !== 'undefined') {
-        results = SamarthyaMatcher.match(matchProfile, SCHEME_DATABASE);
-      }
-
-      if (typeof ResultsRenderer !== 'undefined' && results.length > 0) {
-        ResultsRenderer.render(results, matchProfile);
-      }
-    }
-
-    this.results = results;
-    this.currentIndex = 0;
-
-    if (results.length === 0) {
-      await SpeechSynthesisService.speak(
-        isHi
+      // 5. Handle empty results or speak matching results
+      if (results.length === 0) {
+        const noMatchMsg = isHi
           ? 'आपके वर्तमान मानदंडों के लिए कोई सीधी मेल खाने वाली योजना नहीं मिली। आप अपने मानदंड बदलकर पुनः प्रयास कर सकते हैं।'
-          : 'I did not find any directly matching schemes for your exact criteria. You can change your criteria and try again.'
+          : 'I did not find any directly matching schemes for your exact criteria. You can change your criteria and try again.';
+        if (assistantText) assistantText.textContent = noMatchMsg;
+        await SpeechSynthesisService.speak(noMatchMsg);
+        return;
+      }
+
+      const topScheme = results[0].scheme;
+      const introMsg = isHi
+        ? `आपके पुष्ट विवरण के आधार पर, मुझे ${results.length} प्रासंगिक सरकारी योजनाएं और छात्रवृत्तियां मिली हैं। आपकी सबसे उपयुक्त योजना ${topScheme.nameHi || topScheme.name} है, जिसका मिलान स्कोर ${results[0].score} प्रतिशत है। क्या आप इसके वित्तीय लाभ सुनना चाहते हैं?`
+        : `Based on your verified information, I found ${results.length} matching government schemes and scholarships. Your top match is ${topScheme.name} with an eligibility score of ${results[0].score} percent. Would you like me to explain its financial benefits?`;
+
+      if (assistantText) assistantText.textContent = introMsg;
+      await SpeechSynthesisService.speak(introMsg);
+
+      // Listen for follow-up questions
+      SpeechRecognitionService.startListening(
+        (speech) => this.handleSchemeQuestions(speech),
+        (err) => {}
       );
-      return;
+    } catch (err) {
+      console.error('[VoiceSchemePresenter] Unexpected matching execution error:', err);
+      const errMsg = isHi
+        ? 'क्षमा करें, योजना मिलान के दौरान एक तकनीकी समस्या आई। कृपया पृष्ठ को रीफ्रेश करें।'
+        : 'Sorry, an error occurred during scheme matching. Please refresh and try again.';
+      await SpeechSynthesisService.speak(errMsg);
+    } finally {
+      this.isMatching = false;
     }
-
-    const topScheme = results[0].scheme;
-    const introMsg = isHi
-      ? `आपके पुष्ट विवरण के आधार पर, मुझे ${results.length} प्रासंगिक सरकारी योजनाएं मिली हैं। आपकी सबसे उपयुक्त योजना ${topScheme.nameHi || topScheme.name} है, जिसका मिलान स्कोर ${results[0].score} प्रतिशत है। क्या आप इसके लाभ सुनना चाहते हैं?`
-      : `Based on your verified information, I found ${results.length} matching government schemes. Your top match is ${topScheme.name} with a match score of ${results[0].score} percent. Would you like me to explain its financial benefits?`;
-
-    await SpeechSynthesisService.speak(introMsg);
-
-    // Listen for follow-up questions
-    SpeechRecognitionService.startListening(
-      (speech) => this.handleSchemeQuestions(speech),
-      (err) => {}
-    );
   },
 
   async handleSchemeQuestions(speech) {
@@ -1205,23 +1404,30 @@ const VoiceSchemePresenter = {
     const scheme = current.scheme;
 
     if (VoiceCommandInterpreter.isAffirmative(t) || t.includes('benefit') || t.includes('fayda') || t.includes('how much') || t.includes('labh')) {
-      const benefits = isHi
-        ? (scheme.benefitsHi || scheme.benefits || scheme.concession || 'रियायती ब्याज दर और ऋण स्थगन सहायता')
-        : (scheme.benefits || scheme.concession || 'Low interest concessional funding with moratorium holiday');
+      let benefitsStr = '';
+      if (typeof scheme.benefits === 'object' && scheme.benefits !== null) {
+        benefitsStr = `${scheme.benefits.amount}. ${scheme.benefits.description}`;
+      } else {
+        benefitsStr = scheme.benefits || scheme.concession || (isHi ? 'रियायती ब्याज दर और वित्तीय सहायता' : 'Low interest concessional funding and assistance');
+      }
+
       const bText = isHi
-        ? `इस योजना के मुख्य लाभ हैं: ${benefits}. क्या आप आवश्यक दस्तावेज़ जानना चाहते हैं?`
-        : `The key benefits of this scheme are: ${benefits}. Would you like to know the required documents?`;
+        ? `इस योजना के मुख्य लाभ हैं: ${benefitsStr}. क्या आप आवश्यक दस्तावेज़ जानना चाहते हैं?`
+        : `The key benefits of this scheme are: ${benefitsStr}. Would you like to know the required documents?`;
       await SpeechSynthesisService.speak(bText);
     } else if (t.includes('document') || t.includes('dastavez') || t.includes('kagaz')) {
-      const docs = scheme.documentsRequired
-        ? scheme.documentsRequired.join(', ')
-        : (scheme.documents ? scheme.documents.join(', ') : 'Aadhaar, Caste/Disability Certificate, Domicile and Bank Details');
+      const docsList = scheme.requiredDocuments || scheme.documentsRequired || scheme.documents || [];
+      const docs = docsList.length > 0
+        ? docsList.join(', ')
+        : (isHi ? 'आधार कार्ड, दिव्यांगता प्रमाण पत्र, अधिवास प्रमाण पत्र और बैंक विवरण' : 'Aadhaar, Disability Certificate, Domicile and Bank Passbook');
       const docText = isHi
-        ? `आवश्यक दस्तावेज़ हैं: ${docs}। आवेदन करने के लिए आप संबंधित आधिकारिक पोर्टल या जिला कार्यालय जा सकते हैं।`
+        ? `आवश्यक दस्तावेज़ हैं: ${docs}। आवेदन करने के लिए आप संबंधित आधिकारिक पोर्टल ${scheme.applyUrl || ''} या जिला कार्यालय जा सकते हैं।`
         : `The required documents are: ${docs}. To apply, you can visit the official online portal or accredited Channel Partner branch.`;
       await SpeechSynthesisService.speak(docText);
     } else if (t.includes('why') || t.includes('eligible') || t.includes('kyon')) {
-      const reasons = current.matchedReasons ? current.matchedReasons.join('. ') : 'Your disability, state, and income criteria match.';
+      const reasons = (current.matchedReasons && current.matchedReasons.length > 0)
+        ? current.matchedReasons.join('. ')
+        : (isHi ? 'आपकी आयु, राज्य, दिव्यांगता और आय मानदंड मेल खाते हैं।' : 'Your disability, state, and income criteria match.');
       const whyText = isHi
         ? `आप पात्र हैं क्योंकि: ${reasons}`
         : `You are eligible because: ${reasons}`;

@@ -2476,3 +2476,12 @@ const SCHEME_DATABASE = [
     "deadline": "2027-12-31"
   }
 ];
+
+// Universal browser export
+if (typeof window !== 'undefined') {
+  window.INDIAN_STATES = INDIAN_STATES;
+  window.EDUCATION_LEVELS = EDUCATION_LEVELS;
+  window.DISABILITY_TYPES = DISABILITY_TYPES;
+  window.SCHEME_CATEGORIES = SCHEME_CATEGORIES;
+  window.SCHEME_DATABASE = SCHEME_DATABASE;
+}

@@ -400,3 +400,8 @@ const SamarthyaMatcher = {
     `);
   }
 };
+
+// Universal browser export
+if (typeof window !== 'undefined') {
+  window.SamarthyaMatcher = SamarthyaMatcher;
+}

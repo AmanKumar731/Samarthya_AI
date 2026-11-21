@@ -63,6 +63,10 @@ const App = {
     });
   },
 
+  switchPersona(persona) {
+    return this.setPersona(persona);
+  },
+
   setPersona(persona) {
     this.currentPersona = persona;
 
@@ -214,7 +218,7 @@ const App = {
 
     this.currentPage = page;
     const shouldPushState = typeof eventOrPushState === 'boolean' ? eventOrPushState : true;
-    if (shouldPushState && window.location.hash !== '#' + page) {
+    if (shouldPushState && typeof window.location !== 'undefined' && window.location && window.location.hash !== '#' + page) {
       window.location.hash = page;
     }
 
@@ -236,7 +240,7 @@ const App = {
 
     if (page === 'match') {
       const matchPage = document.getElementById('page-match');
-      if (matchPage && !matchPage.dataset.drawerDismissBound) {
+      if (matchPage && matchPage.dataset && !matchPage.dataset.drawerDismissBound && typeof matchPage.addEventListener === 'function') {
         matchPage.dataset.drawerDismissBound = 'true';
         matchPage.addEventListener('focusin', () => {
           if (window.AccessibilitySuite) AccessibilitySuite.closePanel();
@@ -251,7 +255,9 @@ const App = {
       }
     }
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window.scrollTo === 'function') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   },
 
   scrollToSection(sectionId, e) {
@@ -445,7 +451,7 @@ const App = {
       EDUCATION_LEVELS.forEach(e => {
         const opt = document.createElement('option');
         opt.value = e.id;
-        opt.textContent = (window.I18N && I18N.getEducationLabel) ? I18N.getEducationLabel(e.id) : (I18N.currentLang === 'hi' ? e.labelHi : e.label);
+        opt.textContent = (window.I18N && I18N.getEducationLabel) ? I18N.getEducationLabel(e.id) : (typeof I18N !== 'undefined' && I18N.currentLang === 'hi' ? e.labelHi : e.label);
         eduSelect.appendChild(opt);
       });
     }
@@ -457,7 +463,7 @@ const App = {
         const item = document.createElement('div');
         item.className = 'checkbox-item';
         item.setAttribute('data-value', d.id);
-        const disLabel = (window.I18N && I18N.getDisabilityLabel) ? I18N.getDisabilityLabel(d.id) : (I18N.currentLang === 'hi' ? d.labelHi : d.label);
+        const disLabel = (window.I18N && I18N.getDisabilityLabel) ? I18N.getDisabilityLabel(d.id) : (typeof I18N !== 'undefined' && I18N.currentLang === 'hi' ? d.labelHi : d.label);
         item.innerHTML = `
           <input type="checkbox" value="${d.id}">
           <span class="checkbox-custom"></span>
@@ -496,7 +502,7 @@ const App = {
   populateCreditFormOptions() {
     // Populate credit state dropdown
     const stateSelect = document.getElementById('creditInputState');
-    if (stateSelect && stateSelect.options.length <= 1 && typeof INDIAN_STATES !== 'undefined') {
+    if (stateSelect && stateSelect.options && stateSelect.options.length <= 1 && typeof stateSelect.appendChild === 'function' && typeof INDIAN_STATES !== 'undefined') {
       INDIAN_STATES.forEach(s => {
         const opt = document.createElement('option');
         opt.value = s.id;
@@ -507,11 +513,11 @@ const App = {
 
     // Populate sector dropdown
     const sectorSelect = document.getElementById('creditInputSector');
-    if (sectorSelect && sectorSelect.options.length <= 1 && typeof PROJECT_SECTORS !== 'undefined') {
+    if (sectorSelect && sectorSelect.options && sectorSelect.options.length <= 1 && typeof sectorSelect.appendChild === 'function' && typeof PROJECT_SECTORS !== 'undefined') {
       PROJECT_SECTORS.forEach(sec => {
         const opt = document.createElement('option');
         opt.value = sec.id;
-        const secLabel = (window.I18N && I18N.getSectorLabel) ? I18N.getSectorLabel(sec.id) : (I18N.currentLang === 'hi' ? sec.labelHi : sec.label);
+        const secLabel = (window.I18N && I18N.getSectorLabel) ? I18N.getSectorLabel(sec.id) : (typeof I18N !== 'undefined' && I18N.currentLang === 'hi' ? sec.labelHi : sec.label);
         opt.textContent = `${sec.icon} ${secLabel}`;
         sectorSelect.appendChild(opt);
       });
@@ -523,7 +529,7 @@ const App = {
       EDUCATION_COURSES.forEach(c => {
         const opt = document.createElement('option');
         opt.value = c.id;
-        const cLabel = (window.I18N && I18N.getCourseLabel) ? I18N.getCourseLabel(c.id) : (I18N.currentLang === 'hi' ? c.labelHi : c.label);
+        const cLabel = (window.I18N && I18N.getCourseLabel) ? I18N.getCourseLabel(c.id) : (typeof I18N !== 'undefined' && I18N.currentLang === 'hi' ? c.labelHi : c.label);
         opt.textContent = cLabel;
         courseSelect.appendChild(opt);
       });
@@ -1172,10 +1178,14 @@ const CreditResultsRenderer = {
     `;
 
     // Render Calculator
-    const calcHtml = FinancialCalculator.renderCalculatorComponent(s, profile.projectCost);
+    const calcHtml = (typeof FinancialCalculator !== 'undefined' && FinancialCalculator.renderCalculatorComponent)
+      ? FinancialCalculator.renderCalculatorComponent(s, profile.projectCost)
+      : '';
 
     // Render Partner Locator
-    const locatorHtml = PartnerLocator.renderLocatorComponent();
+    const locatorHtml = (typeof PartnerLocator !== 'undefined' && PartnerLocator.renderLocatorComponent)
+      ? PartnerLocator.renderLocatorComponent()
+      : '';
 
     area.innerHTML = `
       ${headerHtml}
@@ -1185,8 +1195,10 @@ const CreditResultsRenderer = {
     `;
 
     // Initialize Leaflet Map
-    PartnerLocator.init(s.category, profile.state);
-    PartnerLocator.mountMap();
+    if (typeof PartnerLocator !== 'undefined' && typeof PartnerLocator.init === 'function') {
+      PartnerLocator.init(s.category, profile.state);
+      PartnerLocator.mountMap();
+    }
   }
 };
 
@@ -1297,7 +1309,7 @@ const ResultsRenderer = {
 
   renderSchemeCard(result, index) {
     const s = result.scheme;
-    const lang = I18N.currentLang;
+    const lang = (typeof I18N !== 'undefined' && I18N.currentLang) ? I18N.currentLang : 'en';
     const catInfo = SCHEME_CATEGORIES[s.category] || { icon: '📋', label: s.category, color: '#10B981' };
 
     const statusLabels = {
@@ -1488,4 +1500,14 @@ document.addEventListener('DOMContentLoaded', () => {
   App.init();
   HeroVisualizer.init();
 });
+
+// Universal browser export
+if (typeof window !== 'undefined') {
+  window.App = App;
+  window.ResultsRenderer = ResultsRenderer;
+  window.DashboardRenderer = DashboardRenderer;
+  window.FormController = FormController;
+  window.CreditFormController = CreditFormController;
+  window.CreditResultsRenderer = CreditResultsRenderer;
+}
 
