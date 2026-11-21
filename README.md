@@ -2,57 +2,38 @@
 
 > **Inclusive AI-Powered Welfare Delivery & Alternative Credit Readiness Platform for Underserved Citizens.**
 
-- **Live Demo:** [https://samarthya-ai.vercel.app](https://samarthya-ai.vercel.app)
-- **Video Pitch / Walkthrough:** [https://youtu.be/your-demo-video](https://youtu.be/your-demo-video)
+- **Live Prototype:** Open `index.html` locally or visit [Samarthya Portal](https://samarthya-ai.vercel.app)
+- **Monorepo Package:** Located in [`essential/`](essential/) (with Next.js frontend, FastAPI backend, CI workflows, and docs)
 - **API Documentation:** [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
 
-## 🎯 Problem & Solution
+## 📂 Project Organization
 
-### Problem
-- Over 70% of eligible rural citizens, artisans, and smallholder farmers miss out on entitled government welfare schemes due to complex bureaucratic criteria and language barriers.
-- Informal nano-entrepreneurs and gig workers lack formal credit bureau scores (CIBIL), locking them out of institutional concessional credit.
-- Citizens face fragmented portals with no unified, voice-assisted digital interface.
+This workspace is organized into two primary pillars:
 
-### Solution
-- **Zero-Hallucination Welfare Matching:** Deterministic rule engine parsing socio-economic indicators across 28+ central and state schemes.
-- **Alternative Credit Readiness Index:** Transparent 300–900 scoring model based on cashflow discipline and utility history without invasive data tracking.
-- **Conversational Voice Assistant:** Multilingual assistance in 6 Indian languages powered by Google Gemini 1.5 Flash and Wispr Flow.
+1. **Root Interactive Prototype:**
+   - `index.html`: High-performance citizen portal with instant client-side matching across 56 active schemes.
+   - `experience.html`: Experiential lab narrative and audio-visual overview.
+   - `js/` & `css/`: Modular client runtime, multi-language internationalization, sound engine, and scheme databases.
+   - `chatbot/`: Chatbot system prompts, model specifications (Gemini 1.5 Flash), and trained dataset questions.
+   - `feature/`: Showcase media assets, promo video, and platform screenshots.
 
----
-
-## 🏗️ System Architecture
-
-![Architecture](docs/architecture.png)
-
-```
-[ Frontend: Next.js 14 App Router (Port 3000) ]
-                      │
-                      ▼ (REST API / JSON)
-[ Backend: FastAPI Modular Gateway (Port 8000) ]
-         │                              │
-         ▼                              ▼
-[ Scheme Evaluation Engine ]   [ Credit Readiness Engine ]
-```
+2. **Modular Monorepo (`essential/`):**
+   - `essential/.github/`: Automated CI workflows, PR templates, and issue templates.
+   - `essential/docs/`: Architecture diagram (`architecture.png`), pitch deck (`pitch-deck.pdf`), API spec (`api-spec.md`), and system guides.
+   - `essential/frontend/`: Next.js 14 App Router, TypeScript, Tailwind CSS, components, and public assets.
+   - `essential/backend/`: Modular FastAPI architecture (`app/api`, `app/core`, `app/models`, `app/services`, `schemes.json`, `tests/`).
+   - `essential/scripts/`: Seeding utility (`seed_db.py`) and mock datasets (`mock_data.json`).
+   - `essential/docker-compose.yml`: Multi-container orchestration (ports 3000 & 8000).
 
 ---
 
-## 💻 Tech Stack
+## ⚡ 3-Step Quickstart for Monorepo (`essential/`)
 
-- **Frontend:** Next.js 14 (App Router), TypeScript, Tailwind CSS
-- **Backend:** Python 3.11+, FastAPI, Pydantic Settings, Uvicorn
-- **AI & Reasoning:** Google Gemini 1.5 Flash / Pro, Wispr Flow Voice STT
-- **DevOps:** Docker, Docker Compose, GitHub Actions CI/CD
-
----
-
-## ⚡ 3-Step Quickstart
-
-### Step 1: Clone Repository
+### Step 1: Navigate to Monorepo
 ```bash
-git clone https://github.com/AmanKumar731/Samarthya_full-proto.git
-cd Samarthya_AI
+cd essential
 ```
 
 ### Step 2: Environment Setup
@@ -61,40 +42,24 @@ cp backend/.env.example backend/.env
 cp frontend/.env.example frontend/.env.local
 ```
 
-### Step 3: Run Locally or via Docker
-
-**Option A: Using Docker Compose (Full Stack)**
+### Step 3: Run Full Stack via Docker Compose
 ```bash
 docker compose up --build
 ```
 - Frontend: `http://localhost:3000`
 - Backend API Docs: `http://localhost:8000/docs`
 
-**Option B: Running Locally**
-```bash
-# Terminal 1 - Backend
-cd backend
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-
-# Terminal 2 - Frontend
-cd frontend
-npm install
-npm run dev
-```
-
 ---
 
 ## 🧪 Testing & Verification
 
 ```bash
-# Run backend pytest suite
-cd backend
-pytest -v
+# Run backend pytest suite (6/6 tests passing)
+cd essential/backend
+PYTHONPATH=. pytest -v tests/
 
 # Seed sample mock data
-python3 ../scripts/seed_db.py
+python3 essential/scripts/seed_db.py
 ```
 
 ---

@@ -1,0 +1,139 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R 11 0 R] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 13 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 291 >>
+stream
+BT
+/F1 18 Tf
+50 720 Td
+(SAMARTHYA AI - HACKATHON PITCH DECK) Tj
+/F1 12 Tf
+0 -36 Td
+(AI-Powered Welfare Delivery & Concessional Credit Intelligence) Tj
+0 -36 Td
+(Theme: Citizen Empowerment & Inclusive Digital Infrastructure) Tj
+0 -36 Td
+(Platform: Web, Mobile, and NGO Field Camp Ready) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 13 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 382 >>
+stream
+BT
+/F1 18 Tf
+50 720 Td
+(THE PROBLEM) Tj
+/F1 12 Tf
+0 -36 Td
+(- 40M+ eligible citizens miss out on government welfare due to complex rules.) Tj
+0 -36 Td
+(- Fragmented national portals \(NSP, ADIP, NSFDC, PM-JAY\) create confusion.) Tj
+0 -36 Td
+(- High dependence on touts and corrupt middlemen.) Tj
+0 -36 Td
+(- Zero transparency in concessional micro-enterprise loan approvals.) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 13 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 418 >>
+stream
+BT
+/F1 18 Tf
+50 720 Td
+(THE SOLUTION: SAMARTHYA AI) Tj
+/F1 12 Tf
+0 -36 Td
+(- Unified AI matching engine evaluating 56+ active statutory schemes in <100ms.) Tj
+0 -36 Td
+(- Transparent scoring algorithm based on age, income, disability, and state.) Tj
+0 -36 Td
+(- Concessional credit readiness evaluation for SC/ST and nano-entrepreneurs.) Tj
+0 -36 Td
+(- Fully localized in English, Hindi, and regional languages.) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 13 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 374 >>
+stream
+BT
+/F1 18 Tf
+50 720 Td
+(SYSTEM ARCHITECTURE & TECH STACK) Tj
+/F1 12 Tf
+0 -36 Td
+(- Frontend: Next.js 14 App Router, Tailwind CSS, TypeScript.) Tj
+0 -36 Td
+(- Backend: Modular FastAPI, Pydantic v2 validation, Uvicorn.) Tj
+0 -36 Td
+(- Matching Engine: Rule-based multi-factor weighted scoring.) Tj
+0 -36 Td
+(- Offline First: Client-side fallback with IndexedDB caching.) Tj
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 12 0 R /Resources << /Font << /F1 13 0 R >> >> >>
+endobj
+12 0 obj
+<< /Length 327 >>
+stream
+BT
+/F1 18 Tf
+50 720 Td
+(IMPACT & VISION) Tj
+/F1 12 Tf
+0 -36 Td
+(- 100% Direct Benefit Routing to citizen accounts.) Tj
+0 -36 Td
+(- DPDP Act 2023 compliant client-side data privacy.) Tj
+0 -36 Td
+(- Verified with zero expired schemes, active through 2027.) Tj
+0 -36 Td
+(- Demo-ready CLI database seeders and mock datasets.) Tj
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000140 00000 n 
+0000000267 00000 n 
+0000000609 00000 n 
+0000000736 00000 n 
+0000001169 00000 n 
+0000001296 00000 n 
+0000001765 00000 n 
+0000001893 00000 n 
+0000002319 00000 n 
+0000002448 00000 n 
+0000002827 00000 n 
+trailer
+<< /Size 14 /Root 1 0 R >>
+startxref
+2898
+%%EOF

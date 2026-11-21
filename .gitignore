@@ -30,5 +30,5 @@ Thumbs.db
 .env
 .env.example
 .env*.local
-!frontend/.env.example
-!backend/.env.example
+!essential/frontend/.env.example
+!essential/backend/.env.example

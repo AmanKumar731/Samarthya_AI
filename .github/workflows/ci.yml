@@ -16,6 +16,6 @@ jobs:
           python-version: "3.11"
       - name: Install & Test
         run: |
-          cd backend
+          cd essential/backend
           pip install -r requirements.txt
           PYTHONPATH=. pytest -v tests/
