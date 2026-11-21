@@ -1,0 +1,49 @@
+{
+  "citizens": [
+    {
+      "id": "CITIZEN_001",
+      "name": "Aarav Sharma",
+      "age": 21,
+      "gender": "male",
+      "category": "OBC",
+      "disability_status": "locomotor_disability",
+      "disability_percentage": 50,
+      "income": 180000,
+      "state": "Uttar Pradesh",
+      "eligible_schemes": [
+        "pm_usp_central_sector_scholarship",
+        "aicte_saksham_degree_scholarship"
+      ]
+    },
+    {
+      "id": "CITIZEN_002",
+      "name": "Pooja Patel",
+      "age": 19,
+      "gender": "female",
+      "category": "General",
+      "disability_status": "none",
+      "disability_percentage": 0,
+      "income": 220000,
+      "state": "Gujarat",
+      "eligible_schemes": [
+        "pragati_scholarship_girls_technical",
+        "pm_usp_central_sector_scholarship"
+      ]
+    },
+    {
+      "id": "CITIZEN_003",
+      "name": "Ramesh Verma",
+      "age": 72,
+      "gender": "male",
+      "category": "SC",
+      "disability_status": "none",
+      "disability_percentage": 0,
+      "income": 95000,
+      "state": "Bihar",
+      "eligible_schemes": [
+        "pm_jay_senior_citizen_topup",
+        "pm_surya_ghar_muft_bijli"
+      ]
+    }
+  ]
+}
