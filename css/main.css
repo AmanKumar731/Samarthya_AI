@@ -210,13 +210,14 @@ img {
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 24px);
-  max-width: 1540px;
-  height: 68px;
+  width: calc(100% - 16px);
+  max-width: 1680px;
+  height: 72px;
+  min-height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 26px;
+  padding: 0 30px;
   background: rgba(11, 15, 25, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
