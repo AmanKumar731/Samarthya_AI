@@ -32,11 +32,11 @@
     top: 12px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    width: calc(100% - 24px) !important;
+    width: calc(100% - 20px) !important;
     max-width: 100% !important;
-    height: 64px !important;
-    min-height: 64px !important;
-    padding: 0 16px !important;
+    height: 66px !important;
+    min-height: 66px !important;
+    padding: 0 18px !important;
     border-radius: 20px !important;
     background: rgba(255, 255, 255, 0.94) !important;
     border: 1px solid #DCE7FA !important;

@@ -210,13 +210,13 @@ img {
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 48px);
-  max-width: 1220px;
-  height: 62px;
+  width: calc(100% - 24px);
+  max-width: 1540px;
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 22px;
+  padding: 0 26px;
   background: rgba(11, 15, 25, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
